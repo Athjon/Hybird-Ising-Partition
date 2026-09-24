@@ -133,7 +133,7 @@ def main():
         ax.axhline(100, color='gray', linewidth=.8, linestyle='--')
         ax.set_xticks(range(len(arms)), ['FEM', 'Pairs', 'Shared\ncandidates', 'FM reference'])
         ax.set_title(instance.upper())
-        ax.set_ylabel('Native km1 (% of paired FM reference; lower is better)')
+        ax.set_ylabel('Native km1 (% of paired FM reference)', fontsize=10)
         ax.grid(axis='y', alpha=.2)
     handles, legend_labels = axes[0, -1].get_legend_handles_labels()
     fig.legend(handles, legend_labels, fontsize=8, loc='lower center', ncol=6,

@@ -1,6 +1,6 @@
 {
   "summary_sha256": "4dd0c10a0073d659df663e276b90aca7e666a305602660de1df1d2145b0fb665",
-  "script_sha256": "4d268133010aefe5036e7a758a76bcc0c996678f0b3d44694c0e266a51b642fa",
+  "script_sha256": "e5d62a625edd3a125d740ff523c70c053ef8f49e2646982bc1adde52a7d228ff",
   "primary_budget_seconds": 20.0,
   "arms_with_failures": [],
   "metric": "Best verified objective available by the deadline, including the given coarse-lift fallback.",
