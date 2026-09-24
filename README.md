@@ -220,6 +220,16 @@ quality advantage over sparse combination search. Per-level integration
 improves both tested seed-30 outputs but adds runtime; it is not an equal-time
 or KaHyPar comparison.
 
+The [complete V-cycle equal-time report](benchmarks/hypergraph/results/fem-ier-equal-time-20260924/REPORT.md)
+compares five paired starts on each IBM input at preset 5/10/20-second deadlines.
+At 20 seconds, mean km1 for FEM/pairs/shared-candidates/flow is
+775.6/757.8/750.6/805.6 on IBM01 and 1127.2/1126.4/1140.6/1170.2 on IBM02.
+FEM wins/ties/loses 1/4/5 against pairs: these CPU settings do not establish
+an equal-time FEM advantage. Coarsening and coarse initialization are common
+given inputs outside this refinement budget. The report separates initial-only
+fallbacks from completed V-cycles, retains excluded overshoots, and includes
+171 passing regressions and an independent audit of all 2,466 IER rounds.
+
 ### Experimental quotient coarsening
 
 `KahyparLikeSolver.coarsen()` also supports an opt-in boundary-aware matching
