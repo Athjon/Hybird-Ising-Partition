@@ -1,0 +1,610 @@
+{
+  "arm": "flow",
+  "base_seed": 32,
+  "budgets_seconds": [
+    5.0,
+    10.0,
+    20.0
+  ],
+  "started_at": 331765.001726833,
+  "records": [
+    {
+      "arm": "flow",
+      "kind": "vcycle",
+      "solver_seed": 32,
+      "coarse_assignment": {
+        "artifact": "flow.npz",
+        "key": "records__0__coarse_assignment"
+      },
+      "initial_assignment": {
+        "artifact": "flow.npz",
+        "key": "records__0__initial_assignment"
+      },
+      "stages": [
+        {
+          "graph_id": "level_7",
+          "initial_assignment": {
+            "artifact": "flow.npz",
+            "key": "records__0__stages__0__initial_assignment"
+          },
+          "final_assignment": {
+            "artifact": "flow.npz",
+            "key": "records__0__stages__0__final_assignment"
+          },
+          "last_result": null,
+          "status": "success",
+          "initial": {
+            "native_cut": 2403.0,
+            "block_loads": {
+              "artifact": "flow.npz",
+              "key": "records__0__stages__0__initial__block_loads"
+            },
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 2328.0,
+            "block_loads": {
+              "artifact": "flow.npz",
+              "key": "records__0__stages__0__final__block_loads"
+            },
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        },
+        {
+          "graph_id": "level_6",
+          "initial_assignment": {
+            "artifact": "flow.npz",
+            "key": "records__0__stages__1__initial_assignment"
+          },
+          "final_assignment": {
+            "artifact": "flow.npz",
+            "key": "records__0__stages__1__final_assignment"
+          },
+          "last_result": null,
+          "status": "success",
+          "initial": {
+            "native_cut": 2328.0,
+            "block_loads": {
+              "artifact": "flow.npz",
+              "key": "records__0__stages__1__initial__block_loads"
+            },
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 2149.0,
+            "block_loads": {
+              "artifact": "flow.npz",
+              "key": "records__0__stages__1__final__block_loads"
+            },
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        },
+        {
+          "graph_id": "level_5",
+          "initial_assignment": {
+            "artifact": "flow.npz",
+            "key": "records__0__stages__2__initial_assignment"
+          },
+          "final_assignment": {
+            "artifact": "flow.npz",
+            "key": "records__0__stages__2__final_assignment"
+          },
+          "last_result": null,
+          "status": "success",
+          "initial": {
+            "native_cut": 2149.0,
+            "block_loads": {
+              "artifact": "flow.npz",
+              "key": "records__0__stages__2__initial__block_loads"
+            },
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 2055.0,
+            "block_loads": {
+              "artifact": "flow.npz",
+              "key": "records__0__stages__2__final__block_loads"
+            },
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        },
+        {
+          "graph_id": "level_4",
+          "initial_assignment": {
+            "artifact": "flow.npz",
+            "key": "records__0__stages__3__initial_assignment"
+          },
+          "final_assignment": {
+            "artifact": "flow.npz",
+            "key": "records__0__stages__3__final_assignment"
+          },
+          "last_result": null,
+          "status": "success",
+          "initial": {
+            "native_cut": 2055.0,
+            "block_loads": {
+              "artifact": "flow.npz",
+              "key": "records__0__stages__3__initial__block_loads"
+            },
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 1905.0,
+            "block_loads": {
+              "artifact": "flow.npz",
+              "key": "records__0__stages__3__final__block_loads"
+            },
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        },
+        {
+          "graph_id": "level_3",
+          "initial_assignment": {
+            "artifact": "flow.npz",
+            "key": "records__0__stages__4__initial_assignment"
+          },
+          "final_assignment": {
+            "artifact": "flow.npz",
+            "key": "records__0__stages__4__final_assignment"
+          },
+          "last_result": null,
+          "status": "success",
+          "initial": {
+            "native_cut": 1905.0,
+            "block_loads": {
+              "artifact": "flow.npz",
+              "key": "records__0__stages__4__initial__block_loads"
+            },
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 1826.0,
+            "block_loads": {
+              "artifact": "flow.npz",
+              "key": "records__0__stages__4__final__block_loads"
+            },
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        },
+        {
+          "graph_id": "level_2",
+          "initial_assignment": {
+            "artifact": "flow.npz",
+            "key": "records__0__stages__5__initial_assignment"
+          },
+          "final_assignment": {
+            "artifact": "flow.npz",
+            "key": "records__0__stages__5__final_assignment"
+          },
+          "last_result": null,
+          "status": "success",
+          "initial": {
+            "native_cut": 1826.0,
+            "block_loads": {
+              "artifact": "flow.npz",
+              "key": "records__0__stages__5__initial__block_loads"
+            },
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 1685.0,
+            "block_loads": {
+              "artifact": "flow.npz",
+              "key": "records__0__stages__5__final__block_loads"
+            },
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        },
+        {
+          "graph_id": "level_1",
+          "initial_assignment": {
+            "artifact": "flow.npz",
+            "key": "records__0__stages__6__initial_assignment"
+          },
+          "final_assignment": {
+            "artifact": "flow.npz",
+            "key": "records__0__stages__6__final_assignment"
+          },
+          "last_result": null,
+          "status": "success",
+          "initial": {
+            "native_cut": 1685.0,
+            "block_loads": {
+              "artifact": "flow.npz",
+              "key": "records__0__stages__6__initial__block_loads"
+            },
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 1598.0,
+            "block_loads": {
+              "artifact": "flow.npz",
+              "key": "records__0__stages__6__final__block_loads"
+            },
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        },
+        {
+          "graph_id": "level_0",
+          "initial_assignment": {
+            "artifact": "flow.npz",
+            "key": "records__0__stages__7__initial_assignment"
+          },
+          "final_assignment": {
+            "artifact": "flow.npz",
+            "key": "records__0__stages__7__final_assignment"
+          },
+          "last_result": null,
+          "status": "success",
+          "initial": {
+            "native_cut": 1598.0,
+            "block_loads": {
+              "artifact": "flow.npz",
+              "key": "records__0__stages__7__initial__block_loads"
+            },
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 1526.0,
+            "block_loads": {
+              "artifact": "flow.npz",
+              "key": "records__0__stages__7__final__block_loads"
+            },
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        },
+        {
+          "graph_id": "original",
+          "initial_assignment": {
+            "artifact": "flow.npz",
+            "key": "records__0__stages__8__initial_assignment"
+          },
+          "final_assignment": {
+            "artifact": "flow.npz",
+            "key": "records__0__stages__8__final_assignment"
+          },
+          "last_result": null,
+          "status": "success",
+          "initial": {
+            "native_cut": 1526.0,
+            "block_loads": {
+              "artifact": "flow.npz",
+              "key": "records__0__stages__8__initial__block_loads"
+            },
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 1526.0,
+            "block_loads": {
+              "artifact": "flow.npz",
+              "key": "records__0__stages__8__final__block_loads"
+            },
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        }
+      ],
+      "final_assignment": {
+        "artifact": "flow.npz",
+        "key": "records__0__final_assignment"
+      },
+      "native_metrics": {
+        "native_cut": 1526.0,
+        "block_loads": {
+          "artifact": "flow.npz",
+          "key": "records__0__native_metrics__block_loads"
+        },
+        "capacity": 5047.2575,
+        "feasible": true
+      },
+      "status": "success",
+      "run_id": "flow_0000",
+      "attempt": 0,
+      "started_at": 331765.008253583,
+      "predecessor_run_id": null,
+      "improves_completed_incumbent": true,
+      "improves_available_incumbent": true,
+      "exact_assignment_fixed_point": false,
+      "finished_at": 331767.768304791,
+      "completion_seconds": 2.766577958012931,
+      "pipeline_seconds": 2.760051208024379,
+      "completed_within_max_budget": true,
+      "initial": {
+        "native_cut": 2403.0,
+        "block_loads": {
+          "artifact": "flow.npz",
+          "key": "records__0__initial__block_loads"
+        },
+        "capacity": 5047.2575,
+        "capacity_tolerance": 1.9601e-06,
+        "feasible": true,
+        "independent_cut_and_loads_verified": true
+      },
+      "final": {
+        "native_cut": 1526.0,
+        "block_loads": {
+          "artifact": "flow.npz",
+          "key": "records__0__final__block_loads"
+        },
+        "capacity": 5047.2575,
+        "capacity_tolerance": 1.9601e-06,
+        "feasible": true,
+        "independent_cut_and_loads_verified": true
+      },
+      "independent_stage_and_projection_verification": true
+    },
+    {
+      "arm": "flow",
+      "kind": "flow_continuation",
+      "solver_seed": 1000035,
+      "initial_assignment": {
+        "artifact": "flow.npz",
+        "key": "records__1__initial_assignment"
+      },
+      "stages": [
+        {
+          "graph_id": "original",
+          "initial_assignment": {
+            "artifact": "flow.npz",
+            "key": "records__1__stages__0__initial_assignment"
+          },
+          "final_assignment": {
+            "artifact": "flow.npz",
+            "key": "records__1__stages__0__final_assignment"
+          },
+          "last_result": null,
+          "status": "success",
+          "initial": {
+            "native_cut": 1526.0,
+            "block_loads": {
+              "artifact": "flow.npz",
+              "key": "records__1__stages__0__initial__block_loads"
+            },
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 1526.0,
+            "block_loads": {
+              "artifact": "flow.npz",
+              "key": "records__1__stages__0__final__block_loads"
+            },
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        }
+      ],
+      "final_assignment": {
+        "artifact": "flow.npz",
+        "key": "records__1__final_assignment"
+      },
+      "native_metrics": {
+        "native_cut": 1526.0,
+        "block_loads": {
+          "artifact": "flow.npz",
+          "key": "records__1__native_metrics__block_loads"
+        },
+        "capacity": 5047.2575,
+        "feasible": true
+      },
+      "status": "success",
+      "run_id": "flow_0001",
+      "attempt": 1,
+      "started_at": 331767.768306125,
+      "predecessor_run_id": "flow_0000",
+      "improves_completed_incumbent": false,
+      "improves_available_incumbent": false,
+      "exact_assignment_fixed_point": true,
+      "finished_at": 331767.974593333,
+      "completion_seconds": 2.9728665000293404,
+      "pipeline_seconds": 0.20628720801323652,
+      "completed_within_max_budget": true,
+      "initial": {
+        "native_cut": 1526.0,
+        "block_loads": {
+          "artifact": "flow.npz",
+          "key": "records__1__initial__block_loads"
+        },
+        "capacity": 5047.2575,
+        "capacity_tolerance": 1.9601e-06,
+        "feasible": true,
+        "independent_cut_and_loads_verified": true
+      },
+      "final": {
+        "native_cut": 1526.0,
+        "block_loads": {
+          "artifact": "flow.npz",
+          "key": "records__1__final__block_loads"
+        },
+        "capacity": 5047.2575,
+        "capacity_tolerance": 1.9601e-06,
+        "feasible": true,
+        "independent_cut_and_loads_verified": true
+      },
+      "independent_stage_and_projection_verification": true
+    }
+  ],
+  "fallback": {
+    "assignment": {
+      "artifact": "flow.npz",
+      "key": "fallback__assignment"
+    },
+    "native_metrics": {
+      "native_cut": 2403.0,
+      "block_loads": {
+        "artifact": "flow.npz",
+        "key": "fallback__native_metrics__block_loads"
+      },
+      "capacity": 5047.2575,
+      "feasible": true
+    },
+    "source": "initial_only",
+    "status": "success",
+    "available_seconds": 0.006525458011310548,
+    "verified": {
+      "native_cut": 2403.0,
+      "block_loads": {
+        "artifact": "flow.npz",
+        "key": "fallback__verified__block_loads"
+      },
+      "capacity": 5047.2575,
+      "capacity_tolerance": 1.9601e-06,
+      "feasible": true,
+      "independent_cut_and_loads_verified": true
+    }
+  },
+  "status": "execution_complete",
+  "stopped_reason": "exact_assignment_fixed_point",
+  "finished_at": 331767.974594291,
+  "wall_seconds_including_overshoot": 2.9728674580110237,
+  "attempts": 2,
+  "max_attempts_reached": false,
+  "overshoot_seconds": 0.0,
+  "validation_summary": {
+    "successful_runs": 2,
+    "execution_failed_runs": 0,
+    "validation_failed_runs": 0,
+    "fallback_valid": true
+  },
+  "has_failures": false,
+  "checkpoints": [
+    {
+      "budget_seconds": 5.0,
+      "optimized_status": "success",
+      "eligible_completed_runs": 2,
+      "eligible_completed_vcycles": 1,
+      "eligible_flow_continuations": 1,
+      "best_completed": {
+        "source": "completed_solver",
+        "run_id": "flow_0000",
+        "native_cut": 1526.0,
+        "block_loads": {
+          "artifact": "flow.npz",
+          "key": "checkpoints__0__best_completed__block_loads"
+        },
+        "available_seconds": 2.766577958012931
+      },
+      "best_available": {
+        "source": "completed_solver",
+        "run_id": "flow_0000",
+        "native_cut": 1526.0,
+        "block_loads": {
+          "artifact": "flow.npz",
+          "key": "checkpoints__0__best_available__block_loads"
+        },
+        "available_seconds": 2.766577958012931
+      }
+    },
+    {
+      "budget_seconds": 10.0,
+      "optimized_status": "success",
+      "eligible_completed_runs": 2,
+      "eligible_completed_vcycles": 1,
+      "eligible_flow_continuations": 1,
+      "best_completed": {
+        "source": "completed_solver",
+        "run_id": "flow_0000",
+        "native_cut": 1526.0,
+        "block_loads": {
+          "artifact": "flow.npz",
+          "key": "checkpoints__1__best_completed__block_loads"
+        },
+        "available_seconds": 2.766577958012931
+      },
+      "best_available": {
+        "source": "completed_solver",
+        "run_id": "flow_0000",
+        "native_cut": 1526.0,
+        "block_loads": {
+          "artifact": "flow.npz",
+          "key": "checkpoints__1__best_available__block_loads"
+        },
+        "available_seconds": 2.766577958012931
+      }
+    },
+    {
+      "budget_seconds": 20.0,
+      "optimized_status": "success",
+      "eligible_completed_runs": 2,
+      "eligible_completed_vcycles": 1,
+      "eligible_flow_continuations": 1,
+      "best_completed": {
+        "source": "completed_solver",
+        "run_id": "flow_0000",
+        "native_cut": 1526.0,
+        "block_loads": {
+          "artifact": "flow.npz",
+          "key": "checkpoints__2__best_completed__block_loads"
+        },
+        "available_seconds": 2.766577958012931
+      },
+      "best_available": {
+        "source": "completed_solver",
+        "run_id": "flow_0000",
+        "native_cut": 1526.0,
+        "block_loads": {
+          "artifact": "flow.npz",
+          "key": "checkpoints__2__best_available__block_loads"
+        },
+        "available_seconds": 2.766577958012931
+      }
+    }
+  ]
+}

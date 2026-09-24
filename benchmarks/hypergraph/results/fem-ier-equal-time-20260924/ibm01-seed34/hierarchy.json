@@ -1,0 +1,356 @@
+{
+  "coarse_assignment": {
+    "artifact": "hierarchy.npz",
+    "key": "coarse_assignment"
+  },
+  "original_to_coarse": {
+    "artifact": "hierarchy.npz",
+    "key": "original_to_coarse"
+  },
+  "coarse_node_weights": {
+    "artifact": "hierarchy.npz",
+    "key": "coarse_node_weights"
+  },
+  "coarse_hyperedges": {
+    "offsets": {
+      "artifact": "hierarchy.npz",
+      "key": "coarse_hyperedges__offsets"
+    },
+    "values": {
+      "artifact": "hierarchy.npz",
+      "key": "coarse_hyperedges__values"
+    }
+  },
+  "coarse_hyperedge_weights": {
+    "artifact": "hierarchy.npz",
+    "key": "coarse_hyperedge_weights"
+  },
+  "graphs": {
+    "original": {
+      "hyperedges": {
+        "offsets": {
+          "artifact": "hierarchy.npz",
+          "key": "graphs__original__hyperedges__offsets"
+        },
+        "values": {
+          "artifact": "hierarchy.npz",
+          "key": "graphs__original__hyperedges__values"
+        }
+      },
+      "node_weights": {
+        "artifact": "hierarchy.npz",
+        "key": "graphs__original__node_weights"
+      },
+      "hyperedge_weights": {
+        "artifact": "hierarchy.npz",
+        "key": "graphs__original__hyperedge_weights"
+      }
+    },
+    "level_0": {
+      "hyperedges": {
+        "offsets": {
+          "artifact": "hierarchy.npz",
+          "key": "graphs__level_0__hyperedges__offsets"
+        },
+        "values": {
+          "artifact": "hierarchy.npz",
+          "key": "graphs__level_0__hyperedges__values"
+        }
+      },
+      "node_weights": {
+        "artifact": "hierarchy.npz",
+        "key": "graphs__level_0__node_weights"
+      },
+      "hyperedge_weights": {
+        "artifact": "hierarchy.npz",
+        "key": "graphs__level_0__hyperedge_weights"
+      }
+    },
+    "level_1": {
+      "hyperedges": {
+        "offsets": {
+          "artifact": "hierarchy.npz",
+          "key": "graphs__level_1__hyperedges__offsets"
+        },
+        "values": {
+          "artifact": "hierarchy.npz",
+          "key": "graphs__level_1__hyperedges__values"
+        }
+      },
+      "node_weights": {
+        "artifact": "hierarchy.npz",
+        "key": "graphs__level_1__node_weights"
+      },
+      "hyperedge_weights": {
+        "artifact": "hierarchy.npz",
+        "key": "graphs__level_1__hyperedge_weights"
+      }
+    },
+    "level_2": {
+      "hyperedges": {
+        "offsets": {
+          "artifact": "hierarchy.npz",
+          "key": "graphs__level_2__hyperedges__offsets"
+        },
+        "values": {
+          "artifact": "hierarchy.npz",
+          "key": "graphs__level_2__hyperedges__values"
+        }
+      },
+      "node_weights": {
+        "artifact": "hierarchy.npz",
+        "key": "graphs__level_2__node_weights"
+      },
+      "hyperedge_weights": {
+        "artifact": "hierarchy.npz",
+        "key": "graphs__level_2__hyperedge_weights"
+      }
+    },
+    "level_3": {
+      "hyperedges": {
+        "offsets": {
+          "artifact": "hierarchy.npz",
+          "key": "graphs__level_3__hyperedges__offsets"
+        },
+        "values": {
+          "artifact": "hierarchy.npz",
+          "key": "graphs__level_3__hyperedges__values"
+        }
+      },
+      "node_weights": {
+        "artifact": "hierarchy.npz",
+        "key": "graphs__level_3__node_weights"
+      },
+      "hyperedge_weights": {
+        "artifact": "hierarchy.npz",
+        "key": "graphs__level_3__hyperedge_weights"
+      }
+    },
+    "level_4": {
+      "hyperedges": {
+        "offsets": {
+          "artifact": "hierarchy.npz",
+          "key": "graphs__level_4__hyperedges__offsets"
+        },
+        "values": {
+          "artifact": "hierarchy.npz",
+          "key": "graphs__level_4__hyperedges__values"
+        }
+      },
+      "node_weights": {
+        "artifact": "hierarchy.npz",
+        "key": "graphs__level_4__node_weights"
+      },
+      "hyperedge_weights": {
+        "artifact": "hierarchy.npz",
+        "key": "graphs__level_4__hyperedge_weights"
+      }
+    },
+    "level_5": {
+      "hyperedges": {
+        "offsets": {
+          "artifact": "hierarchy.npz",
+          "key": "graphs__level_5__hyperedges__offsets"
+        },
+        "values": {
+          "artifact": "hierarchy.npz",
+          "key": "graphs__level_5__hyperedges__values"
+        }
+      },
+      "node_weights": {
+        "artifact": "hierarchy.npz",
+        "key": "graphs__level_5__node_weights"
+      },
+      "hyperedge_weights": {
+        "artifact": "hierarchy.npz",
+        "key": "graphs__level_5__hyperedge_weights"
+      }
+    },
+    "level_6": {
+      "hyperedges": {
+        "offsets": {
+          "artifact": "hierarchy.npz",
+          "key": "graphs__level_6__hyperedges__offsets"
+        },
+        "values": {
+          "artifact": "hierarchy.npz",
+          "key": "graphs__level_6__hyperedges__values"
+        }
+      },
+      "node_weights": {
+        "artifact": "hierarchy.npz",
+        "key": "graphs__level_6__node_weights"
+      },
+      "hyperedge_weights": {
+        "artifact": "hierarchy.npz",
+        "key": "graphs__level_6__hyperedge_weights"
+      }
+    },
+    "level_7": {
+      "hyperedges": {
+        "offsets": {
+          "artifact": "hierarchy.npz",
+          "key": "graphs__level_7__hyperedges__offsets"
+        },
+        "values": {
+          "artifact": "hierarchy.npz",
+          "key": "graphs__level_7__hyperedges__values"
+        }
+      },
+      "node_weights": {
+        "artifact": "hierarchy.npz",
+        "key": "graphs__level_7__node_weights"
+      },
+      "hyperedge_weights": {
+        "artifact": "hierarchy.npz",
+        "key": "graphs__level_7__hyperedge_weights"
+      }
+    }
+  },
+  "hierarchy_stack": [
+    {
+      "graph_id": "level_0",
+      "num_nodes": 12752,
+      "remap": {
+        "artifact": "hierarchy.npz",
+        "key": "hierarchy_stack__0__remap"
+      },
+      "groups": {
+        "offsets": {
+          "artifact": "hierarchy.npz",
+          "key": "hierarchy_stack__0__groups__offsets"
+        },
+        "values": {
+          "artifact": "hierarchy.npz",
+          "key": "hierarchy_stack__0__groups__values"
+        }
+      }
+    },
+    {
+      "graph_id": "level_1",
+      "num_nodes": 6935,
+      "remap": {
+        "artifact": "hierarchy.npz",
+        "key": "hierarchy_stack__1__remap"
+      },
+      "groups": {
+        "offsets": {
+          "artifact": "hierarchy.npz",
+          "key": "hierarchy_stack__1__groups__offsets"
+        },
+        "values": {
+          "artifact": "hierarchy.npz",
+          "key": "hierarchy_stack__1__groups__values"
+        }
+      }
+    },
+    {
+      "graph_id": "level_2",
+      "num_nodes": 3790,
+      "remap": {
+        "artifact": "hierarchy.npz",
+        "key": "hierarchy_stack__2__remap"
+      },
+      "groups": {
+        "offsets": {
+          "artifact": "hierarchy.npz",
+          "key": "hierarchy_stack__2__groups__offsets"
+        },
+        "values": {
+          "artifact": "hierarchy.npz",
+          "key": "hierarchy_stack__2__groups__values"
+        }
+      }
+    },
+    {
+      "graph_id": "level_3",
+      "num_nodes": 2084,
+      "remap": {
+        "artifact": "hierarchy.npz",
+        "key": "hierarchy_stack__3__remap"
+      },
+      "groups": {
+        "offsets": {
+          "artifact": "hierarchy.npz",
+          "key": "hierarchy_stack__3__groups__offsets"
+        },
+        "values": {
+          "artifact": "hierarchy.npz",
+          "key": "hierarchy_stack__3__groups__values"
+        }
+      }
+    },
+    {
+      "graph_id": "level_4",
+      "num_nodes": 1163,
+      "remap": {
+        "artifact": "hierarchy.npz",
+        "key": "hierarchy_stack__4__remap"
+      },
+      "groups": {
+        "offsets": {
+          "artifact": "hierarchy.npz",
+          "key": "hierarchy_stack__4__groups__offsets"
+        },
+        "values": {
+          "artifact": "hierarchy.npz",
+          "key": "hierarchy_stack__4__groups__values"
+        }
+      }
+    },
+    {
+      "graph_id": "level_5",
+      "num_nodes": 662,
+      "remap": {
+        "artifact": "hierarchy.npz",
+        "key": "hierarchy_stack__5__remap"
+      },
+      "groups": {
+        "offsets": {
+          "artifact": "hierarchy.npz",
+          "key": "hierarchy_stack__5__groups__offsets"
+        },
+        "values": {
+          "artifact": "hierarchy.npz",
+          "key": "hierarchy_stack__5__groups__values"
+        }
+      }
+    },
+    {
+      "graph_id": "level_6",
+      "num_nodes": 384,
+      "remap": {
+        "artifact": "hierarchy.npz",
+        "key": "hierarchy_stack__6__remap"
+      },
+      "groups": {
+        "offsets": {
+          "artifact": "hierarchy.npz",
+          "key": "hierarchy_stack__6__groups__offsets"
+        },
+        "values": {
+          "artifact": "hierarchy.npz",
+          "key": "hierarchy_stack__6__groups__values"
+        }
+      }
+    },
+    {
+      "graph_id": "level_7",
+      "num_nodes": 230,
+      "remap": {
+        "artifact": "hierarchy.npz",
+        "key": "hierarchy_stack__7__remap"
+      },
+      "groups": {
+        "offsets": {
+          "artifact": "hierarchy.npz",
+          "key": "hierarchy_stack__7__groups__offsets"
+        },
+        "values": {
+          "artifact": "hierarchy.npz",
+          "key": "hierarchy_stack__7__groups__values"
+        }
+      }
+    }
+  ]
+}

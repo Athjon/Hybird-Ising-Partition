@@ -1,0 +1,4916 @@
+{
+  "started_utc": "2026-09-24T11:52:16.416267+00:00",
+  "invocation_argv": [
+    "benchmarks/hypergraph/compare_ier_equal_time.py",
+    "--instances",
+    "ibm01",
+    "ibm02",
+    "--seeds",
+    "30",
+    "31",
+    "32",
+    "33",
+    "34",
+    "--budgets",
+    "5",
+    "10",
+    "20",
+    "--output",
+    "benchmarks/hypergraph/results/fem-ier-equal-time-20260924"
+  ],
+  "working_directory": "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition",
+  "config": {
+    "seeds": [
+      30,
+      31,
+      32,
+      33,
+      34
+    ],
+    "instances": [
+      "ibm01",
+      "ibm02"
+    ],
+    "budgets_seconds": [
+      5.0,
+      10.0,
+      20.0
+    ],
+    "primary_budget_seconds": 20.0,
+    "q": 4,
+    "epsilon": 0.03,
+    "seed_stride": 1000003,
+    "arms": [
+      "fem",
+      "pairs",
+      "deterministic",
+      "flow"
+    ],
+    "frontend": {
+      "fem": {
+        "mode_cycle": [
+          "fem_ier",
+          "flow"
+        ],
+        "ier_backend": "fem",
+        "ier_rounds": 2,
+        "ier_max_moves": 24,
+        "ier_boundary_pool": 96,
+        "ier_pool_strategy": "local",
+        "ier_num_trials": 8,
+        "ier_num_steps": 100,
+        "ier_random_samples": 800,
+        "ier_allow_triples": true,
+        "flow_passes": 2,
+        "seed": 30,
+        "max_imbalance": 0.03,
+        "repair_balance": true
+      },
+      "pairs": {
+        "mode_cycle": [
+          "fem_ier",
+          "flow"
+        ],
+        "ier_backend": "pairs",
+        "ier_rounds": 2,
+        "ier_max_moves": 24,
+        "ier_boundary_pool": 96,
+        "ier_pool_strategy": "local",
+        "ier_num_trials": 8,
+        "ier_num_steps": 100,
+        "ier_random_samples": 800,
+        "ier_allow_triples": true,
+        "flow_passes": 2,
+        "seed": 30,
+        "max_imbalance": 0.03,
+        "repair_balance": true
+      },
+      "deterministic": {
+        "mode_cycle": [
+          "fem_ier",
+          "flow"
+        ],
+        "ier_backend": "deterministic",
+        "ier_rounds": 2,
+        "ier_max_moves": 24,
+        "ier_boundary_pool": 96,
+        "ier_pool_strategy": "local",
+        "ier_num_trials": 8,
+        "ier_num_steps": 100,
+        "ier_random_samples": 800,
+        "ier_allow_triples": true,
+        "flow_passes": 2,
+        "seed": 30,
+        "max_imbalance": 0.03,
+        "repair_balance": true
+      },
+      "flow": {
+        "mode_cycle": [
+          "flow"
+        ],
+        "ier_backend": "fem",
+        "ier_rounds": 2,
+        "ier_max_moves": 24,
+        "ier_boundary_pool": 96,
+        "ier_pool_strategy": "local",
+        "ier_num_trials": 8,
+        "ier_num_steps": 100,
+        "ier_random_samples": 800,
+        "ier_allow_triples": true,
+        "flow_passes": 2,
+        "seed": 30,
+        "max_imbalance": 0.03,
+        "repair_balance": true
+      }
+    },
+    "order": "Cyclic rotation across cases; position counts differ by at most one.",
+    "fallback": "Each arm pays for coarse lifting and production native scoring after its timer starts.",
+    "flow": "One V-cycle, then own original-graph flow(2 passes) until identical assignment or deadline.",
+    "other_arms": "Independent complete V-cycle restarts from the same saved coarse assignment.",
+    "timing": "All algorithm work, recording arrays/diagnostics, native scoring and incumbent comparisons included; external audit and I/O after whole arm."
+  },
+  "source_sha256_before": {
+    "benchmarks/hypergraph/compare_ier_equal_time.py": "5be54b1ee5856942b1eb39c07e0cc530c46743ca08179dc3e79cb075fcd61881",
+    "src/hyper_solver.py": "932bff78932030209f21d46d3b19ebbb26b0bc44ab76d61d70ccb43c44e774d4",
+    "benchmarks/hypergraph/IER_EQUAL_TIME_PROTOCOL.md": "bb750a01e9491ed095cf11b1c5c9f258747069484d67e0da1fa021be1a8cca41",
+    "tests/test_ier_equal_time_benchmark.py": "b988f41855d254e23b384c6d5303e6fdae0d4d67643dd146e71d1517e067a923",
+    "benchmarks/hypergraph/validate_fem_ier.py": "2363c98f0fd865ee998503155d1088660090aeb7d16d28326e157eff43eed7d0",
+    "benchmarks/hypergraph/compare_fem_multiseed.py": "3cc6a79b36c4ab73d699c23aa2ac08df2ba0cf7d7c77586d4df4ccdbd55bead4",
+    "benchmarks/hypergraph/time_budget_hgr.py": "601f59e7d1346b8af8bf419f889be152fbe1ab379036250ab082f15dda899198",
+    "benchmarks/hypergraph/native_search_probe.py": "8211b6aefb588a3dd016be93472977fd13f8bde6a18a4c1ef251836b81115de6",
+    "benchmarks/hypergraph/native_mcmc.py": "b8ba19d9b4dec8e0c0bbba9eaad5aad798f31b7e1d5562c1a5cc0376ef7209c2",
+    "src/partition/__init__.py": "a6b8fe4ebc6382f41072e4bc46f78a4b158641b9f031d0782f05294109adaef4",
+    "src/partition/coarsen.py": "5736739b4434ce01327155f294ad9cbe7b79751f3ec66b7cbeea786948afdc40",
+    "src/partition/hyper_coarsen.py": "6d415e8bbe80e63fa393f0d3aea000a04f9fe9b569e0e072a5ba8308a073f3db",
+    "src/partition/hyper_ier.py": "5ecbbe9c636411ada21906e4818975a067dae5668e37556b2fbd0b869da92035",
+    "src/partition/hyper_ier_candidates.py": "125898c8d20589626a5050308318c7eae816213d8e8cd7e8dcd3aadc92a0bba4",
+    "src/partition/hyper_ier_objective.py": "457028c52733f7b9e0c23bb84bb37a1f737ec0d8efe834a6fa540b56ee4af1a4",
+    "src/partition/hyper_objective.py": "0a1569ec9737033eb0970a9bfdc644e60c7ec533abdfe8bfaa7f8ca986b0113b",
+    "src/partition/hyper_quotient.py": "de13bea84ae998e4656be3290b5f7a89111d2ce6a7f7fe54e301cd82dd5b014c",
+    "src/partition/hyper_refine.py": "ff4fd24818858cbc054826a3a181926191e8e3b950db8fa758b268ad2502329c",
+    "src/partition/hyper_refine_contract.py": "ac7daef21fd2e2eb5cd48d50f08a6b46e47a2e7bc958dcfa1aefd3f78161b429",
+    "src/partition/hyper_utils.py": "6baa367f66d64524f76828f12d1449e66f8da7f803f051bd5f669713a04c05b5",
+    "src/partition/kaffpa_multiway.py": "bf4f0b774f0bdae105a16a5c6e9f10957bd0485a3ed17a1ff0697c8df5818acd",
+    "src/partition/refine.py": "be32428422ba9a851a871174e73c0158064f2f4ccb5d78da4147157fcc331023",
+    "src/partition/script/test_kahypar.py": "fdf148cda11575763643b082b72082d451ae61b103cb98dae2b38164ababc889",
+    "src/partition/tests.py": "a793339940b6c06d7317f787aa14b424cd7721bcb369100a728ec4dc51b63330",
+    "src/partition/utils.py": "e5101843681268b14defa0e3c677f1425176741f84c5593f1d8167c8fb5c320a",
+    "lib/qubo-solver/src/fem/__init__.py": "eb1c028b0b5c347ce1fd558e3f77d21948407ffd42bc86a917fd957e6c443da0",
+    "lib/qubo-solver/src/fem/customized_problem/__init__.py": "e102bb39e99bbf1e753df64ae4b6c5e2e285250827d3ae2e8f9b0f4e84461aed",
+    "lib/qubo-solver/src/fem/customized_problem/hyper_bmincut.py": "78273308009a2d339974e7b2f63c1c1e2ff6067281ffaf326e2021141af88df0",
+    "lib/qubo-solver/src/fem/interface.py": "edfb2165c0021c2ecb1ff415084f69285ad3579a2db1007664f9db8d90675f48",
+    "lib/qubo-solver/src/fem/problem.py": "34e9a36d87390c504034296c0fc8ece3c46b7a6e0e7b83f75d8d50f9076b311b",
+    "lib/qubo-solver/src/fem/solver_fem.py": "5919f70d9b261d1550edd0633c95bcd8fdcbee1f5f8add3754e319819b4a03d7",
+    "lib/qubo-solver/src/fem/utils.py": "364833410ff492b72bbad5279455619e924bbb9757057bfaafb87f2e78e8b49d"
+  },
+  "input_sha256_before": {
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/manifest.json": "30f189c6453ec206b2ab422423ba9a3115ae7dbe5a3705e611a29ffe394571c3",
+    "/private/tmp/ising-hgr.K5jm2Y/ibm01.hgr": "40f7f7c4dfd96c06b0570f696e67b9c667ac2cbdf4d0858da5e690f4f4d5ac72",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed30/runs.json": "e13104f43aa95eb667ba8c96d19fec5993992d8de9e29437907a3c345bc1e29b",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed30/assignments.npz": "1ec163bf838061e09fe25339f1db9948fbd38ba2c86b7c06f7fdee4df871406a",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed31/runs.json": "a1dea4ccb203ce68d10d000154bc7d6e65e7fabe71267b5e212c1279b8bd3db3",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed31/assignments.npz": "6b80ac0c1ef7557fcf196e7f32d5aac059ddd50a89ccc0b86c29440607944977",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed32/runs.json": "9ba336e1cf398597a12af5ae575bd6482a0952a13611bf7eef5e6e2a4192ca0d",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed32/assignments.npz": "2e28e8b4d46fd539660b1116929e4276a4badd1c0b4b1c60da47f8308e478334",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed33/runs.json": "44a292b5272b9bc10f7038f08bcd468e3a124044b641deae777a2b4ee86d8654",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed33/assignments.npz": "5796844be71d3d59b078ef7982e78d3a1dd3a787148c0cbea5b4f7f6a586ac66",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed34/runs.json": "045706d5fda0db00ede07faec6664d27b818097428277811b1f516a3ea974c20",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed34/assignments.npz": "1c847c380f412fb567006e23be9fecbd06224df598c308f5d673a1d16a86a956",
+    "/private/tmp/ising-hgr.K5jm2Y/ibm02.hgr": "ff09f3be9ed84a8c13257f1655555938072cdf01fae40f1548795763981eae05",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed30/runs.json": "1f964128c4c536fadcefc6d8b29be98f32ec17c5ada1c898ba02fab3e5b82184",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed30/assignments.npz": "9945f97345d44e17c500ecb02c3977ca26de5cd7052307ad89f64b0854f9b368",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed31/runs.json": "d71a3194d0678254be03b606a2a03bb8dd3819186d71f535f7cf6b4734e4469d",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed31/assignments.npz": "72f669b85c2b6674a0b79425a041603a468afe4affc0b105b58fe4eca2580e15",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed32/runs.json": "6c265be422df15ccb3abce7ba9ca00369dcda868d6f0f79de61162b68fd47b45",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed32/assignments.npz": "2d0706b36e0a4e853c72b58bd6a5fb22a9f213e831731b57d929a1f0b2ef319a",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed33/runs.json": "2ebba149730d0f288727b177207a249bdb9cc14b1b9ad493d926ac0e3368f7b8",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed33/assignments.npz": "0f4a6c3431ad7e20e2968f9a235eab6ee9a6ba3d4bd8b5bbbcbd0a68b571b3cd",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed34/runs.json": "4ab3c354cb723fdf2ae8b4976dd72c4e7decbe6e234559c031d0c49fa9eb39c5",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed34/assignments.npz": "7e18b15d99ee1c3d079f4777b265efaa7114c456544618ed1d8247d9a9f2fd8e"
+  },
+  "environment": {
+    "python": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 08:22:19) [Clang 14.0.6 ]",
+    "executable": "/opt/anaconda3/bin/python",
+    "numpy": "1.26.4",
+    "torch": "2.9.0",
+    "torch_threads": 1,
+    "platform": "macOS-26.3-arm64-arm-64bit",
+    "thread_environment": {
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    }
+  },
+  "git_head": "08a2d202183da459813db176495378e55a2f195e",
+  "submodule_head": "398ed0ebec67ea9dc83c148a5c34a9840d25c1dd",
+  "cases": [
+    {
+      "instance": "ibm01",
+      "seed": 30,
+      "arm_order": [
+        "fem",
+        "pairs",
+        "deterministic",
+        "flow"
+      ],
+      "arms": {
+        "fem": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 4,
+          "wall_seconds_including_overshoot": 21.892247499956284,
+          "overshoot_seconds": 1.8922474999562837,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "no_result",
+              "eligible_completed_runs": 0,
+              "eligible_completed_vcycles": 0,
+              "eligible_flow_continuations": 0,
+              "best_completed": null,
+              "best_available": {
+                "source": "initial_only",
+                "run_id": null,
+                "native_cut": 1571.0,
+                "block_loads": [
+                  3235.0,
+                  3235.0,
+                  3121.0,
+                  3161.0
+                ],
+                "available_seconds": 0.004194832989014685
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "fem_0000",
+                "native_cut": 802.0,
+                "block_loads": [
+                  3238.0,
+                  3203.0,
+                  3281.0,
+                  3030.0
+                ],
+                "available_seconds": 5.56771424994804
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "fem_0000",
+                "native_cut": 802.0,
+                "block_loads": [
+                  3238.0,
+                  3203.0,
+                  3281.0,
+                  3030.0
+                ],
+                "available_seconds": 5.56771424994804
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 3,
+              "eligible_completed_vcycles": 3,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "fem_0001",
+                "native_cut": 783.0,
+                "block_loads": [
+                  3283.0,
+                  3168.0,
+                  3242.0,
+                  3059.0
+                ],
+                "available_seconds": 11.103761499980465
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "fem_0001",
+                "native_cut": 783.0,
+                "block_loads": [
+                  3283.0,
+                  3168.0,
+                  3242.0,
+                  3059.0
+                ],
+                "available_seconds": 11.103761499980465
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 4,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "fem.json",
+            "npz": "fem.npz",
+            "json_sha256": "33c27d39f5998a9f31b0b8c96c640706aaf6f6c103caa9eac25d154a4bc66c91",
+            "npz_sha256": "210f6896a017ba6f53de36951144bf2215d45ba22a96e8ae3a76c83d8339be47"
+          }
+        },
+        "pairs": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 6,
+          "wall_seconds_including_overshoot": 21.692081584013067,
+          "overshoot_seconds": 1.6920815840130672,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 802.0,
+                "block_loads": [
+                  3238.0,
+                  3203.0,
+                  3281.0,
+                  3030.0
+                ],
+                "available_seconds": 3.578456000017468
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 802.0,
+                "block_loads": [
+                  3238.0,
+                  3203.0,
+                  3281.0,
+                  3030.0
+                ],
+                "available_seconds": 3.578456000017468
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 2,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "pairs_0001",
+                "native_cut": 783.0,
+                "block_loads": [
+                  3283.0,
+                  3168.0,
+                  3242.0,
+                  3059.0
+                ],
+                "available_seconds": 7.201522208983079
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "pairs_0001",
+                "native_cut": 783.0,
+                "block_loads": [
+                  3283.0,
+                  3168.0,
+                  3242.0,
+                  3059.0
+                ],
+                "available_seconds": 7.201522208983079
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 5,
+              "eligible_completed_vcycles": 5,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "pairs_0001",
+                "native_cut": 783.0,
+                "block_loads": [
+                  3283.0,
+                  3168.0,
+                  3242.0,
+                  3059.0
+                ],
+                "available_seconds": 7.201522208983079
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "pairs_0001",
+                "native_cut": 783.0,
+                "block_loads": [
+                  3283.0,
+                  3168.0,
+                  3242.0,
+                  3059.0
+                ],
+                "available_seconds": 7.201522208983079
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 6,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "pairs.json",
+            "npz": "pairs.npz",
+            "json_sha256": "28834ff14ca6199fa907c2d2fe316eb0bbc923143441ddaf336ec2388b22bbe5",
+            "npz_sha256": "05328cae1fd8234636c90755bb9a0bcdb9f7d831685b0214cbf15380ffbaa19c"
+          }
+        },
+        "deterministic": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 6,
+          "wall_seconds_including_overshoot": 20.48989604198141,
+          "overshoot_seconds": 0.48989604198141024,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 802.0,
+                "block_loads": [
+                  3238.0,
+                  3203.0,
+                  3281.0,
+                  3030.0
+                ],
+                "available_seconds": 3.4145077079883777
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 802.0,
+                "block_loads": [
+                  3238.0,
+                  3203.0,
+                  3281.0,
+                  3030.0
+                ],
+                "available_seconds": 3.4145077079883777
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 2,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0001",
+                "native_cut": 772.0,
+                "block_loads": [
+                  3283.0,
+                  3176.0,
+                  3266.0,
+                  3027.0
+                ],
+                "available_seconds": 6.81976779201068
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0001",
+                "native_cut": 772.0,
+                "block_loads": [
+                  3283.0,
+                  3176.0,
+                  3266.0,
+                  3027.0
+                ],
+                "available_seconds": 6.81976779201068
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 5,
+              "eligible_completed_vcycles": 5,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0001",
+                "native_cut": 772.0,
+                "block_loads": [
+                  3283.0,
+                  3176.0,
+                  3266.0,
+                  3027.0
+                ],
+                "available_seconds": 6.81976779201068
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0001",
+                "native_cut": 772.0,
+                "block_loads": [
+                  3283.0,
+                  3176.0,
+                  3266.0,
+                  3027.0
+                ],
+                "available_seconds": 6.81976779201068
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 6,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "deterministic.json",
+            "npz": "deterministic.npz",
+            "json_sha256": "9f2e96d378c89d04649f4b1c70b57b775902200cbf32ecbf0f2a024675e8f7c2",
+            "npz_sha256": "ad9a10842cea2bc78b5b5bc0b5b4c8f27afbac4f11a10b493fe3b580bc1751b8"
+          }
+        },
+        "flow": {
+          "status": "execution_complete",
+          "stopped_reason": "exact_assignment_fixed_point",
+          "attempts": 2,
+          "wall_seconds_including_overshoot": 2.208049791981466,
+          "overshoot_seconds": 0.0,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 806.0,
+                "block_loads": [
+                  3234.0,
+                  3201.0,
+                  3280.0,
+                  3037.0
+                ],
+                "available_seconds": 1.9755843749735504
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 806.0,
+                "block_loads": [
+                  3234.0,
+                  3201.0,
+                  3280.0,
+                  3037.0
+                ],
+                "available_seconds": 1.9755843749735504
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 806.0,
+                "block_loads": [
+                  3234.0,
+                  3201.0,
+                  3280.0,
+                  3037.0
+                ],
+                "available_seconds": 1.9755843749735504
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 806.0,
+                "block_loads": [
+                  3234.0,
+                  3201.0,
+                  3280.0,
+                  3037.0
+                ],
+                "available_seconds": 1.9755843749735504
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 806.0,
+                "block_loads": [
+                  3234.0,
+                  3201.0,
+                  3280.0,
+                  3037.0
+                ],
+                "available_seconds": 1.9755843749735504
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 806.0,
+                "block_loads": [
+                  3234.0,
+                  3201.0,
+                  3280.0,
+                  3037.0
+                ],
+                "available_seconds": 1.9755843749735504
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 2,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "flow.json",
+            "npz": "flow.npz",
+            "json_sha256": "8e8f1600315a21fc91ad78488c0b1ec9f6d8104dbb76c9aedb541dbeae161a96",
+            "npz_sha256": "c48cd2e454598ba261350ab7f1a94bd516c5c6a586cb361d33280b1031f98ec6"
+          }
+        }
+      },
+      "coarse_mapping_and_weights_match_saved": true,
+      "hierarchy_artifact": {
+        "json": "hierarchy.json",
+        "npz": "hierarchy.npz",
+        "json_sha256": "f722188f7760987676e8d38de849d36b78e66e080e68cb9f3e4131f09135531a",
+        "npz_sha256": "3807b004ea041220c8cb97931e9561af130a3e662fe92c0778cd610c429a0a30"
+      },
+      "status": "completed"
+    },
+    {
+      "instance": "ibm01",
+      "seed": 31,
+      "arm_order": [
+        "pairs",
+        "deterministic",
+        "flow",
+        "fem"
+      ],
+      "arms": {
+        "pairs": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 7,
+          "wall_seconds_including_overshoot": 22.666725707997102,
+          "overshoot_seconds": 2.6667257079971023,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 828.0,
+                "block_loads": [
+                  3283.0,
+                  3153.0,
+                  3033.0,
+                  3283.0
+                ],
+                "available_seconds": 3.290230124955997
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 828.0,
+                "block_loads": [
+                  3283.0,
+                  3153.0,
+                  3033.0,
+                  3283.0
+                ],
+                "available_seconds": 3.290230124955997
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 3,
+              "eligible_completed_vcycles": 3,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "pairs_0002",
+                "native_cut": 784.0,
+                "block_loads": [
+                  3283.0,
+                  3175.0,
+                  3012.0,
+                  3282.0
+                ],
+                "available_seconds": 9.765859165985603
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "pairs_0002",
+                "native_cut": 784.0,
+                "block_loads": [
+                  3283.0,
+                  3175.0,
+                  3012.0,
+                  3282.0
+                ],
+                "available_seconds": 9.765859165985603
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 6,
+              "eligible_completed_vcycles": 6,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "pairs_0005",
+                "native_cut": 738.0,
+                "block_loads": [
+                  3283.0,
+                  3099.0,
+                  3087.0,
+                  3283.0
+                ],
+                "available_seconds": 19.436900540953502
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "pairs_0005",
+                "native_cut": 738.0,
+                "block_loads": [
+                  3283.0,
+                  3099.0,
+                  3087.0,
+                  3283.0
+                ],
+                "available_seconds": 19.436900540953502
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 7,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "pairs.json",
+            "npz": "pairs.npz",
+            "json_sha256": "6775057afe832e24097f305829de0c0dd2994efc5a2b4ed4012b32c6a2fc54f0",
+            "npz_sha256": "9efbe6b78ff5c335a5321ccfe05bfc66cab9016bfd061de9565843791e568d77"
+          }
+        },
+        "deterministic": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 7,
+          "wall_seconds_including_overshoot": 21.650070415984374,
+          "overshoot_seconds": 1.6500704159843735,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 739.0,
+                "block_loads": [
+                  3283.0,
+                  3185.0,
+                  3001.0,
+                  3283.0
+                ],
+                "available_seconds": 3.1165212909691036
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 739.0,
+                "block_loads": [
+                  3283.0,
+                  3185.0,
+                  3001.0,
+                  3283.0
+                ],
+                "available_seconds": 3.1165212909691036
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 3,
+              "eligible_completed_vcycles": 3,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 739.0,
+                "block_loads": [
+                  3283.0,
+                  3185.0,
+                  3001.0,
+                  3283.0
+                ],
+                "available_seconds": 3.1165212909691036
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 739.0,
+                "block_loads": [
+                  3283.0,
+                  3185.0,
+                  3001.0,
+                  3283.0
+                ],
+                "available_seconds": 3.1165212909691036
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 6,
+              "eligible_completed_vcycles": 6,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0005",
+                "native_cut": 727.0,
+                "block_loads": [
+                  3283.0,
+                  3112.0,
+                  3074.0,
+                  3283.0
+                ],
+                "available_seconds": 18.53575187496608
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0005",
+                "native_cut": 727.0,
+                "block_loads": [
+                  3283.0,
+                  3112.0,
+                  3074.0,
+                  3283.0
+                ],
+                "available_seconds": 18.53575187496608
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 7,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "deterministic.json",
+            "npz": "deterministic.npz",
+            "json_sha256": "071afc795723873e6dfeaf512db85d3355a12af4d0441d83eda7c9628238904e",
+            "npz_sha256": "928bbb6e30c539cb9675be68e5ff24dd56a89b78348a389aa3abaa709e027df9"
+          }
+        },
+        "flow": {
+          "status": "execution_complete",
+          "stopped_reason": "exact_assignment_fixed_point",
+          "attempts": 2,
+          "wall_seconds_including_overshoot": 1.792780000017956,
+          "overshoot_seconds": 0.0,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 841.0,
+                "block_loads": [
+                  3283.0,
+                  3179.0,
+                  3007.0,
+                  3283.0
+                ],
+                "available_seconds": 1.6427009999752045
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 841.0,
+                "block_loads": [
+                  3283.0,
+                  3179.0,
+                  3007.0,
+                  3283.0
+                ],
+                "available_seconds": 1.6427009999752045
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 841.0,
+                "block_loads": [
+                  3283.0,
+                  3179.0,
+                  3007.0,
+                  3283.0
+                ],
+                "available_seconds": 1.6427009999752045
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 841.0,
+                "block_loads": [
+                  3283.0,
+                  3179.0,
+                  3007.0,
+                  3283.0
+                ],
+                "available_seconds": 1.6427009999752045
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 841.0,
+                "block_loads": [
+                  3283.0,
+                  3179.0,
+                  3007.0,
+                  3283.0
+                ],
+                "available_seconds": 1.6427009999752045
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 841.0,
+                "block_loads": [
+                  3283.0,
+                  3179.0,
+                  3007.0,
+                  3283.0
+                ],
+                "available_seconds": 1.6427009999752045
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 2,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "flow.json",
+            "npz": "flow.npz",
+            "json_sha256": "6772203851735a3eec3090b5d324c873436663822066f56cf2822eb3590e7ff8",
+            "npz_sha256": "ae58726307c4f5b87f5a00fa9b5238e6222f7a4c03f54aa97548b7325bea8e8e"
+          }
+        },
+        "fem": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 4,
+          "wall_seconds_including_overshoot": 20.51851424999768,
+          "overshoot_seconds": 0.5185142499976791,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "no_result",
+              "eligible_completed_runs": 0,
+              "eligible_completed_vcycles": 0,
+              "eligible_flow_continuations": 0,
+              "best_completed": null,
+              "best_available": {
+                "source": "initial_only",
+                "run_id": null,
+                "native_cut": 1433.0,
+                "block_loads": [
+                  3153.0,
+                  3179.0,
+                  3240.0,
+                  3180.0
+                ],
+                "available_seconds": 0.0041495420155115426
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "fem_0000",
+                "native_cut": 828.0,
+                "block_loads": [
+                  3283.0,
+                  3153.0,
+                  3033.0,
+                  3283.0
+                ],
+                "available_seconds": 5.039766083005816
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "fem_0000",
+                "native_cut": 828.0,
+                "block_loads": [
+                  3283.0,
+                  3153.0,
+                  3033.0,
+                  3283.0
+                ],
+                "available_seconds": 5.039766083005816
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 3,
+              "eligible_completed_vcycles": 3,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "fem_0002",
+                "native_cut": 808.0,
+                "block_loads": [
+                  3283.0,
+                  3180.0,
+                  3006.0,
+                  3283.0
+                ],
+                "available_seconds": 15.32984016701812
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "fem_0002",
+                "native_cut": 808.0,
+                "block_loads": [
+                  3283.0,
+                  3180.0,
+                  3006.0,
+                  3283.0
+                ],
+                "available_seconds": 15.32984016701812
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 4,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "fem.json",
+            "npz": "fem.npz",
+            "json_sha256": "9b81c82528609bbd1a38db7dee9998e440472dfbaf84f4c2fdd8cded1f41b3c5",
+            "npz_sha256": "e5a83e7878fd1e630194bc8d546f12820fde728868e0198b53a2f945424ce1a6"
+          }
+        }
+      },
+      "coarse_mapping_and_weights_match_saved": true,
+      "hierarchy_artifact": {
+        "json": "hierarchy.json",
+        "npz": "hierarchy.npz",
+        "json_sha256": "fecf638347c3c6336afda8c05fcb90d375e5ccace085a5cf6d1ef4f2769a1892",
+        "npz_sha256": "cf48f6cdc817aad227fd5da9c35d4877e19ead7e6ffeb7d7ffbd7177bd306698"
+      },
+      "status": "completed"
+    },
+    {
+      "instance": "ibm01",
+      "seed": 32,
+      "arm_order": [
+        "deterministic",
+        "flow",
+        "fem",
+        "pairs"
+      ],
+      "arms": {
+        "deterministic": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 6,
+          "wall_seconds_including_overshoot": 22.28345712501323,
+          "overshoot_seconds": 2.2834571250132285,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 672.0,
+                "block_loads": [
+                  3167.0,
+                  3170.0,
+                  3154.0,
+                  3261.0
+                ],
+                "available_seconds": 3.7758176249917597
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 672.0,
+                "block_loads": [
+                  3167.0,
+                  3170.0,
+                  3154.0,
+                  3261.0
+                ],
+                "available_seconds": 3.7758176249917597
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 2,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 672.0,
+                "block_loads": [
+                  3167.0,
+                  3170.0,
+                  3154.0,
+                  3261.0
+                ],
+                "available_seconds": 3.7758176249917597
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 672.0,
+                "block_loads": [
+                  3167.0,
+                  3170.0,
+                  3154.0,
+                  3261.0
+                ],
+                "available_seconds": 3.7758176249917597
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 5,
+              "eligible_completed_vcycles": 5,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0003",
+                "native_cut": 666.0,
+                "block_loads": [
+                  3164.0,
+                  3172.0,
+                  3154.0,
+                  3262.0
+                ],
+                "available_seconds": 14.87973129202146
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0003",
+                "native_cut": 666.0,
+                "block_loads": [
+                  3164.0,
+                  3172.0,
+                  3154.0,
+                  3262.0
+                ],
+                "available_seconds": 14.87973129202146
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 6,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "deterministic.json",
+            "npz": "deterministic.npz",
+            "json_sha256": "2c52d868926d955551f5d28fa4d76bc8621a9d797d84458fcae82552f8d2f4d4",
+            "npz_sha256": "2e907fa4dda6ab24274f83c0e21bf65078008a88b19b80d3cac582cf70328520"
+          }
+        },
+        "flow": {
+          "status": "execution_complete",
+          "stopped_reason": "exact_assignment_fixed_point",
+          "attempts": 2,
+          "wall_seconds_including_overshoot": 2.525068207993172,
+          "overshoot_seconds": 0.0,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 672.0,
+                "block_loads": [
+                  3167.0,
+                  3170.0,
+                  3154.0,
+                  3261.0
+                ],
+                "available_seconds": 2.2873505410389043
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 672.0,
+                "block_loads": [
+                  3167.0,
+                  3170.0,
+                  3154.0,
+                  3261.0
+                ],
+                "available_seconds": 2.2873505410389043
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 672.0,
+                "block_loads": [
+                  3167.0,
+                  3170.0,
+                  3154.0,
+                  3261.0
+                ],
+                "available_seconds": 2.2873505410389043
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 672.0,
+                "block_loads": [
+                  3167.0,
+                  3170.0,
+                  3154.0,
+                  3261.0
+                ],
+                "available_seconds": 2.2873505410389043
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 672.0,
+                "block_loads": [
+                  3167.0,
+                  3170.0,
+                  3154.0,
+                  3261.0
+                ],
+                "available_seconds": 2.2873505410389043
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 672.0,
+                "block_loads": [
+                  3167.0,
+                  3170.0,
+                  3154.0,
+                  3261.0
+                ],
+                "available_seconds": 2.2873505410389043
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 2,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "flow.json",
+            "npz": "flow.npz",
+            "json_sha256": "24cf928dd07782171ffbd5f205b6ec81bc1d99f83d51d9cc7b57ec9f97e01214",
+            "npz_sha256": "7e0fa7f2e9cefb39332bac408c6def82d778d1c4e9e45ee8b6765dea73afbbf0"
+          }
+        },
+        "fem": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 4,
+          "wall_seconds_including_overshoot": 23.54987741599325,
+          "overshoot_seconds": 3.549877415993251,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "no_result",
+              "eligible_completed_runs": 0,
+              "eligible_completed_vcycles": 0,
+              "eligible_flow_continuations": 0,
+              "best_completed": null,
+              "best_available": {
+                "source": "initial_only",
+                "run_id": null,
+                "native_cut": 1591.0,
+                "block_loads": [
+                  3121.0,
+                  3267.0,
+                  3110.0,
+                  3254.0
+                ],
+                "available_seconds": 0.004241957969497889
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "fem_0000",
+                "native_cut": 672.0,
+                "block_loads": [
+                  3207.0,
+                  3197.0,
+                  3070.0,
+                  3278.0
+                ],
+                "available_seconds": 5.869145124976058
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "fem_0000",
+                "native_cut": 672.0,
+                "block_loads": [
+                  3207.0,
+                  3197.0,
+                  3070.0,
+                  3278.0
+                ],
+                "available_seconds": 5.869145124976058
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 3,
+              "eligible_completed_vcycles": 3,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "fem_0001",
+                "native_cut": 667.0,
+                "block_loads": [
+                  3196.0,
+                  3170.0,
+                  3154.0,
+                  3232.0
+                ],
+                "available_seconds": 11.789885625010356
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "fem_0001",
+                "native_cut": 667.0,
+                "block_loads": [
+                  3196.0,
+                  3170.0,
+                  3154.0,
+                  3232.0
+                ],
+                "available_seconds": 11.789885625010356
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 4,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "fem.json",
+            "npz": "fem.npz",
+            "json_sha256": "08408deaa519d756ae0c06f456e0f8cbbc870142d05c226801fdff937802139e",
+            "npz_sha256": "0f4727c965fdd1194d07283ba75827edeec1f31d49714e1ce6cd6273048830ad"
+          }
+        },
+        "pairs": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 6,
+          "wall_seconds_including_overshoot": 23.143973458034452,
+          "overshoot_seconds": 3.143973458034452,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 672.0,
+                "block_loads": [
+                  3207.0,
+                  3197.0,
+                  3070.0,
+                  3278.0
+                ],
+                "available_seconds": 3.928011750045698
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 672.0,
+                "block_loads": [
+                  3207.0,
+                  3197.0,
+                  3070.0,
+                  3278.0
+                ],
+                "available_seconds": 3.928011750045698
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 2,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 672.0,
+                "block_loads": [
+                  3207.0,
+                  3197.0,
+                  3070.0,
+                  3278.0
+                ],
+                "available_seconds": 3.928011750045698
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 672.0,
+                "block_loads": [
+                  3207.0,
+                  3197.0,
+                  3070.0,
+                  3278.0
+                ],
+                "available_seconds": 3.928011750045698
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 5,
+              "eligible_completed_vcycles": 5,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "pairs_0003",
+                "native_cut": 666.0,
+                "block_loads": [
+                  3164.0,
+                  3172.0,
+                  3154.0,
+                  3262.0
+                ],
+                "available_seconds": 15.51162750000367
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "pairs_0003",
+                "native_cut": 666.0,
+                "block_loads": [
+                  3164.0,
+                  3172.0,
+                  3154.0,
+                  3262.0
+                ],
+                "available_seconds": 15.51162750000367
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 6,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "pairs.json",
+            "npz": "pairs.npz",
+            "json_sha256": "799c8a1f4016b3df4f5fbcbe54a80d3d7f0679939a6db6e58708bf04eca64d52",
+            "npz_sha256": "f204f909b5f0f070abe477e1b2beb617b42e6429011212702fab882f131a47b3"
+          }
+        }
+      },
+      "coarse_mapping_and_weights_match_saved": true,
+      "hierarchy_artifact": {
+        "json": "hierarchy.json",
+        "npz": "hierarchy.npz",
+        "json_sha256": "c1042c127b9edac302a5306af857d502b000eb04eecc201e1d2e7b1fa989876e",
+        "npz_sha256": "ac49ad5133c2563783cdd0af534e1358439b154fc1beff2b9b80e6e31a98762f"
+      },
+      "status": "completed"
+    },
+    {
+      "instance": "ibm01",
+      "seed": 33,
+      "arm_order": [
+        "flow",
+        "fem",
+        "pairs",
+        "deterministic"
+      ],
+      "arms": {
+        "flow": {
+          "status": "execution_complete",
+          "stopped_reason": "exact_assignment_fixed_point",
+          "attempts": 2,
+          "wall_seconds_including_overshoot": 1.7789014580193907,
+          "overshoot_seconds": 0.0,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 864.0,
+                "block_loads": [
+                  3283.0,
+                  3283.0,
+                  3235.0,
+                  2951.0
+                ],
+                "available_seconds": 1.6287512080161832
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 864.0,
+                "block_loads": [
+                  3283.0,
+                  3283.0,
+                  3235.0,
+                  2951.0
+                ],
+                "available_seconds": 1.6287512080161832
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 864.0,
+                "block_loads": [
+                  3283.0,
+                  3283.0,
+                  3235.0,
+                  2951.0
+                ],
+                "available_seconds": 1.6287512080161832
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 864.0,
+                "block_loads": [
+                  3283.0,
+                  3283.0,
+                  3235.0,
+                  2951.0
+                ],
+                "available_seconds": 1.6287512080161832
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 864.0,
+                "block_loads": [
+                  3283.0,
+                  3283.0,
+                  3235.0,
+                  2951.0
+                ],
+                "available_seconds": 1.6287512080161832
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 864.0,
+                "block_loads": [
+                  3283.0,
+                  3283.0,
+                  3235.0,
+                  2951.0
+                ],
+                "available_seconds": 1.6287512080161832
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 2,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "flow.json",
+            "npz": "flow.npz",
+            "json_sha256": "c21986ddf692f74dde1a7dc6e2d9406580d390e685163cf32d0fdefdbbe57fd0",
+            "npz_sha256": "99bd0ea7d0a830c157a8ca4dea0ed61c0bd34766b62b628c4b2d463582251b46"
+          }
+        },
+        "fem": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 4,
+          "wall_seconds_including_overshoot": 20.704871833964717,
+          "overshoot_seconds": 0.7048718339647166,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "no_result",
+              "eligible_completed_runs": 0,
+              "eligible_completed_vcycles": 0,
+              "eligible_flow_continuations": 0,
+              "best_completed": null,
+              "best_available": {
+                "source": "initial_only",
+                "run_id": null,
+                "native_cut": 1467.0,
+                "block_loads": [
+                  3226.0,
+                  3192.0,
+                  3203.0,
+                  3131.0
+                ],
+                "available_seconds": 0.004291583958547562
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "fem_0000",
+                "native_cut": 849.0,
+                "block_loads": [
+                  3283.0,
+                  3283.0,
+                  3199.0,
+                  2987.0
+                ],
+                "available_seconds": 5.241772749985103
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "fem_0000",
+                "native_cut": 849.0,
+                "block_loads": [
+                  3283.0,
+                  3283.0,
+                  3199.0,
+                  2987.0
+                ],
+                "available_seconds": 5.241772749985103
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 3,
+              "eligible_completed_vcycles": 3,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "fem_0001",
+                "native_cut": 831.0,
+                "block_loads": [
+                  3283.0,
+                  3283.0,
+                  3257.0,
+                  2929.0
+                ],
+                "available_seconds": 10.336824999947567
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "fem_0001",
+                "native_cut": 831.0,
+                "block_loads": [
+                  3283.0,
+                  3283.0,
+                  3257.0,
+                  2929.0
+                ],
+                "available_seconds": 10.336824999947567
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 4,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "fem.json",
+            "npz": "fem.npz",
+            "json_sha256": "79af64ac8141ef31bcca14664bd6360e8a4114f0b11136d1fe2894939df7dcf4",
+            "npz_sha256": "d15a0fb18d71919aec8b5f473b82957b2d4727c07417038edc149301b755408a"
+          }
+        },
+        "pairs": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 7,
+          "wall_seconds_including_overshoot": 22.773458165989723,
+          "overshoot_seconds": 2.773458165989723,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 849.0,
+                "block_loads": [
+                  3283.0,
+                  3283.0,
+                  3199.0,
+                  2987.0
+                ],
+                "available_seconds": 3.2652300409972668
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 849.0,
+                "block_loads": [
+                  3283.0,
+                  3283.0,
+                  3199.0,
+                  2987.0
+                ],
+                "available_seconds": 3.2652300409972668
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 3,
+              "eligible_completed_vcycles": 3,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "pairs_0001",
+                "native_cut": 831.0,
+                "block_loads": [
+                  3283.0,
+                  3283.0,
+                  3257.0,
+                  2929.0
+                ],
+                "available_seconds": 6.460369375010487
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "pairs_0001",
+                "native_cut": 831.0,
+                "block_loads": [
+                  3283.0,
+                  3283.0,
+                  3257.0,
+                  2929.0
+                ],
+                "available_seconds": 6.460369375010487
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 6,
+              "eligible_completed_vcycles": 6,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "pairs_0001",
+                "native_cut": 831.0,
+                "block_loads": [
+                  3283.0,
+                  3283.0,
+                  3257.0,
+                  2929.0
+                ],
+                "available_seconds": 6.460369375010487
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "pairs_0001",
+                "native_cut": 831.0,
+                "block_loads": [
+                  3283.0,
+                  3283.0,
+                  3257.0,
+                  2929.0
+                ],
+                "available_seconds": 6.460369375010487
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 7,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "pairs.json",
+            "npz": "pairs.npz",
+            "json_sha256": "43571d19ce4d558d4e440521a4aec597071b44d1e6fa7e3719b3304d3a102772",
+            "npz_sha256": "02150d9d4331db147a2164536263ba0d538fe84ff8c834bfcb895b9e8a36c92c"
+          }
+        },
+        "deterministic": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 7,
+          "wall_seconds_including_overshoot": 21.758148792025167,
+          "overshoot_seconds": 1.7581487920251675,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 873.0,
+                "block_loads": [
+                  3283.0,
+                  3283.0,
+                  3253.0,
+                  2933.0
+                ],
+                "available_seconds": 3.085286499990616
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 873.0,
+                "block_loads": [
+                  3283.0,
+                  3283.0,
+                  3253.0,
+                  2933.0
+                ],
+                "available_seconds": 3.085286499990616
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 3,
+              "eligible_completed_vcycles": 3,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0001",
+                "native_cut": 832.0,
+                "block_loads": [
+                  3283.0,
+                  3283.0,
+                  3256.0,
+                  2930.0
+                ],
+                "available_seconds": 6.168610749999061
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0001",
+                "native_cut": 832.0,
+                "block_loads": [
+                  3283.0,
+                  3283.0,
+                  3256.0,
+                  2930.0
+                ],
+                "available_seconds": 6.168610749999061
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 6,
+              "eligible_completed_vcycles": 6,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0001",
+                "native_cut": 832.0,
+                "block_loads": [
+                  3283.0,
+                  3283.0,
+                  3256.0,
+                  2930.0
+                ],
+                "available_seconds": 6.168610749999061
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0001",
+                "native_cut": 832.0,
+                "block_loads": [
+                  3283.0,
+                  3283.0,
+                  3256.0,
+                  2930.0
+                ],
+                "available_seconds": 6.168610749999061
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 7,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "deterministic.json",
+            "npz": "deterministic.npz",
+            "json_sha256": "b96b118a55a5c46935826a4191b07039b1c9300d35b71a1668491876ede462de",
+            "npz_sha256": "8a815c1265eed683dfa5019ee2c79a7e284740253443d6467b89a823832e8337"
+          }
+        }
+      },
+      "coarse_mapping_and_weights_match_saved": true,
+      "hierarchy_artifact": {
+        "json": "hierarchy.json",
+        "npz": "hierarchy.npz",
+        "json_sha256": "042823d96119cd238d9789b3f4c1ebbaf74884e0db83d30ea73af8af52a5353c",
+        "npz_sha256": "318dada467eaa01fa2c6adcfd98a5ff610ef58e98105c49dbec8068d27996211"
+      },
+      "status": "completed"
+    },
+    {
+      "instance": "ibm01",
+      "seed": 34,
+      "arm_order": [
+        "fem",
+        "pairs",
+        "deterministic",
+        "flow"
+      ],
+      "arms": {
+        "fem": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 4,
+          "wall_seconds_including_overshoot": 22.02616054203827,
+          "overshoot_seconds": 2.0261605420382693,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "no_result",
+              "eligible_completed_runs": 0,
+              "eligible_completed_vcycles": 0,
+              "eligible_flow_continuations": 0,
+              "best_completed": null,
+              "best_available": {
+                "source": "initial_only",
+                "run_id": null,
+                "native_cut": 1730.0,
+                "block_loads": [
+                  3061.0,
+                  3273.0,
+                  3135.0,
+                  3283.0
+                ],
+                "available_seconds": 0.004253917024470866
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "fem_0000",
+                "native_cut": 841.0,
+                "block_loads": [
+                  3032.0,
+                  3283.0,
+                  3154.0,
+                  3283.0
+                ],
+                "available_seconds": 5.445953125017695
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "fem_0000",
+                "native_cut": 841.0,
+                "block_loads": [
+                  3032.0,
+                  3283.0,
+                  3154.0,
+                  3283.0
+                ],
+                "available_seconds": 5.445953125017695
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 3,
+              "eligible_completed_vcycles": 3,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "fem_0002",
+                "native_cut": 789.0,
+                "block_loads": [
+                  3078.0,
+                  3283.0,
+                  3110.0,
+                  3281.0
+                ],
+                "available_seconds": 16.41916716704145
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "fem_0002",
+                "native_cut": 789.0,
+                "block_loads": [
+                  3078.0,
+                  3283.0,
+                  3110.0,
+                  3281.0
+                ],
+                "available_seconds": 16.41916716704145
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 4,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "fem.json",
+            "npz": "fem.npz",
+            "json_sha256": "ba3b099fa338a0976c23832d9f66679af11d974636afc6e2558d17a8bb546a9f",
+            "npz_sha256": "81eb146056de3de3760527515a3414ea17663e07a582c4a671d7858c5ca89fff"
+          }
+        },
+        "pairs": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 6,
+          "wall_seconds_including_overshoot": 22.041445875016507,
+          "overshoot_seconds": 2.0414458750165068,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 836.0,
+                "block_loads": [
+                  3038.0,
+                  3283.0,
+                  3148.0,
+                  3283.0
+                ],
+                "available_seconds": 3.3909219169872813
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 836.0,
+                "block_loads": [
+                  3038.0,
+                  3283.0,
+                  3148.0,
+                  3283.0
+                ],
+                "available_seconds": 3.3909219169872813
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 2,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "pairs_0001",
+                "native_cut": 822.0,
+                "block_loads": [
+                  3033.0,
+                  3283.0,
+                  3153.0,
+                  3283.0
+                ],
+                "available_seconds": 6.877808374993037
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "pairs_0001",
+                "native_cut": 822.0,
+                "block_loads": [
+                  3033.0,
+                  3283.0,
+                  3153.0,
+                  3283.0
+                ],
+                "available_seconds": 6.877808374993037
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 5,
+              "eligible_completed_vcycles": 5,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "pairs_0003",
+                "native_cut": 771.0,
+                "block_loads": [
+                  3097.0,
+                  3283.0,
+                  3109.0,
+                  3263.0
+                ],
+                "available_seconds": 14.794029166980181
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "pairs_0003",
+                "native_cut": 771.0,
+                "block_loads": [
+                  3097.0,
+                  3283.0,
+                  3109.0,
+                  3263.0
+                ],
+                "available_seconds": 14.794029166980181
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 6,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "pairs.json",
+            "npz": "pairs.npz",
+            "json_sha256": "62cc8acfcb46694f2be5dc8a110bf919f888a37b623b531e08228b466f67915e",
+            "npz_sha256": "9e9af7424428103b4ec8e4a12f288a5b1af16d27439f181812da4e2f2ad09b98"
+          }
+        },
+        "deterministic": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 6,
+          "wall_seconds_including_overshoot": 20.619941417011432,
+          "overshoot_seconds": 0.6199414170114323,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 786.0,
+                "block_loads": [
+                  3039.0,
+                  3283.0,
+                  3147.0,
+                  3283.0
+                ],
+                "available_seconds": 3.515866959001869
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 786.0,
+                "block_loads": [
+                  3039.0,
+                  3283.0,
+                  3147.0,
+                  3283.0
+                ],
+                "available_seconds": 3.515866959001869
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 2,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 786.0,
+                "block_loads": [
+                  3039.0,
+                  3283.0,
+                  3147.0,
+                  3283.0
+                ],
+                "available_seconds": 3.515866959001869
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 786.0,
+                "block_loads": [
+                  3039.0,
+                  3283.0,
+                  3147.0,
+                  3283.0
+                ],
+                "available_seconds": 3.515866959001869
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 5,
+              "eligible_completed_vcycles": 5,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0002",
+                "native_cut": 756.0,
+                "block_loads": [
+                  3086.0,
+                  3283.0,
+                  3101.0,
+                  3282.0
+                ],
+                "available_seconds": 10.253815874981228
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0002",
+                "native_cut": 756.0,
+                "block_loads": [
+                  3086.0,
+                  3283.0,
+                  3101.0,
+                  3282.0
+                ],
+                "available_seconds": 10.253815874981228
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 6,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "deterministic.json",
+            "npz": "deterministic.npz",
+            "json_sha256": "38354c26d375149a8f14407d394f569f4d8475456b1da1576e00ab679f467f0c",
+            "npz_sha256": "a7460c599082ae74215c08c03fcf632123c6ea00b86acb779eb60934e7baaf3a"
+          }
+        },
+        "flow": {
+          "status": "execution_complete",
+          "stopped_reason": "exact_assignment_fixed_point",
+          "attempts": 2,
+          "wall_seconds_including_overshoot": 1.9619134170352481,
+          "overshoot_seconds": 0.0,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 845.0,
+                "block_loads": [
+                  3029.0,
+                  3283.0,
+                  3157.0,
+                  3283.0
+                ],
+                "available_seconds": 1.7652755830204114
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 845.0,
+                "block_loads": [
+                  3029.0,
+                  3283.0,
+                  3157.0,
+                  3283.0
+                ],
+                "available_seconds": 1.7652755830204114
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 845.0,
+                "block_loads": [
+                  3029.0,
+                  3283.0,
+                  3157.0,
+                  3283.0
+                ],
+                "available_seconds": 1.7652755830204114
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 845.0,
+                "block_loads": [
+                  3029.0,
+                  3283.0,
+                  3157.0,
+                  3283.0
+                ],
+                "available_seconds": 1.7652755830204114
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 845.0,
+                "block_loads": [
+                  3029.0,
+                  3283.0,
+                  3157.0,
+                  3283.0
+                ],
+                "available_seconds": 1.7652755830204114
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 845.0,
+                "block_loads": [
+                  3029.0,
+                  3283.0,
+                  3157.0,
+                  3283.0
+                ],
+                "available_seconds": 1.7652755830204114
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 2,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "flow.json",
+            "npz": "flow.npz",
+            "json_sha256": "932a859d978018116dcb1db0ad0d6ae06763b747799ad12dc6e5e240e442dc66",
+            "npz_sha256": "00d0dbc7cac058e5147cfcbf7fb7c0607b98f8578b8b5714e245c05591454a29"
+          }
+        }
+      },
+      "coarse_mapping_and_weights_match_saved": true,
+      "hierarchy_artifact": {
+        "json": "hierarchy.json",
+        "npz": "hierarchy.npz",
+        "json_sha256": "7534800cbf532827e03e4637a295879b8f147af4b01772948e5417c99ae77c58",
+        "npz_sha256": "0bdefe3db260dd3e1b8e860afa9f03d7837757beee9a730286b59b868c8cd234"
+      },
+      "status": "completed"
+    },
+    {
+      "instance": "ibm02",
+      "seed": 30,
+      "arm_order": [
+        "pairs",
+        "deterministic",
+        "flow",
+        "fem"
+      ],
+      "arms": {
+        "pairs": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 4,
+          "wall_seconds_including_overshoot": 22.44534350000322,
+          "overshoot_seconds": 2.4453435000032187,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "no_result",
+              "eligible_completed_runs": 0,
+              "eligible_completed_vcycles": 0,
+              "eligible_flow_continuations": 0,
+              "best_completed": null,
+              "best_available": {
+                "source": "initial_only",
+                "run_id": null,
+                "native_cut": 2431.0,
+                "block_loads": [
+                  4954.0,
+                  4676.0,
+                  4924.0,
+                  5047.0
+                ],
+                "available_seconds": 0.006936041987501085
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 1205.0,
+                "block_loads": [
+                  4724.0,
+                  4783.0,
+                  5047.0,
+                  5047.0
+                ],
+                "available_seconds": 5.748157916998025
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 1205.0,
+                "block_loads": [
+                  4724.0,
+                  4783.0,
+                  5047.0,
+                  5047.0
+                ],
+                "available_seconds": 5.748157916998025
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 3,
+              "eligible_completed_vcycles": 3,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 1205.0,
+                "block_loads": [
+                  4724.0,
+                  4783.0,
+                  5047.0,
+                  5047.0
+                ],
+                "available_seconds": 5.748157916998025
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 1205.0,
+                "block_loads": [
+                  4724.0,
+                  4783.0,
+                  5047.0,
+                  5047.0
+                ],
+                "available_seconds": 5.748157916998025
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 4,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "pairs.json",
+            "npz": "pairs.npz",
+            "json_sha256": "9c1ac058a6e7d4742d67da8bd5a6826845f713a064ceffaf73f74532f5e646ae",
+            "npz_sha256": "34ed19b1cf5ce19741fae0f4c1025e2174e93528e66934743fe664a16497b4de"
+          }
+        },
+        "deterministic": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 4,
+          "wall_seconds_including_overshoot": 21.67189908301225,
+          "overshoot_seconds": 1.6718990830122493,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "no_result",
+              "eligible_completed_runs": 0,
+              "eligible_completed_vcycles": 0,
+              "eligible_flow_continuations": 0,
+              "best_completed": null,
+              "best_available": {
+                "source": "initial_only",
+                "run_id": null,
+                "native_cut": 2431.0,
+                "block_loads": [
+                  4954.0,
+                  4676.0,
+                  4924.0,
+                  5047.0
+                ],
+                "available_seconds": 0.006484874989837408
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 1215.0,
+                "block_loads": [
+                  4728.0,
+                  4779.0,
+                  5047.0,
+                  5047.0
+                ],
+                "available_seconds": 5.437373667024076
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 1215.0,
+                "block_loads": [
+                  4728.0,
+                  4779.0,
+                  5047.0,
+                  5047.0
+                ],
+                "available_seconds": 5.437373667024076
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 3,
+              "eligible_completed_vcycles": 3,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 1215.0,
+                "block_loads": [
+                  4728.0,
+                  4779.0,
+                  5047.0,
+                  5047.0
+                ],
+                "available_seconds": 5.437373667024076
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 1215.0,
+                "block_loads": [
+                  4728.0,
+                  4779.0,
+                  5047.0,
+                  5047.0
+                ],
+                "available_seconds": 5.437373667024076
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 4,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "deterministic.json",
+            "npz": "deterministic.npz",
+            "json_sha256": "8bf98552bc6b94d040117b168b121bc4cb9948d0676121684aee903d2622fc63",
+            "npz_sha256": "fefc1bf303a6dfd3f8f72b469c85be14879b86b7b852abf9516896418f0286a0"
+          }
+        },
+        "flow": {
+          "status": "execution_complete",
+          "stopped_reason": "exact_assignment_fixed_point",
+          "attempts": 2,
+          "wall_seconds_including_overshoot": 3.410405915987212,
+          "overshoot_seconds": 0.0,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 1296.0,
+                "block_loads": [
+                  4720.0,
+                  4787.0,
+                  5047.0,
+                  5047.0
+                ],
+                "available_seconds": 3.1426823329529725
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 1296.0,
+                "block_loads": [
+                  4720.0,
+                  4787.0,
+                  5047.0,
+                  5047.0
+                ],
+                "available_seconds": 3.1426823329529725
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 1296.0,
+                "block_loads": [
+                  4720.0,
+                  4787.0,
+                  5047.0,
+                  5047.0
+                ],
+                "available_seconds": 3.1426823329529725
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 1296.0,
+                "block_loads": [
+                  4720.0,
+                  4787.0,
+                  5047.0,
+                  5047.0
+                ],
+                "available_seconds": 3.1426823329529725
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 1296.0,
+                "block_loads": [
+                  4720.0,
+                  4787.0,
+                  5047.0,
+                  5047.0
+                ],
+                "available_seconds": 3.1426823329529725
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 1296.0,
+                "block_loads": [
+                  4720.0,
+                  4787.0,
+                  5047.0,
+                  5047.0
+                ],
+                "available_seconds": 3.1426823329529725
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 2,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "flow.json",
+            "npz": "flow.npz",
+            "json_sha256": "4cb1e412bb75155190e78b3d0f5fc0ffe31333a472ed07deb15b76a588b82da3",
+            "npz_sha256": "bd9fedd5e23144298f4c29bc7a2b871de3e68b730471451fe33042a269c674f8"
+          }
+        },
+        "fem": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 3,
+          "wall_seconds_including_overshoot": 24.277784708014224,
+          "overshoot_seconds": 4.277784708014224,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "no_result",
+              "eligible_completed_runs": 0,
+              "eligible_completed_vcycles": 0,
+              "eligible_flow_continuations": 0,
+              "best_completed": null,
+              "best_available": {
+                "source": "initial_only",
+                "run_id": null,
+                "native_cut": 2431.0,
+                "block_loads": [
+                  4954.0,
+                  4676.0,
+                  4924.0,
+                  5047.0
+                ],
+                "available_seconds": 0.006397249992005527
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "fem_0000",
+                "native_cut": 1206.0,
+                "block_loads": [
+                  4722.0,
+                  4785.0,
+                  5047.0,
+                  5047.0
+                ],
+                "available_seconds": 8.116258749971166
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "fem_0000",
+                "native_cut": 1206.0,
+                "block_loads": [
+                  4722.0,
+                  4785.0,
+                  5047.0,
+                  5047.0
+                ],
+                "available_seconds": 8.116258749971166
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 2,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "fem_0000",
+                "native_cut": 1206.0,
+                "block_loads": [
+                  4722.0,
+                  4785.0,
+                  5047.0,
+                  5047.0
+                ],
+                "available_seconds": 8.116258749971166
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "fem_0000",
+                "native_cut": 1206.0,
+                "block_loads": [
+                  4722.0,
+                  4785.0,
+                  5047.0,
+                  5047.0
+                ],
+                "available_seconds": 8.116258749971166
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 3,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "fem.json",
+            "npz": "fem.npz",
+            "json_sha256": "899f44e4567633e30f1e6b40ac022612d2bf47152f4e047e50161057c593fb3d",
+            "npz_sha256": "654b9f23c90259f4ac31d42cd47ee3afead26f0108e31c430c5fb6f84fc895c5"
+          }
+        }
+      },
+      "coarse_mapping_and_weights_match_saved": true,
+      "hierarchy_artifact": {
+        "json": "hierarchy.json",
+        "npz": "hierarchy.npz",
+        "json_sha256": "702945dfc60a83748c373b21628d15421c684d3e24acacf362b8e9ca875699d0",
+        "npz_sha256": "214eccc5c738b993c23cb9892088cc93cb5802c7eeab7a4598b1d40690e6c015"
+      },
+      "status": "completed"
+    },
+    {
+      "instance": "ibm02",
+      "seed": 31,
+      "arm_order": [
+        "deterministic",
+        "flow",
+        "fem",
+        "pairs"
+      ],
+      "arms": {
+        "deterministic": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 4,
+          "wall_seconds_including_overshoot": 22.881473832996562,
+          "overshoot_seconds": 2.881473832996562,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "no_result",
+              "eligible_completed_runs": 0,
+              "eligible_completed_vcycles": 0,
+              "eligible_flow_continuations": 0,
+              "best_completed": null,
+              "best_available": {
+                "source": "initial_only",
+                "run_id": null,
+                "native_cut": 2152.0,
+                "block_loads": [
+                  4835.0,
+                  4939.0,
+                  4836.0,
+                  4991.0
+                ],
+                "available_seconds": 0.006601082975976169
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 939.0,
+                "block_loads": [
+                  4497.0,
+                  5015.0,
+                  5047.0,
+                  5042.0
+                ],
+                "available_seconds": 5.628554707975127
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 939.0,
+                "block_loads": [
+                  4497.0,
+                  5015.0,
+                  5047.0,
+                  5042.0
+                ],
+                "available_seconds": 5.628554707975127
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 3,
+              "eligible_completed_vcycles": 3,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 939.0,
+                "block_loads": [
+                  4497.0,
+                  5015.0,
+                  5047.0,
+                  5042.0
+                ],
+                "available_seconds": 5.628554707975127
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 939.0,
+                "block_loads": [
+                  4497.0,
+                  5015.0,
+                  5047.0,
+                  5042.0
+                ],
+                "available_seconds": 5.628554707975127
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 4,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "deterministic.json",
+            "npz": "deterministic.npz",
+            "json_sha256": "8f8c91881ae32594c73b77f648f3d008d1a932c30034c6d58c851057cdd5625f",
+            "npz_sha256": "e1929747e57d34e27bb435e50f8d8f765ff6bc29232d0f48d57828d617a289ad"
+          }
+        },
+        "flow": {
+          "status": "execution_complete",
+          "stopped_reason": "exact_assignment_fixed_point",
+          "attempts": 2,
+          "wall_seconds_including_overshoot": 3.8812314170063473,
+          "overshoot_seconds": 0.0,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 946.0,
+                "block_loads": [
+                  4498.0,
+                  5015.0,
+                  5047.0,
+                  5041.0
+                ],
+                "available_seconds": 3.544836791988928
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 946.0,
+                "block_loads": [
+                  4498.0,
+                  5015.0,
+                  5047.0,
+                  5041.0
+                ],
+                "available_seconds": 3.544836791988928
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 946.0,
+                "block_loads": [
+                  4498.0,
+                  5015.0,
+                  5047.0,
+                  5041.0
+                ],
+                "available_seconds": 3.544836791988928
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 946.0,
+                "block_loads": [
+                  4498.0,
+                  5015.0,
+                  5047.0,
+                  5041.0
+                ],
+                "available_seconds": 3.544836791988928
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 946.0,
+                "block_loads": [
+                  4498.0,
+                  5015.0,
+                  5047.0,
+                  5041.0
+                ],
+                "available_seconds": 3.544836791988928
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 946.0,
+                "block_loads": [
+                  4498.0,
+                  5015.0,
+                  5047.0,
+                  5041.0
+                ],
+                "available_seconds": 3.544836791988928
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 2,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "flow.json",
+            "npz": "flow.npz",
+            "json_sha256": "a1f8441c3db88b51b9d9f84613f81fc63139bfd0bf6a63f375a945d60f196c6b",
+            "npz_sha256": "0bdc6347cc4cc7a780b833405f87210feec823cc74e4af66d36995e5d66c167b"
+          }
+        },
+        "fem": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 3,
+          "wall_seconds_including_overshoot": 24.83609366597375,
+          "overshoot_seconds": 4.836093665973749,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "no_result",
+              "eligible_completed_runs": 0,
+              "eligible_completed_vcycles": 0,
+              "eligible_flow_continuations": 0,
+              "best_completed": null,
+              "best_available": {
+                "source": "initial_only",
+                "run_id": null,
+                "native_cut": 2152.0,
+                "block_loads": [
+                  4835.0,
+                  4939.0,
+                  4836.0,
+                  4991.0
+                ],
+                "available_seconds": 0.006433041009586304
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "fem_0000",
+                "native_cut": 944.0,
+                "block_loads": [
+                  4495.0,
+                  5017.0,
+                  5047.0,
+                  5042.0
+                ],
+                "available_seconds": 8.021621874999255
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "fem_0000",
+                "native_cut": 944.0,
+                "block_loads": [
+                  4495.0,
+                  5017.0,
+                  5047.0,
+                  5042.0
+                ],
+                "available_seconds": 8.021621874999255
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 2,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "fem_0000",
+                "native_cut": 944.0,
+                "block_loads": [
+                  4495.0,
+                  5017.0,
+                  5047.0,
+                  5042.0
+                ],
+                "available_seconds": 8.021621874999255
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "fem_0000",
+                "native_cut": 944.0,
+                "block_loads": [
+                  4495.0,
+                  5017.0,
+                  5047.0,
+                  5042.0
+                ],
+                "available_seconds": 8.021621874999255
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 3,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "fem.json",
+            "npz": "fem.npz",
+            "json_sha256": "66f7f5db51478cc087afcf5f121612819ede4eef0ff9ef76587c79813900f7fc",
+            "npz_sha256": "b50d1279914e81c4bac57f2a4b154af373ef8ab6b98027894bd5537f5b7a021c"
+          }
+        },
+        "pairs": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 4,
+          "wall_seconds_including_overshoot": 23.62764712498756,
+          "overshoot_seconds": 3.6276471249875613,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "no_result",
+              "eligible_completed_runs": 0,
+              "eligible_completed_vcycles": 0,
+              "eligible_flow_continuations": 0,
+              "best_completed": null,
+              "best_available": {
+                "source": "initial_only",
+                "run_id": null,
+                "native_cut": 2152.0,
+                "block_loads": [
+                  4835.0,
+                  4939.0,
+                  4836.0,
+                  4991.0
+                ],
+                "available_seconds": 0.006307374977041036
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 946.0,
+                "block_loads": [
+                  4502.0,
+                  5005.0,
+                  5047.0,
+                  5047.0
+                ],
+                "available_seconds": 5.814530082978308
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 946.0,
+                "block_loads": [
+                  4502.0,
+                  5005.0,
+                  5047.0,
+                  5047.0
+                ],
+                "available_seconds": 5.814530082978308
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 3,
+              "eligible_completed_vcycles": 3,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 946.0,
+                "block_loads": [
+                  4502.0,
+                  5005.0,
+                  5047.0,
+                  5047.0
+                ],
+                "available_seconds": 5.814530082978308
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 946.0,
+                "block_loads": [
+                  4502.0,
+                  5005.0,
+                  5047.0,
+                  5047.0
+                ],
+                "available_seconds": 5.814530082978308
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 4,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "pairs.json",
+            "npz": "pairs.npz",
+            "json_sha256": "aa29e6229bf229f47486d84361c073496e33bd417712ad44b2c1454f017169e9",
+            "npz_sha256": "ece34d317f92518af0c1ca8956a7418b31d57f6ae2981ace9323190b1198a1a1"
+          }
+        }
+      },
+      "coarse_mapping_and_weights_match_saved": true,
+      "hierarchy_artifact": {
+        "json": "hierarchy.json",
+        "npz": "hierarchy.npz",
+        "json_sha256": "4cf3e023b17a761b07ff7ccf322d13f2fe673ab51ced7f6ed1be5bd8d551c310",
+        "npz_sha256": "5f1a6b5d1679e16621f92d6fbdff867c06f3a3eff800bce325adfb41e45b22aa"
+      },
+      "status": "completed"
+    },
+    {
+      "instance": "ibm02",
+      "seed": 32,
+      "arm_order": [
+        "flow",
+        "fem",
+        "pairs",
+        "deterministic"
+      ],
+      "arms": {
+        "flow": {
+          "status": "execution_complete",
+          "stopped_reason": "exact_assignment_fixed_point",
+          "attempts": 2,
+          "wall_seconds_including_overshoot": 2.9728674580110237,
+          "overshoot_seconds": 0.0,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 1526.0,
+                "block_loads": [
+                  5047.0,
+                  5047.0,
+                  4460.0,
+                  5047.0
+                ],
+                "available_seconds": 2.766577958012931
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 1526.0,
+                "block_loads": [
+                  5047.0,
+                  5047.0,
+                  4460.0,
+                  5047.0
+                ],
+                "available_seconds": 2.766577958012931
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 1526.0,
+                "block_loads": [
+                  5047.0,
+                  5047.0,
+                  4460.0,
+                  5047.0
+                ],
+                "available_seconds": 2.766577958012931
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 1526.0,
+                "block_loads": [
+                  5047.0,
+                  5047.0,
+                  4460.0,
+                  5047.0
+                ],
+                "available_seconds": 2.766577958012931
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 1526.0,
+                "block_loads": [
+                  5047.0,
+                  5047.0,
+                  4460.0,
+                  5047.0
+                ],
+                "available_seconds": 2.766577958012931
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 1526.0,
+                "block_loads": [
+                  5047.0,
+                  5047.0,
+                  4460.0,
+                  5047.0
+                ],
+                "available_seconds": 2.766577958012931
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 2,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "flow.json",
+            "npz": "flow.npz",
+            "json_sha256": "2994a3e502bd550ef5c96390533e5d332630f906af4cc7f69b78a5579cf32964",
+            "npz_sha256": "242cb03a94bfa88c0b22ba5e135245874110f82dacfd66ca45a252a5d0687c83"
+          }
+        },
+        "fem": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 3,
+          "wall_seconds_including_overshoot": 23.031338667031378,
+          "overshoot_seconds": 3.0313386670313776,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "no_result",
+              "eligible_completed_runs": 0,
+              "eligible_completed_vcycles": 0,
+              "eligible_flow_continuations": 0,
+              "best_completed": null,
+              "best_available": {
+                "source": "initial_only",
+                "run_id": null,
+                "native_cut": 2403.0,
+                "block_loads": [
+                  4964.0,
+                  4812.0,
+                  4778.0,
+                  5047.0
+                ],
+                "available_seconds": 0.006394084019120783
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "fem_0000",
+                "native_cut": 1451.0,
+                "block_loads": [
+                  5047.0,
+                  5047.0,
+                  4460.0,
+                  5047.0
+                ],
+                "available_seconds": 7.764571667008568
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "fem_0000",
+                "native_cut": 1451.0,
+                "block_loads": [
+                  5047.0,
+                  5047.0,
+                  4460.0,
+                  5047.0
+                ],
+                "available_seconds": 7.764571667008568
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 2,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "fem_0000",
+                "native_cut": 1451.0,
+                "block_loads": [
+                  5047.0,
+                  5047.0,
+                  4460.0,
+                  5047.0
+                ],
+                "available_seconds": 7.764571667008568
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "fem_0000",
+                "native_cut": 1451.0,
+                "block_loads": [
+                  5047.0,
+                  5047.0,
+                  4460.0,
+                  5047.0
+                ],
+                "available_seconds": 7.764571667008568
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 3,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "fem.json",
+            "npz": "fem.npz",
+            "json_sha256": "7b4684c53a48136bb5b96bc5a0442510c9731c197a4f01f2707b2f077ae1c49f",
+            "npz_sha256": "88f5328512625cbc17abcbc0f99fdacd94d3275f47934a8138df1f6f7a4ffb2a"
+          }
+        },
+        "pairs": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 4,
+          "wall_seconds_including_overshoot": 21.696085041039623,
+          "overshoot_seconds": 1.6960850410396233,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "no_result",
+              "eligible_completed_runs": 0,
+              "eligible_completed_vcycles": 0,
+              "eligible_flow_continuations": 0,
+              "best_completed": null,
+              "best_available": {
+                "source": "initial_only",
+                "run_id": null,
+                "native_cut": 2403.0,
+                "block_loads": [
+                  4964.0,
+                  4812.0,
+                  4778.0,
+                  5047.0
+                ],
+                "available_seconds": 0.006433041009586304
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 1451.0,
+                "block_loads": [
+                  5047.0,
+                  5044.0,
+                  4463.0,
+                  5047.0
+                ],
+                "available_seconds": 5.420747708005365
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 1451.0,
+                "block_loads": [
+                  5047.0,
+                  5044.0,
+                  4463.0,
+                  5047.0
+                ],
+                "available_seconds": 5.420747708005365
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 3,
+              "eligible_completed_vcycles": 3,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 1451.0,
+                "block_loads": [
+                  5047.0,
+                  5044.0,
+                  4463.0,
+                  5047.0
+                ],
+                "available_seconds": 5.420747708005365
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 1451.0,
+                "block_loads": [
+                  5047.0,
+                  5044.0,
+                  4463.0,
+                  5047.0
+                ],
+                "available_seconds": 5.420747708005365
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 4,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "pairs.json",
+            "npz": "pairs.npz",
+            "json_sha256": "468e63c67bfe7401cf9e2a35bb8eaaab974de57871e8a545caba26ba141c57a0",
+            "npz_sha256": "a5a57bb88aca76419096a0fcad5e0133b1d83c8ca3077a39e9859b71404bdd91"
+          }
+        },
+        "deterministic": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 4,
+          "wall_seconds_including_overshoot": 20.69619295897428,
+          "overshoot_seconds": 0.6961929589742795,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "no_result",
+              "eligible_completed_runs": 0,
+              "eligible_completed_vcycles": 0,
+              "eligible_flow_continuations": 0,
+              "best_completed": null,
+              "best_available": {
+                "source": "initial_only",
+                "run_id": null,
+                "native_cut": 2403.0,
+                "block_loads": [
+                  4964.0,
+                  4812.0,
+                  4778.0,
+                  5047.0
+                ],
+                "available_seconds": 0.006580625020433217
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 1468.0,
+                "block_loads": [
+                  5047.0,
+                  5047.0,
+                  4460.0,
+                  5047.0
+                ],
+                "available_seconds": 5.120323167007882
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 1468.0,
+                "block_loads": [
+                  5047.0,
+                  5047.0,
+                  4460.0,
+                  5047.0
+                ],
+                "available_seconds": 5.120323167007882
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 3,
+              "eligible_completed_vcycles": 3,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 1468.0,
+                "block_loads": [
+                  5047.0,
+                  5047.0,
+                  4460.0,
+                  5047.0
+                ],
+                "available_seconds": 5.120323167007882
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 1468.0,
+                "block_loads": [
+                  5047.0,
+                  5047.0,
+                  4460.0,
+                  5047.0
+                ],
+                "available_seconds": 5.120323167007882
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 4,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "deterministic.json",
+            "npz": "deterministic.npz",
+            "json_sha256": "21c3bdfff8d17ead732032935c3b5b877e8836e43cbc2c9236f77edf0ca7701e",
+            "npz_sha256": "3f886ac5f497d367727c29f954c39327b2c0b369bf8b8c3e7a43bba1edcb8787"
+          }
+        }
+      },
+      "coarse_mapping_and_weights_match_saved": true,
+      "hierarchy_artifact": {
+        "json": "hierarchy.json",
+        "npz": "hierarchy.npz",
+        "json_sha256": "3ffc56981afaa0ff551fb601873c9ac974822bf30b9c3be291a622b4909f6edf",
+        "npz_sha256": "7d3f5453f48d79fe93630fa8c24cf2164d0205f64f630d1b12f9b9c3fe613ff6"
+      },
+      "status": "completed"
+    },
+    {
+      "instance": "ibm02",
+      "seed": 33,
+      "arm_order": [
+        "fem",
+        "pairs",
+        "deterministic",
+        "flow"
+      ],
+      "arms": {
+        "fem": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 3,
+          "wall_seconds_including_overshoot": 28.045848415989894,
+          "overshoot_seconds": 8.045848415989894,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "no_result",
+              "eligible_completed_runs": 0,
+              "eligible_completed_vcycles": 0,
+              "eligible_flow_continuations": 0,
+              "best_completed": null,
+              "best_available": {
+                "source": "initial_only",
+                "run_id": null,
+                "native_cut": 2253.0,
+                "block_loads": [
+                  4874.0,
+                  4993.0,
+                  4866.0,
+                  4868.0
+                ],
+                "available_seconds": 0.0061210409621708095
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "fem_0000",
+                "native_cut": 835.0,
+                "block_loads": [
+                  4960.0,
+                  4932.0,
+                  4684.0,
+                  5025.0
+                ],
+                "available_seconds": 9.301055540970992
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "fem_0000",
+                "native_cut": 835.0,
+                "block_loads": [
+                  4960.0,
+                  4932.0,
+                  4684.0,
+                  5025.0
+                ],
+                "available_seconds": 9.301055540970992
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 2,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "fem_0001",
+                "native_cut": 810.0,
+                "block_loads": [
+                  4987.0,
+                  4932.0,
+                  4654.0,
+                  5028.0
+                ],
+                "available_seconds": 18.494881457998417
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "fem_0001",
+                "native_cut": 810.0,
+                "block_loads": [
+                  4987.0,
+                  4932.0,
+                  4654.0,
+                  5028.0
+                ],
+                "available_seconds": 18.494881457998417
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 3,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "fem.json",
+            "npz": "fem.npz",
+            "json_sha256": "02f9af984446a3d3dc1868b3470dfcf3f45f07198867c3e135f28cb7e3fdcdd5",
+            "npz_sha256": "b1a8c3730c0222b226ab0b2a0c0c83f8c91065ed5196803f43c4789e9b5b4732"
+          }
+        },
+        "pairs": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 3,
+          "wall_seconds_including_overshoot": 20.793597333016805,
+          "overshoot_seconds": 0.7935973330168054,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "no_result",
+              "eligible_completed_runs": 0,
+              "eligible_completed_vcycles": 0,
+              "eligible_flow_continuations": 0,
+              "best_completed": null,
+              "best_available": {
+                "source": "initial_only",
+                "run_id": null,
+                "native_cut": 2253.0,
+                "block_loads": [
+                  4874.0,
+                  4993.0,
+                  4866.0,
+                  4868.0
+                ],
+                "available_seconds": 0.00651133299106732
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 838.0,
+                "block_loads": [
+                  4957.0,
+                  4932.0,
+                  4684.0,
+                  5028.0
+                ],
+                "available_seconds": 6.880687540979125
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 838.0,
+                "block_loads": [
+                  4957.0,
+                  4932.0,
+                  4684.0,
+                  5028.0
+                ],
+                "available_seconds": 6.880687540979125
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 2,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "pairs_0001",
+                "native_cut": 810.0,
+                "block_loads": [
+                  4987.0,
+                  4932.0,
+                  4654.0,
+                  5028.0
+                ],
+                "available_seconds": 13.678967249987181
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "pairs_0001",
+                "native_cut": 810.0,
+                "block_loads": [
+                  4987.0,
+                  4932.0,
+                  4654.0,
+                  5028.0
+                ],
+                "available_seconds": 13.678967249987181
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 3,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "pairs.json",
+            "npz": "pairs.npz",
+            "json_sha256": "d71d25fbc32baed16835d0322e6da701d71544752a1015ed0bd6d9ed12aa20f5",
+            "npz_sha256": "ff4ae5693cbd395d452143c4faf72486f3e9e0a723a9d3382b24e285a6b36b1b"
+          }
+        },
+        "deterministic": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 3,
+          "wall_seconds_including_overshoot": 20.006677250028588,
+          "overshoot_seconds": 0.006677250028587878,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "no_result",
+              "eligible_completed_runs": 0,
+              "eligible_completed_vcycles": 0,
+              "eligible_flow_continuations": 0,
+              "best_completed": null,
+              "best_available": {
+                "source": "initial_only",
+                "run_id": null,
+                "native_cut": 2253.0,
+                "block_loads": [
+                  4874.0,
+                  4993.0,
+                  4866.0,
+                  4868.0
+                ],
+                "available_seconds": 0.00657341699115932
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 838.0,
+                "block_loads": [
+                  4957.0,
+                  4932.0,
+                  4684.0,
+                  5028.0
+                ],
+                "available_seconds": 6.662725250003859
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 838.0,
+                "block_loads": [
+                  4957.0,
+                  4932.0,
+                  4684.0,
+                  5028.0
+                ],
+                "available_seconds": 6.662725250003859
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 2,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 838.0,
+                "block_loads": [
+                  4957.0,
+                  4932.0,
+                  4684.0,
+                  5028.0
+                ],
+                "available_seconds": 6.662725250003859
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 838.0,
+                "block_loads": [
+                  4957.0,
+                  4932.0,
+                  4684.0,
+                  5028.0
+                ],
+                "available_seconds": 6.662725250003859
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 3,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "deterministic.json",
+            "npz": "deterministic.npz",
+            "json_sha256": "940a78e36e862e8d5b1750578a8389e8a22cdc3a1db056e13de6abe0cd13f5e0",
+            "npz_sha256": "77151c9b610419e4f328e7fb37b0c4fb67a8513b7f88eb5dc68a82e592c79e67"
+          }
+        },
+        "flow": {
+          "status": "execution_complete",
+          "stopped_reason": "exact_assignment_fixed_point",
+          "attempts": 2,
+          "wall_seconds_including_overshoot": 4.921194042020943,
+          "overshoot_seconds": 0.0,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 838.0,
+                "block_loads": [
+                  4957.0,
+                  4932.0,
+                  4684.0,
+                  5028.0
+                ],
+                "available_seconds": 4.525329625001177
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 838.0,
+                "block_loads": [
+                  4957.0,
+                  4932.0,
+                  4684.0,
+                  5028.0
+                ],
+                "available_seconds": 4.525329625001177
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 838.0,
+                "block_loads": [
+                  4957.0,
+                  4932.0,
+                  4684.0,
+                  5028.0
+                ],
+                "available_seconds": 4.525329625001177
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 838.0,
+                "block_loads": [
+                  4957.0,
+                  4932.0,
+                  4684.0,
+                  5028.0
+                ],
+                "available_seconds": 4.525329625001177
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 838.0,
+                "block_loads": [
+                  4957.0,
+                  4932.0,
+                  4684.0,
+                  5028.0
+                ],
+                "available_seconds": 4.525329625001177
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 838.0,
+                "block_loads": [
+                  4957.0,
+                  4932.0,
+                  4684.0,
+                  5028.0
+                ],
+                "available_seconds": 4.525329625001177
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 2,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "flow.json",
+            "npz": "flow.npz",
+            "json_sha256": "104e426be083fb07a394bff07bbcbc35b5d7ec71839a0a1f260b4a18295f4013",
+            "npz_sha256": "fbe2c2ba6e21ceb877ca509c218db0f01e3215a1e596cf285bbf977bf46458b5"
+          }
+        }
+      },
+      "coarse_mapping_and_weights_match_saved": true,
+      "hierarchy_artifact": {
+        "json": "hierarchy.json",
+        "npz": "hierarchy.npz",
+        "json_sha256": "ddc34420fe199f3be8e67f28d0b3d2c4ca79c42e9a75bcfa12fd59f9fbf0ebe8",
+        "npz_sha256": "254f7c58c92688a73390985a20508aa5ba2e39cd499acc0b264b3dd6b6f45bd4"
+      },
+      "status": "completed"
+    },
+    {
+      "instance": "ibm02",
+      "seed": 34,
+      "arm_order": [
+        "pairs",
+        "deterministic",
+        "flow",
+        "fem"
+      ],
+      "arms": {
+        "pairs": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 4,
+          "wall_seconds_including_overshoot": 24.759176583960652,
+          "overshoot_seconds": 4.759176583960652,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "no_result",
+              "eligible_completed_runs": 0,
+              "eligible_completed_vcycles": 0,
+              "eligible_flow_continuations": 0,
+              "best_completed": null,
+              "best_available": {
+                "source": "initial_only",
+                "run_id": null,
+                "native_cut": 2507.0,
+                "block_loads": [
+                  4978.0,
+                  4905.0,
+                  4931.0,
+                  4787.0
+                ],
+                "available_seconds": 0.006325374997686595
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 1275.0,
+                "block_loads": [
+                  5047.0,
+                  4991.0,
+                  5041.0,
+                  4522.0
+                ],
+                "available_seconds": 6.268758291960694
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "pairs_0000",
+                "native_cut": 1275.0,
+                "block_loads": [
+                  5047.0,
+                  4991.0,
+                  5041.0,
+                  4522.0
+                ],
+                "available_seconds": 6.268758291960694
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 3,
+              "eligible_completed_vcycles": 3,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "pairs_0001",
+                "native_cut": 1220.0,
+                "block_loads": [
+                  5047.0,
+                  4988.0,
+                  5033.0,
+                  4533.0
+                ],
+                "available_seconds": 12.363541041966528
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "pairs_0001",
+                "native_cut": 1220.0,
+                "block_loads": [
+                  5047.0,
+                  4988.0,
+                  5033.0,
+                  4533.0
+                ],
+                "available_seconds": 12.363541041966528
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 4,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "pairs.json",
+            "npz": "pairs.npz",
+            "json_sha256": "aeddcba6b6d7e892bd4f9f126afddba99d8ca7b36d801406751a095e27fff2e0",
+            "npz_sha256": "33eb1a865afd53c4f86d7b0cd0f67bea78fd4cd4d3bde96e31c98d85ab59bbe4"
+          }
+        },
+        "deterministic": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 4,
+          "wall_seconds_including_overshoot": 23.583529540977906,
+          "overshoot_seconds": 3.5835295409779064,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "no_result",
+              "eligible_completed_runs": 0,
+              "eligible_completed_vcycles": 0,
+              "eligible_flow_continuations": 0,
+              "best_completed": null,
+              "best_available": {
+                "source": "initial_only",
+                "run_id": null,
+                "native_cut": 2507.0,
+                "block_loads": [
+                  4978.0,
+                  4905.0,
+                  4931.0,
+                  4787.0
+                ],
+                "available_seconds": 0.0065050830016843975
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 1291.0,
+                "block_loads": [
+                  5047.0,
+                  4967.0,
+                  5047.0,
+                  4540.0
+                ],
+                "available_seconds": 5.829684290976729
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0000",
+                "native_cut": 1291.0,
+                "block_loads": [
+                  5047.0,
+                  4967.0,
+                  5047.0,
+                  4540.0
+                ],
+                "available_seconds": 5.829684290976729
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 3,
+              "eligible_completed_vcycles": 3,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0001",
+                "native_cut": 1243.0,
+                "block_loads": [
+                  5047.0,
+                  4983.0,
+                  5035.0,
+                  4536.0
+                ],
+                "available_seconds": 11.790630665956996
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "deterministic_0001",
+                "native_cut": 1243.0,
+                "block_loads": [
+                  5047.0,
+                  4983.0,
+                  5035.0,
+                  4536.0
+                ],
+                "available_seconds": 11.790630665956996
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 4,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "deterministic.json",
+            "npz": "deterministic.npz",
+            "json_sha256": "fd6bce51d79c8ae50829f74c73c9e0865bfb6368b5c7fb49d5499d8e9f95b831",
+            "npz_sha256": "036e5386fba5e91d3a609f63496fadd44d6834b45269fc9f52821fdd67d347e8"
+          }
+        },
+        "flow": {
+          "status": "execution_complete",
+          "stopped_reason": "exact_assignment_fixed_point",
+          "attempts": 2,
+          "wall_seconds_including_overshoot": 4.111124458024278,
+          "overshoot_seconds": 0.0,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 1245.0,
+                "block_loads": [
+                  5047.0,
+                  4983.0,
+                  5035.0,
+                  4536.0
+                ],
+                "available_seconds": 3.778033333015628
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 1245.0,
+                "block_loads": [
+                  5047.0,
+                  4983.0,
+                  5035.0,
+                  4536.0
+                ],
+                "available_seconds": 3.778033333015628
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 1245.0,
+                "block_loads": [
+                  5047.0,
+                  4983.0,
+                  5035.0,
+                  4536.0
+                ],
+                "available_seconds": 3.778033333015628
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 1245.0,
+                "block_loads": [
+                  5047.0,
+                  4983.0,
+                  5035.0,
+                  4536.0
+                ],
+                "available_seconds": 3.778033333015628
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 1,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 1245.0,
+                "block_loads": [
+                  5047.0,
+                  4983.0,
+                  5035.0,
+                  4536.0
+                ],
+                "available_seconds": 3.778033333015628
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "flow_0000",
+                "native_cut": 1245.0,
+                "block_loads": [
+                  5047.0,
+                  4983.0,
+                  5035.0,
+                  4536.0
+                ],
+                "available_seconds": 3.778033333015628
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 2,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "flow.json",
+            "npz": "flow.npz",
+            "json_sha256": "56373b2127c3bcbca927c32ae1e077f82cac047a1816ecc0fec7c4c816cfe94b",
+            "npz_sha256": "6b4be11f9ac44d6432e0936093db0f15822a758bf68ed6ea34f3f0f1b2ec8022"
+          }
+        },
+        "fem": {
+          "status": "execution_complete",
+          "stopped_reason": "overshoot",
+          "attempts": 3,
+          "wall_seconds_including_overshoot": 26.186209167004563,
+          "overshoot_seconds": 6.186209167004563,
+          "checkpoints": [
+            {
+              "budget_seconds": 5.0,
+              "optimized_status": "no_result",
+              "eligible_completed_runs": 0,
+              "eligible_completed_vcycles": 0,
+              "eligible_flow_continuations": 0,
+              "best_completed": null,
+              "best_available": {
+                "source": "initial_only",
+                "run_id": null,
+                "native_cut": 2507.0,
+                "block_loads": [
+                  4978.0,
+                  4905.0,
+                  4931.0,
+                  4787.0
+                ],
+                "available_seconds": 0.006432041991502047
+              }
+            },
+            {
+              "budget_seconds": 10.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 1,
+              "eligible_completed_vcycles": 1,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "fem_0000",
+                "native_cut": 1269.0,
+                "block_loads": [
+                  5047.0,
+                  5001.0,
+                  5032.0,
+                  4521.0
+                ],
+                "available_seconds": 8.815926084003877
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "fem_0000",
+                "native_cut": 1269.0,
+                "block_loads": [
+                  5047.0,
+                  5001.0,
+                  5032.0,
+                  4521.0
+                ],
+                "available_seconds": 8.815926084003877
+              }
+            },
+            {
+              "budget_seconds": 20.0,
+              "optimized_status": "success",
+              "eligible_completed_runs": 2,
+              "eligible_completed_vcycles": 2,
+              "eligible_flow_continuations": 0,
+              "best_completed": {
+                "source": "completed_solver",
+                "run_id": "fem_0001",
+                "native_cut": 1225.0,
+                "block_loads": [
+                  5047.0,
+                  5010.0,
+                  5044.0,
+                  4500.0
+                ],
+                "available_seconds": 17.42934629204683
+              },
+              "best_available": {
+                "source": "completed_solver",
+                "run_id": "fem_0001",
+                "native_cut": 1225.0,
+                "block_loads": [
+                  5047.0,
+                  5010.0,
+                  5044.0,
+                  4500.0
+                ],
+                "available_seconds": 17.42934629204683
+              }
+            }
+          ],
+          "validation_summary": {
+            "successful_runs": 3,
+            "execution_failed_runs": 0,
+            "validation_failed_runs": 0,
+            "fallback_valid": true
+          },
+          "has_failures": false,
+          "artifact": {
+            "json": "fem.json",
+            "npz": "fem.npz",
+            "json_sha256": "9f598133101f137a1ffe1470252ca85e360a2ff6efca36cd480d3961838aebde",
+            "npz_sha256": "7658f209d843b600b472d8df8e5d954aae09d990807fc47f175bcecfcd25a400"
+          }
+        }
+      },
+      "coarse_mapping_and_weights_match_saved": true,
+      "hierarchy_artifact": {
+        "json": "hierarchy.json",
+        "npz": "hierarchy.npz",
+        "json_sha256": "0b4d7e35ae3a4005bb3b5a4bbc68075461d194bf70c6f0f7580b3be35ffa8393",
+        "npz_sha256": "1304d29e15b3839115d7a65dcedbab17a0c1011980fb3da06a04ec7b9cb88158"
+      },
+      "status": "completed"
+    }
+  ],
+  "warmup": {
+    "excluded_from_all_main_timing": true,
+    "arms": {
+      "fem": {
+        "status": "success",
+        "final": {
+          "native_cut": 2.0,
+          "block_loads": [
+            4.0,
+            4.0
+          ],
+          "capacity": 4.0,
+          "capacity_tolerance": 8e-10,
+          "feasible": true,
+          "independent_cut_and_loads_verified": true
+        },
+        "ier_rounds_with_nonempty_pool": 2
+      },
+      "pairs": {
+        "status": "success",
+        "final": {
+          "native_cut": 2.0,
+          "block_loads": [
+            4.0,
+            4.0
+          ],
+          "capacity": 4.0,
+          "capacity_tolerance": 8e-10,
+          "feasible": true,
+          "independent_cut_and_loads_verified": true
+        },
+        "ier_rounds_with_nonempty_pool": 2
+      },
+      "deterministic": {
+        "status": "success",
+        "final": {
+          "native_cut": 2.0,
+          "block_loads": [
+            4.0,
+            4.0
+          ],
+          "capacity": 4.0,
+          "capacity_tolerance": 8e-10,
+          "feasible": true,
+          "independent_cut_and_loads_verified": true
+        },
+        "ier_rounds_with_nonempty_pool": 2
+      },
+      "flow": {
+        "status": "success",
+        "final": {
+          "native_cut": 2.0,
+          "block_loads": [
+            4.0,
+            4.0
+          ],
+          "capacity": 4.0,
+          "capacity_tolerance": 8e-10,
+          "feasible": true,
+          "independent_cut_and_loads_verified": true
+        },
+        "ier_rounds_with_nonempty_pool": 0
+      }
+    },
+    "status": "success"
+  },
+  "source_sha256_after": {
+    "benchmarks/hypergraph/compare_ier_equal_time.py": "5be54b1ee5856942b1eb39c07e0cc530c46743ca08179dc3e79cb075fcd61881",
+    "src/hyper_solver.py": "932bff78932030209f21d46d3b19ebbb26b0bc44ab76d61d70ccb43c44e774d4",
+    "benchmarks/hypergraph/IER_EQUAL_TIME_PROTOCOL.md": "bb750a01e9491ed095cf11b1c5c9f258747069484d67e0da1fa021be1a8cca41",
+    "tests/test_ier_equal_time_benchmark.py": "b988f41855d254e23b384c6d5303e6fdae0d4d67643dd146e71d1517e067a923",
+    "benchmarks/hypergraph/validate_fem_ier.py": "2363c98f0fd865ee998503155d1088660090aeb7d16d28326e157eff43eed7d0",
+    "benchmarks/hypergraph/compare_fem_multiseed.py": "3cc6a79b36c4ab73d699c23aa2ac08df2ba0cf7d7c77586d4df4ccdbd55bead4",
+    "benchmarks/hypergraph/time_budget_hgr.py": "601f59e7d1346b8af8bf419f889be152fbe1ab379036250ab082f15dda899198",
+    "benchmarks/hypergraph/native_search_probe.py": "8211b6aefb588a3dd016be93472977fd13f8bde6a18a4c1ef251836b81115de6",
+    "benchmarks/hypergraph/native_mcmc.py": "b8ba19d9b4dec8e0c0bbba9eaad5aad798f31b7e1d5562c1a5cc0376ef7209c2",
+    "src/partition/__init__.py": "a6b8fe4ebc6382f41072e4bc46f78a4b158641b9f031d0782f05294109adaef4",
+    "src/partition/coarsen.py": "5736739b4434ce01327155f294ad9cbe7b79751f3ec66b7cbeea786948afdc40",
+    "src/partition/hyper_coarsen.py": "6d415e8bbe80e63fa393f0d3aea000a04f9fe9b569e0e072a5ba8308a073f3db",
+    "src/partition/hyper_ier.py": "5ecbbe9c636411ada21906e4818975a067dae5668e37556b2fbd0b869da92035",
+    "src/partition/hyper_ier_candidates.py": "125898c8d20589626a5050308318c7eae816213d8e8cd7e8dcd3aadc92a0bba4",
+    "src/partition/hyper_ier_objective.py": "457028c52733f7b9e0c23bb84bb37a1f737ec0d8efe834a6fa540b56ee4af1a4",
+    "src/partition/hyper_objective.py": "0a1569ec9737033eb0970a9bfdc644e60c7ec533abdfe8bfaa7f8ca986b0113b",
+    "src/partition/hyper_quotient.py": "de13bea84ae998e4656be3290b5f7a89111d2ce6a7f7fe54e301cd82dd5b014c",
+    "src/partition/hyper_refine.py": "ff4fd24818858cbc054826a3a181926191e8e3b950db8fa758b268ad2502329c",
+    "src/partition/hyper_refine_contract.py": "ac7daef21fd2e2eb5cd48d50f08a6b46e47a2e7bc958dcfa1aefd3f78161b429",
+    "src/partition/hyper_utils.py": "6baa367f66d64524f76828f12d1449e66f8da7f803f051bd5f669713a04c05b5",
+    "src/partition/kaffpa_multiway.py": "bf4f0b774f0bdae105a16a5c6e9f10957bd0485a3ed17a1ff0697c8df5818acd",
+    "src/partition/refine.py": "be32428422ba9a851a871174e73c0158064f2f4ccb5d78da4147157fcc331023",
+    "src/partition/script/test_kahypar.py": "fdf148cda11575763643b082b72082d451ae61b103cb98dae2b38164ababc889",
+    "src/partition/tests.py": "a793339940b6c06d7317f787aa14b424cd7721bcb369100a728ec4dc51b63330",
+    "src/partition/utils.py": "e5101843681268b14defa0e3c677f1425176741f84c5593f1d8167c8fb5c320a",
+    "lib/qubo-solver/src/fem/__init__.py": "eb1c028b0b5c347ce1fd558e3f77d21948407ffd42bc86a917fd957e6c443da0",
+    "lib/qubo-solver/src/fem/customized_problem/__init__.py": "e102bb39e99bbf1e753df64ae4b6c5e2e285250827d3ae2e8f9b0f4e84461aed",
+    "lib/qubo-solver/src/fem/customized_problem/hyper_bmincut.py": "78273308009a2d339974e7b2f63c1c1e2ff6067281ffaf326e2021141af88df0",
+    "lib/qubo-solver/src/fem/interface.py": "edfb2165c0021c2ecb1ff415084f69285ad3579a2db1007664f9db8d90675f48",
+    "lib/qubo-solver/src/fem/problem.py": "34e9a36d87390c504034296c0fc8ece3c46b7a6e0e7b83f75d8d50f9076b311b",
+    "lib/qubo-solver/src/fem/solver_fem.py": "5919f70d9b261d1550edd0633c95bcd8fdcbee1f5f8add3754e319819b4a03d7",
+    "lib/qubo-solver/src/fem/utils.py": "364833410ff492b72bbad5279455619e924bbb9757057bfaafb87f2e78e8b49d"
+  },
+  "input_sha256_after": {
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/manifest.json": "30f189c6453ec206b2ab422423ba9a3115ae7dbe5a3705e611a29ffe394571c3",
+    "/private/tmp/ising-hgr.K5jm2Y/ibm01.hgr": "40f7f7c4dfd96c06b0570f696e67b9c667ac2cbdf4d0858da5e690f4f4d5ac72",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed30/runs.json": "e13104f43aa95eb667ba8c96d19fec5993992d8de9e29437907a3c345bc1e29b",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed30/assignments.npz": "1ec163bf838061e09fe25339f1db9948fbd38ba2c86b7c06f7fdee4df871406a",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed31/runs.json": "a1dea4ccb203ce68d10d000154bc7d6e65e7fabe71267b5e212c1279b8bd3db3",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed31/assignments.npz": "6b80ac0c1ef7557fcf196e7f32d5aac059ddd50a89ccc0b86c29440607944977",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed32/runs.json": "9ba336e1cf398597a12af5ae575bd6482a0952a13611bf7eef5e6e2a4192ca0d",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed32/assignments.npz": "2e28e8b4d46fd539660b1116929e4276a4badd1c0b4b1c60da47f8308e478334",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed33/runs.json": "44a292b5272b9bc10f7038f08bcd468e3a124044b641deae777a2b4ee86d8654",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed33/assignments.npz": "5796844be71d3d59b078ef7982e78d3a1dd3a787148c0cbea5b4f7f6a586ac66",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed34/runs.json": "045706d5fda0db00ede07faec6664d27b818097428277811b1f516a3ea974c20",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed34/assignments.npz": "1c847c380f412fb567006e23be9fecbd06224df598c308f5d673a1d16a86a956",
+    "/private/tmp/ising-hgr.K5jm2Y/ibm02.hgr": "ff09f3be9ed84a8c13257f1655555938072cdf01fae40f1548795763981eae05",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed30/runs.json": "1f964128c4c536fadcefc6d8b29be98f32ec17c5ada1c898ba02fab3e5b82184",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed30/assignments.npz": "9945f97345d44e17c500ecb02c3977ca26de5cd7052307ad89f64b0854f9b368",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed31/runs.json": "d71a3194d0678254be03b606a2a03bb8dd3819186d71f535f7cf6b4734e4469d",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed31/assignments.npz": "72f669b85c2b6674a0b79425a041603a468afe4affc0b105b58fe4eca2580e15",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed32/runs.json": "6c265be422df15ccb3abce7ba9ca00369dcda868d6f0f79de61162b68fd47b45",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed32/assignments.npz": "2d0706b36e0a4e853c72b58bd6a5fb22a9f213e831731b57d929a1f0b2ef319a",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed33/runs.json": "2ebba149730d0f288727b177207a249bdb9cc14b1b9ad493d926ac0e3368f7b8",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed33/assignments.npz": "0f4a6c3431ad7e20e2968f9a235eab6ee9a6ba3d4bd8b5bbbcbd0a68b571b3cd",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed34/runs.json": "4ab3c354cb723fdf2ae8b4976dd72c4e7decbe6e234559c031d0c49fa9eb39c5",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed34/assignments.npz": "7e18b15d99ee1c3d079f4777b265efaa7114c456544618ed1d8247d9a9f2fd8e"
+  },
+  "sources_unchanged_during_run": true,
+  "inputs_unchanged_during_run": true,
+  "finished_utc": "2026-09-24T12:04:40.273736+00:00"
+}

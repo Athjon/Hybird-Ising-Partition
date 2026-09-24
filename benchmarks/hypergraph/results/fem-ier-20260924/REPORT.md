@@ -8,6 +8,7 @@
 
 - 从已有 FEM+flow 最终解继续优化，IBM01／IBM02 各 5 seeds 中，FEM-IER 合计改善 5/10，另 5/10 不变，无退化。相对本次随机选择对照为 3 胜、7 平；相对严格时间预算内额外 flow 为 5 胜、5 平。
 - 改善幅度很小：IBM01 平均 km1 从 805.6 到 804.8，IBM02 从 1170.2 到 1169.0。20 个 FEM round 中只有 3 个超过共享的 all-off／all-on／single-atom 候选。
+- 补充离线诊断后，共享候选加全部两两组合在上述 20 轮中全部追平 FEM，三元枚举也没有额外收益。当前不能把结果解释成 FEM 优于一般组合搜索。
 - 在每层 V-cycle 插入 IER 的 seed 30 集成测试中，IBM01 从 806 到 802，IBM02 从 1296 到 1206，但运行更久。这只支持继续研究插入位置，尚未建立等时间优势。
 - 小加权例中两个 q=2 起点均达到全局最优，改善来自共享 single-atom 候选，不能归为 FEM 联合选择的优势。n=12、q=3 最后仍比全局最优高 0.5。
 
@@ -74,6 +75,19 @@ IBM01 seeds 33、34 与 IBM02 seed 34 中，FEM 选出的组合优于该轮共�
 
 Bernoulli(0.5) 对照偏向稠密选择：24 个 atoms 平均开启 12 个，800 次采样中恰好只开启两个的期望次数仅约 0.013。它不能代表所有随机或任意组合搜索。因此另对已保存池做稀疏组合诊断，独立于上述计时实验。
 
+### 保存池上的稀疏组合诊断
+
+[sparse_probe.json](sparse_probe.json) 从保存的原始起点逐轮重放，枚举共享简单候选、所有 atom pairs 和 triples。24 个变量最多有 276 对、2024 个三元组。评分使用独立原生 pin 计数，赢家另以完整原始划分直接核验；不调用 FEM，也不重新生成候选。所有输入与历史生产文件哈希保持不变。
+
+| 保存轨迹 | 轮数 | 共享候选＋pairs 对原赢家：胜／平／负 | 再加 triples：胜／平／负 |
+|---|---:|---:|---:|
+| IBM FEM | 20 | 0／20／0 | 0／20／0 |
+| IBM random | 20 | 3／17／0 | 3／17／0 |
+| weighted FEM | 8 | 0／8／0 | 0／8／0 |
+| weighted random | 8 | 0／8／0 | 0／8／0 |
+
+三个 FEM 超过简单候选的组合均可由 pairs 枚举找到；没有发现 FEM 停滞而稀疏枚举可改善的保存轮次。**这说明本批数据尚未展示 FEM 超过稀疏组合搜索的解质量优势。** 它也不证明 FEM 与该搜索的端到端行为相同：稀疏赢家没有作为下一轮起点，等分数时不同标签可能改变后续候选；该诊断未覆盖 V-cycle 内部池，也不是时间匹配的 solver 比较。
+
 ## 4. 在 V-cycle 每层插入的结果
 
 seed 30 使用与上一轮相同的 HEM hierarchy 和保存的粗层 FEM 初始标签；完整核对 original-to-coarse 映射与粗节点权重。每个 V-cycle 有 9 次 refinement 调用（包含最后完整图上的额外调用）。
@@ -104,11 +118,19 @@ IBM02 端到端减少的 90 不能全部归因于 FEM 求解器：插入 moves �
 
 三次改善均来自 single-atom 候选，两个后端的结果完全相同。说明等总重联合移动能扩展原来的局部可达集合；本批小例没有呈现 FEM 联合选择的额外收益。每轮最多 5 个 selectors，随机 800 次可能覆盖全部有限子空间，不能把这种随机对照推广到 24-variable 子问题。
 
+独立审计进一步穷举四个 weighted cases 两个后端的全部 16 个 round 子空间（共 280 个 selector 状态），所有返回值都是对应候选池的精确最优。n=12、q=3 的两轮池最优均为 45，原图最优为 44.5；这 0.5 在本次运行中是候选池缺口，不是 FEM 没解好这些子问题。
+
 另有固定协同 fixture 的回归测试：起点 cost=4，前两个单 atom 各自使 cost=8，第三个使 cost=24，全部开启为 20；FEM 选择前两个、关闭第三个可得 0。它验证 solver 确实能利用组合效应，不是一般性能证据。`exact` 后端和独立枚举对照仅认证生成的 selector 子空间，不能认证原图最优。
 
 ## 6. 验证、复现与限制
 
 本轮相关回归测试 **138 passed in 1.31s**，覆盖实际 FEM 协同选择、原生联合期望／梯度、容量可行性、候选生成、加权 refinement、V-cycle、native FEM、quotient 和截止时间语义。
+
+[独立审计](audit.json) 通过，未调用生产目标或 benchmark evaluator：以实际应用 moves 后的原始标签和超边计数核验 **56 rounds、23,684 个记录的候选分数**，其中去重后实际重算 16,387 个 round-selector 状态。另核验 120 个保存的原始划分记录、2 个粗层输入、29 个源文件及 31 个输入哈希、14 组首轮 A/B 候选一致性、22 个 flow 调用及其 12 个截止前有效输出。原图四个小实例重新遍历 542,354 个标签状态，得到 14,418 个可行状态并评分。
+
+审计限制：V-cycle 的中间层超图和每次 flow 后完整划分没有保存，36 个内部 IER rounds 无法从产物独立完全重放。审计核验了原始图上的起点／最终输出，内部阶段记录仅检查单调性及容量一致性；运行时另有逐层检查。IBM 的最多 24 个 selector 未做全空间最优认证。
+
+审计脚本为 `benchmarks/hypergraph/audit_fem_ier.py`，其版本、运行环境和自身哈希记录在 audit.json。
 
 ```bash
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 \
@@ -123,6 +145,15 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 \
 PYTHONDONTWRITEBYTECODE=1 /opt/anaconda3/bin/python \
   benchmarks/hypergraph/validate_fem_ier.py --seeds 30 31 32 33 34 \
   --rounds 2 --output benchmarks/hypergraph/results/fem-ier-new-run
+
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 \
+  /opt/anaconda3/bin/python benchmarks/hypergraph/audit_fem_ier.py \
+  benchmarks/hypergraph/results/fem-ier-20260924
+
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 \
+  /opt/anaconda3/bin/python benchmarks/hypergraph/probe_ier_sparse_selectors.py \
+  --results benchmarks/hypergraph/results/fem-ier-20260924 \
+  --output /private/tmp/fem-ier-sparse-new-run.json
 ```
 
 运行要求此前保存的 `fem-multiseed-20260924-v2`、`fem-repair-20260924` 和原 IBM `.hgr` 数据。可用 `--baseline`、`--repair`、`--ibm-directory` 指定位置；程序校验数据哈希，拒绝覆盖非空输出目录。当前原始数据位于 `/private/tmp/ising-hgr.K5jm2Y`，临时目录不保证长期存在。

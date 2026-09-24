@@ -1,0 +1,56 @@
+{
+  "record_type": "Captured terminal summary of first audit attempt; not the overwritten full first audit artifact.",
+  "passed": false,
+  "exit_code": 1,
+  "first_script_sha256_reconstructed_from_exact_pre_fix_text": "f2262fefc9795e159e42f79d0125495bd97adfefb75de49ba80a886b78ae8e14",
+  "coverage": {
+    "source_unique_hashes_verified": 29,
+    "input_unique_hashes_verified": 31,
+    "artifact_arrays_resolved": 122,
+    "weighted_original_spaces_exhausted": 4,
+    "weighted_original_states_enumerated": 542354,
+    "weighted_original_feasible_states_scored": 14418,
+    "saved_original_assignments_measured": 112,
+    "rounds_replayed": 45,
+    "interaction_summaries_verified": 41,
+    "deterministic_selector_scores_verified": 973,
+    "backend_selector_scores_verified": 16168,
+    "unique_selector_scores_recomputed_per_round_sum": 16204,
+    "selector_feasibility_checks": 17141,
+    "backend_beats_deterministic_rounds": 3,
+    "weighted_selector_spaces_exhausted": 1,
+    "weighted_exhaustive_selector_states": 8,
+    "fem_probability_rows_verified": 168,
+    "accepted_rounds": 9,
+    "arms_replayed": 20,
+    "first_round_ab_pools_identical": 10,
+    "additional_flow_calls_verified": 22,
+    "additional_flow_eligible_calls": 12,
+    "fixed_starts_cases_passed": 10,
+    "saved_coarse_assignments_verified_against_input": 2,
+    "integration_stage_records_consistency_checked_only": 36,
+    "integration_final_arms_verified": 4,
+    "integration_ier_rounds_not_independently_replayed": 36,
+    "integration_cases_passed": 2
+  },
+  "errors": [
+    {
+      "scope": "weighted/weighted-n08-q2/result.json",
+      "error": "interaction summary exact_touched_atom_histogram"
+    },
+    {
+      "scope": "weighted/weighted-n08-q3/result.json",
+      "error": "interaction summary exact_touched_atom_histogram"
+    },
+    {
+      "scope": "weighted/weighted-n12-q2/result.json",
+      "error": "interaction summary exact_touched_atom_histogram"
+    },
+    {
+      "scope": "weighted/weighted-n12-q3/result.json",
+      "error": "interaction summary exact_touched_atom_histogram"
+    }
+  ],
+  "resolution": "Audit Counter omitted a zero-count 0 bin; production explicitly retains 0:0. Audit initialization changed to include the zero bin. No production source or benchmark artifact was changed. Full corrected replay passed in audit.json.",
+  "successor": "audit.json"
+}

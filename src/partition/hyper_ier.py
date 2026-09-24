@@ -40,6 +40,8 @@ def refine_fem_ier(assignment, hyperedges, q, *, node_weights=None,
     Every backend shares all-off, all-on and all single-atom candidates.
     ``fem`` adds learned selectors; ``random`` adds ``num_trials*num_steps``
     independent Bernoulli selectors unless random_samples is explicit.
+    ``deterministic`` uses only the shared candidates; ``pairs`` adds every
+    selector containing exactly two atoms, in lexicographic atom-pair order.
     ``exact`` enumerates a bounded candidate subproblem, never the full graph.
     Finite budgets and the generated neighborhood can prevent improvement.
     """
@@ -49,8 +51,8 @@ def refine_fem_ier(assignment, hyperedges, q, *, node_weights=None,
     num_trials = _positive_integer(num_trials, 'num_trials')
     num_steps = _positive_integer(num_steps, 'num_steps')
     seed = _positive_integer(seed, 'seed', allow_zero=True)
-    if backend not in ('fem', 'random', 'exact'):
-        raise ValueError('IER backend must be fem, random, or exact')
+    if backend not in ('fem', 'random', 'exact', 'deterministic', 'pairs'):
+        raise ValueError('IER backend must be fem, random, exact, deterministic, or pairs')
     if random_samples is None:
         random_samples = num_trials * num_steps
     random_samples = _positive_integer(random_samples, 'random_samples')
@@ -82,7 +84,16 @@ def refine_fem_ier(assignment, hyperedges, q, *, node_weights=None,
                   'moves': [{str(v): int(label) for v, label in move.items()} for move in moves],
                   'num_moves': len(moves), 'candidate_generation_seconds': time.perf_counter()-round_start}
         if not moves:
+            _, _, current_loads, _, _ = capacity_state(current, q, nodes, epsilon)
             record.update(after_native_cut=before, accepted=False, reason='no_balanced_disjoint_moves',
+                          proposed_native_cut=before, selected_source='all_off',
+                          selected_selector=[], selected_move_count=0,
+                          deterministic_best_native_cut=before, backend_best_native_cut=None,
+                          attribution_tolerance=1e-12 * max(abs(before), np.finfo(float).tiny),
+                          backend_beats_deterministic=False, backend_selector_masks=[],
+                          backend_native_cuts=[], deterministic_native_cuts=[before],
+                          backend_selector_count=0, backend_unique_selector_count=0,
+                          backend_seconds=0., block_loads=current_loads.tolist(),
                           total_seconds=time.perf_counter()-round_start)
             report['history'].append(record)
             continue
@@ -109,7 +120,15 @@ def refine_fem_ier(assignment, hyperedges, q, *, node_weights=None,
             probabilities = case.solver.probabilities[..., 1].cpu().numpy().tolist()
         elif backend == 'random':
             backend_selectors = np.random.default_rng(round_seed).integers(0, 2, size=(random_samples, m))
-        else:
+        elif backend == 'deterministic':
+            backend_selectors = np.empty((0, m), dtype=np.int64)
+        elif backend == 'pairs':
+            first, second = np.triu_indices(m, k=1)
+            backend_selectors = np.zeros((len(first), m), dtype=np.int64)
+            rows = np.arange(len(first))
+            backend_selectors[rows, first] = 1
+            backend_selectors[rows, second] = 1
+        else:  # exact
             if m > exact_max_moves:
                 raise ValueError('candidate pool exceeds exact_max_moves; no exact certificate was computed')
             backend_selectors = ((np.arange(1 << m, dtype=np.int64)[:, None]
@@ -124,9 +143,10 @@ def refine_fem_ier(assignment, hyperedges, q, *, node_weights=None,
                 for offset in range(0, len(selectors), 256)
             ])
         deterministic_best = float(scores[:len(deterministic)].min())
-        backend_best = float(scores[len(deterministic):].min())
+        backend_best = float(scores[len(deterministic):].min()) if len(backend_selectors) else None
         score_tolerance = 1e-12 * max(abs(before), abs(deterministic_best),
-                                    abs(backend_best), np.finfo(float).tiny)
+                                    abs(backend_best) if backend_best is not None else 0.,
+                                    np.finfo(float).tiny)
         winner = int(np.argmin(scores))
         selected = selectors[winner]
         proposed = objective.apply(selected)
@@ -142,14 +162,16 @@ def refine_fem_ier(assignment, hyperedges, q, *, node_weights=None,
         if accepted:
             current = proposed
         source = deterministic_names[winner] if winner < len(deterministic) else f'{backend}_{winner-len(deterministic)}'
+        backend_masks = _masks(backend_selectors)
         record.update(after_native_cut=actual if accepted else before, accepted=accepted,
             proposed_native_cut=actual,
             selected_source=source, selected_selector=selected.tolist(),
             selected_move_count=int(selected.sum()), deterministic_best_native_cut=deterministic_best,
             backend_best_native_cut=backend_best,
             attribution_tolerance=score_tolerance,
-            backend_beats_deterministic=backend_best < deterministic_best-score_tolerance,
-            backend_selector_masks=_masks(backend_selectors),
+            backend_beats_deterministic=backend_best is not None and backend_best < deterministic_best-score_tolerance,
+            backend_selector_masks=backend_masks,
+            backend_selector_count=len(backend_masks), backend_unique_selector_count=len(set(backend_masks)),
             backend_native_cuts=scores[len(deterministic):].tolist(),
             deterministic_native_cuts=scores[:len(deterministic)].tolist(),
             block_loads=next_loads.tolist(), total_seconds=time.perf_counter()-round_start)

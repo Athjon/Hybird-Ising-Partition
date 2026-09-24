@@ -201,11 +201,22 @@ does not establish superiority over other combination searches. A bounded `'exac
 only the generated move subproblem. These controls have different runtimes.
 The default refinement mode remains `('flow',)`.
 
+Two additional production controls support complete-pipeline comparisons:
+`ier_backend='deterministic'` uses only the shared candidates, while `'pairs'`
+also evaluates every two-atom subset. Both use the same native scoring and
+capacity acceptance as FEM. The deterministic control includes all-on and is
+therefore broader than choosing a single atom. Selector counts and unique
+counts are saved per round. See the
+[equal-time protocol](benchmarks/hypergraph/IER_EQUAL_TIME_PROTOCOL.md) for the
+fixed inputs, budgets, restart policy, fallback and completion rules.
+
 The [FEM-IER validation report](benchmarks/hypergraph/results/fem-ier-20260924/REPORT.md)
 records 138 passing regression tests, four exact weighted cases, ten fixed IBM
 starts with random-selection and strict-time additional-FM controls, and two
 full V-cycle integration checks. Final polishing improves five of ten starts;
-three gains exceed the shared deterministic candidates. Per-level integration
+three gains exceed the shared deterministic candidates. Offline pair enumeration
+matches every saved IBM FEM round, so these results do not establish FEM's
+quality advantage over sparse combination search. Per-level integration
 improves both tested seed-30 outputs but adds runtime; it is not an equal-time
 or KaHyPar comparison.
 
