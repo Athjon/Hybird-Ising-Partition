@@ -1,0 +1,722 @@
+{
+  "name": "ibm02",
+  "n": 19601,
+  "edges": 19584,
+  "q": 4,
+  "seed": 30,
+  "epsilon": 0.03,
+  "coarsen_to": 200,
+  "num_trials": 8,
+  "num_steps": 150,
+  "coarsening": {
+    "seconds": 0.570269416028168,
+    "nodes": 200,
+    "edges": 8429,
+    "levels": 8,
+    "exact_global_guard": false
+  },
+  "methods": {
+    "greedy": {
+      "initial_partition_seconds": 0.08692674996564165,
+      "coarse_initial": {
+        "native_cut": 9519.0,
+        "block_loads": [
+          5047.0,
+          5047.0,
+          5041.0,
+          4466.0
+        ],
+        "capacity": 5047.2575,
+        "capacity_tolerance": 1.9601e-06,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      "lifted_initial": {
+        "native_cut": 9519.0,
+        "block_loads": [
+          5047.0,
+          5047.0,
+          5041.0,
+          4466.0
+        ],
+        "capacity": 5047.2575,
+        "capacity_tolerance": 1.9601e-06,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      "refinement_stages": [
+        {
+          "call": 0,
+          "nodes": 234,
+          "edges": 8582,
+          "before": {
+            "native_cut": 9519.0,
+            "block_loads": [
+              5047.0,
+              5047.0,
+              5041.0,
+              4466.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "after": {
+            "native_cut": 3653.0,
+            "block_loads": [
+              4962.0,
+              4604.0,
+              5019.0,
+              5016.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "seconds": 1.533522207988426
+        },
+        {
+          "call": 1,
+          "nodes": 427,
+          "edges": 8960,
+          "before": {
+            "native_cut": 3653.0,
+            "block_loads": [
+              4962.0,
+              4604.0,
+              5019.0,
+              5016.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "after": {
+            "native_cut": 3102.0,
+            "block_loads": [
+              5039.0,
+              4599.0,
+              5033.0,
+              4930.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "seconds": 0.42709504097001627
+        },
+        {
+          "call": 2,
+          "nodes": 798,
+          "edges": 9457,
+          "before": {
+            "native_cut": 3102.0,
+            "block_loads": [
+              5039.0,
+              4599.0,
+              5033.0,
+              4930.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "after": {
+            "native_cut": 2903.0,
+            "block_loads": [
+              5031.0,
+              4730.0,
+              5046.0,
+              4794.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "seconds": 0.4654534579603933
+        },
+        {
+          "call": 3,
+          "nodes": 1507,
+          "edges": 10145,
+          "before": {
+            "native_cut": 2903.0,
+            "block_loads": [
+              5031.0,
+              4730.0,
+              5046.0,
+              4794.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "after": {
+            "native_cut": 2617.0,
+            "block_loads": [
+              4999.0,
+              4522.0,
+              5047.0,
+              5033.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "seconds": 0.47689674998400733
+        },
+        {
+          "call": 4,
+          "nodes": 2873,
+          "edges": 11145,
+          "before": {
+            "native_cut": 2617.0,
+            "block_loads": [
+              4999.0,
+              4522.0,
+              5047.0,
+              5033.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "after": {
+            "native_cut": 2383.0,
+            "block_loads": [
+              5045.0,
+              4465.0,
+              5046.0,
+              5045.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "seconds": 0.35260474996175617
+        },
+        {
+          "call": 5,
+          "nodes": 5459,
+          "edges": 12751,
+          "before": {
+            "native_cut": 2383.0,
+            "block_loads": [
+              5045.0,
+              4465.0,
+              5046.0,
+              5045.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "after": {
+            "native_cut": 2208.0,
+            "block_loads": [
+              5047.0,
+              4461.0,
+              5046.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "seconds": 0.3706767910043709
+        },
+        {
+          "call": 6,
+          "nodes": 10353,
+          "edges": 15246,
+          "before": {
+            "native_cut": 2208.0,
+            "block_loads": [
+              5047.0,
+              4461.0,
+              5046.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "after": {
+            "native_cut": 2059.0,
+            "block_loads": [
+              5047.0,
+              4460.0,
+              5047.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "seconds": 0.3875886669848114
+        },
+        {
+          "call": 7,
+          "nodes": 19601,
+          "edges": 19584,
+          "before": {
+            "native_cut": 2059.0,
+            "block_loads": [
+              5047.0,
+              4460.0,
+              5047.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "after": {
+            "native_cut": 1920.0,
+            "block_loads": [
+              5047.0,
+              4467.0,
+              5047.0,
+              5040.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "seconds": 0.554336000001058
+        },
+        {
+          "call": 8,
+          "nodes": 19601,
+          "edges": 19584,
+          "before": {
+            "native_cut": 1920.0,
+            "block_loads": [
+              5047.0,
+              4467.0,
+              5047.0,
+              5040.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "after": {
+            "native_cut": 1920.0,
+            "block_loads": [
+              5047.0,
+              4467.0,
+              5047.0,
+              5040.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "seconds": 0.27046895801322535
+        }
+      ],
+      "vcycle_seconds": 5.015075166011229,
+      "final": {
+        "native_cut": 1920.0,
+        "block_loads": [
+          5047.0,
+          4467.0,
+          5047.0,
+          5040.0
+        ],
+        "capacity": 5047.2575,
+        "capacity_tolerance": 1.9601e-06,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      "status": "success"
+    },
+    "fem": {
+      "solver_details": {
+        "method": "fem",
+        "map_type": "native",
+        "native_cut": 2431.0,
+        "block_loads": [
+          4954.0,
+          4676.0,
+          4924.0,
+          5047.0
+        ],
+        "capacity": 5047.2575,
+        "selected_trial": 2,
+        "candidate_native_cuts": [
+          3154.0,
+          3022.0,
+          2431.0,
+          2767.0,
+          2584.0,
+          3412.0,
+          3633.0,
+          3525.0
+        ],
+        "candidate_trials": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "rounding_failures": []
+      },
+      "initial_partition_seconds": 1.4655447080149315,
+      "coarse_initial": {
+        "native_cut": 2431.0,
+        "block_loads": [
+          4954.0,
+          4676.0,
+          4924.0,
+          5047.0
+        ],
+        "capacity": 5047.2575,
+        "capacity_tolerance": 1.9601e-06,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      "lifted_initial": {
+        "native_cut": 2431.0,
+        "block_loads": [
+          4954.0,
+          4676.0,
+          4924.0,
+          5047.0
+        ],
+        "capacity": 5047.2575,
+        "capacity_tolerance": 1.9601e-06,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      "refinement_stages": [
+        {
+          "call": 0,
+          "nodes": 234,
+          "edges": 8582,
+          "before": {
+            "native_cut": 2431.0,
+            "block_loads": [
+              4954.0,
+              4676.0,
+              4924.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "after": {
+            "native_cut": 2399.0,
+            "block_loads": [
+              4875.0,
+              4676.0,
+              5003.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "seconds": 0.20477650000248104
+        },
+        {
+          "call": 1,
+          "nodes": 427,
+          "edges": 8960,
+          "before": {
+            "native_cut": 2399.0,
+            "block_loads": [
+              4875.0,
+              4676.0,
+              5003.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "after": {
+            "native_cut": 2260.0,
+            "block_loads": [
+              4935.0,
+              4618.0,
+              5001.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "seconds": 0.23869525000918657
+        },
+        {
+          "call": 2,
+          "nodes": 798,
+          "edges": 9457,
+          "before": {
+            "native_cut": 2260.0,
+            "block_loads": [
+              4935.0,
+              4618.0,
+              5001.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "after": {
+            "native_cut": 2073.0,
+            "block_loads": [
+              4893.0,
+              4624.0,
+              5037.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "seconds": 0.35496966703794897
+        },
+        {
+          "call": 3,
+          "nodes": 1507,
+          "edges": 10145,
+          "before": {
+            "native_cut": 2073.0,
+            "block_loads": [
+              4893.0,
+              4624.0,
+              5037.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "after": {
+            "native_cut": 1952.0,
+            "block_loads": [
+              4928.0,
+              4585.0,
+              5041.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "seconds": 0.35820837499340996
+        },
+        {
+          "call": 4,
+          "nodes": 2873,
+          "edges": 11145,
+          "before": {
+            "native_cut": 1952.0,
+            "block_loads": [
+              4928.0,
+              4585.0,
+              5041.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "after": {
+            "native_cut": 1747.0,
+            "block_loads": [
+              4809.0,
+              4698.0,
+              5047.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "seconds": 0.35536404204322025
+        },
+        {
+          "call": 5,
+          "nodes": 5459,
+          "edges": 12751,
+          "before": {
+            "native_cut": 1747.0,
+            "block_loads": [
+              4809.0,
+              4698.0,
+              5047.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "after": {
+            "native_cut": 1517.0,
+            "block_loads": [
+              4763.0,
+              4745.0,
+              5046.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "seconds": 0.4506866250303574
+        },
+        {
+          "call": 6,
+          "nodes": 10353,
+          "edges": 15246,
+          "before": {
+            "native_cut": 1517.0,
+            "block_loads": [
+              4763.0,
+              4745.0,
+              5046.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "after": {
+            "native_cut": 1394.0,
+            "block_loads": [
+              4716.0,
+              4792.0,
+              5047.0,
+              5046.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "seconds": 0.38580379099585116
+        },
+        {
+          "call": 7,
+          "nodes": 19601,
+          "edges": 19584,
+          "before": {
+            "native_cut": 1394.0,
+            "block_loads": [
+              4716.0,
+              4792.0,
+              5047.0,
+              5046.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "after": {
+            "native_cut": 1296.0,
+            "block_loads": [
+              4720.0,
+              4787.0,
+              5047.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "seconds": 0.47982320899609476
+        },
+        {
+          "call": 8,
+          "nodes": 19601,
+          "edges": 19584,
+          "before": {
+            "native_cut": 1296.0,
+            "block_loads": [
+              4720.0,
+              4787.0,
+              5047.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "after": {
+            "native_cut": 1296.0,
+            "block_loads": [
+              4720.0,
+              4787.0,
+              5047.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_native_cut_verified": true
+          },
+          "seconds": 0.2695888750022277
+        }
+      ],
+      "vcycle_seconds": 3.2427877919981256,
+      "final": {
+        "native_cut": 1296.0,
+        "block_loads": [
+          4720.0,
+          4787.0,
+          5047.0,
+          5047.0
+        ],
+        "capacity": 5047.2575,
+        "capacity_tolerance": 1.9601e-06,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      "status": "success"
+    }
+  }
+}

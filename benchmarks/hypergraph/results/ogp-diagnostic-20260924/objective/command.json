@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/opt/anaconda3/bin/python",
+    "benchmarks/hypergraph/ogp_objective_diagnostic.py",
+    "--instances",
+    "10",
+    "--sizes",
+    "12",
+    "16",
+    "--trials",
+    "32",
+    "--steps",
+    "300",
+    "--seed",
+    "4000"
+  ],
+  "cwd": "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition",
+  "exit_code": 0,
+  "wall_seconds": 9.999111249984708,
+  "note": "Final reporting version: algorithm and parameters unchanged; added random baseline aggregation and runtime/source checks."
+}

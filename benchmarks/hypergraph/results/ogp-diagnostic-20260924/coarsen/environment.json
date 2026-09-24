@@ -1,0 +1,38 @@
+{
+  "started_utc": "2026-09-24T09:04:43.927324+00:00",
+  "python_executable": "/opt/anaconda3/bin/python",
+  "python_version": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 08:22:19) [Clang 14.0.6 ]",
+  "numpy_version": "1.26.4",
+  "torch_version": "2.9.0",
+  "platform": "macOS-26.3-arm64-arm-64bit",
+  "machine": "arm64",
+  "git_head": "6008ff62adea4f24492ce0e2d9610a95036d92a0",
+  "git_status_at_start": "M README.md\n M src/hyper_solver.py\n M src/partition/hyper_utils.py\n?? benchmarks/hypergraph/\n?? kahypar_results.csv\n?? src/partition/hyper_quotient.py\n?? tests/test_hyper_quotient.py\n?? tests/test_time_budget_hgr.py",
+  "source_sha256_before": {
+    "benchmarks/hypergraph/ogp_coarsen_diagnostic.py": "a0bebba7bb5631d7600cf721c420ad3b77f504ab6f37ddb915bac1b821571092",
+    "benchmarks/hypergraph/coarsen_quotient.py": "07fa8bd59f12c8dfacb28eeb314c51097b03f7bf251d41dc0dfdc30daec38101",
+    "benchmarks/hypergraph/coarsen_feasibility.py": "3283de3eed068401a2ab0dced2cbcd4e796a02030151815996e60846a06cc26b",
+    "src/hyper_solver.py": "831d53415a1ba1ac9e63771de4299a37e1d07ce1cca64eea8ff43cd83419f818",
+    "src/partition/hyper_quotient.py": "de13bea84ae998e4656be3290b5f7a89111d2ce6a7f7fe54e301cd82dd5b014c",
+    "src/partition/hyper_utils.py": "6baa367f66d64524f76828f12d1449e66f8da7f803f051bd5f669713a04c05b5",
+    "tests/test_hyper_quotient.py": "9cdb3d29133cf81adf646a796f856b2ff6028af23a142a28c9b52a402e3d2a5c"
+  },
+  "thread_environment": {
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1"
+  },
+  "working_directory": "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition",
+  "invocation": "/opt/anaconda3/bin/python benchmarks/hypergraph/ogp_coarsen_diagnostic.py --instances 200 --seed 4000",
+  "finished_utc": "2026-09-24T09:04:48.462533+00:00",
+  "source_sha256_after": {
+    "benchmarks/hypergraph/ogp_coarsen_diagnostic.py": "a0bebba7bb5631d7600cf721c420ad3b77f504ab6f37ddb915bac1b821571092",
+    "benchmarks/hypergraph/coarsen_quotient.py": "07fa8bd59f12c8dfacb28eeb314c51097b03f7bf251d41dc0dfdc30daec38101",
+    "benchmarks/hypergraph/coarsen_feasibility.py": "3283de3eed068401a2ab0dced2cbcd4e796a02030151815996e60846a06cc26b",
+    "src/hyper_solver.py": "831d53415a1ba1ac9e63771de4299a37e1d07ce1cca64eea8ff43cd83419f818",
+    "src/partition/hyper_quotient.py": "de13bea84ae998e4656be3290b5f7a89111d2ce6a7f7fe54e301cd82dd5b014c",
+    "src/partition/hyper_utils.py": "6baa367f66d64524f76828f12d1449e66f8da7f803f051bd5f669713a04c05b5",
+    "tests/test_hyper_quotient.py": "9cdb3d29133cf81adf646a796f856b2ff6028af23a142a28c9b52a402e3d2a5c"
+  },
+  "sources_unchanged_during_run": true
+}

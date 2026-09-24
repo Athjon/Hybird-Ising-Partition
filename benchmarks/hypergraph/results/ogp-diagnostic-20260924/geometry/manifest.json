@@ -1,0 +1,54 @@
+{
+  "experiment": "complete finite-size native binary hypergraph overlap geometry",
+  "configuration": {
+    "sizes": [
+      8,
+      12,
+      16
+    ],
+    "instances": 10,
+    "epsilons": [
+      0,
+      1,
+      2
+    ],
+    "edge_density": 2,
+    "planted_probability": 0.75,
+    "seed": 20260924,
+    "max_block_entries": 262144,
+    "output": "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/ogp-diagnostic-20260924/geometry"
+  },
+  "python": "3.12.7",
+  "numpy": "1.26.4",
+  "overlap": "q=abs(n-2*HammingDistance)/n, label-flip invariant",
+  "near_optimal_set": "native cut <= exact optimum + absolute epsilon",
+  "edge_distribution": "edge_density*n independent 4-subsets with replacement; repeated hyperedges retained",
+  "planted_distribution": "with planted_probability choose a uniform planted half then uniform 4-subset; otherwise uniform global 4-subset",
+  "seed_formula": "base_seed + (0 for random, 1000000 for planted) + n*1000 + instance_index",
+  "pair_scope": "all unordered pairs of different solution classes; self support separately reported",
+  "interior_gap_definition": "missing full-feasible distinct-pair lattice point strictly between two observed distinct-pair support values",
+  "including_self_gap_definition": "missing full-feasible overlap lattice point between two support values allowing q=1 self-pairs; count only sets with >=2 solution classes and a q<1 distinct pair",
+  "legacy_field_semantics": "has_interior_gap and instances_with_interior_gap retain the original distinct-bounded diagnostic; it is NOT an OGP necessary condition",
+  "no_subsampling": true,
+  "maximum_n_guard": 16,
+  "limitations": [
+    "Synthetic ensembles are not manuscript benchmark instances.",
+    "n<=16 and three absolute thresholds cannot establish asymptotic OGP.",
+    "A finite-size gap does not imply an algorithmic lower bound.",
+    "The distinct-bounded diagnostic is stricter than the standard all-pairs overlap-gap definition; its absence is not absence of OGP.",
+    "An including-self gap can reflect only a sparse low-energy window; it does not establish an algorithmic barrier.",
+    "Singleton near-optimal sets are excluded from nontrivial gap evidence.",
+    "Neither finite-size diagnostic establishes or excludes ensemble OGP at other sizes or thresholds.",
+    "No HIP, FEM, SBM, MCMC or KaHyPar performance is evaluated here.",
+    "Planted n=8 has only one internal 4-subset per block; retained repeated nets make this especially simple.",
+    "Fixed absolute epsilon changes relative accuracy as n and m change."
+  ],
+  "elapsed_seconds": 0.39191304199630395,
+  "total_native_instances": 60,
+  "total_threshold_rows": 180,
+  "total_distinct_near_optimal_pairs_evaluated": 237596,
+  "total_threshold_rows_with_interior_gap": 0,
+  "total_threshold_rows_with_distinct_bounded_interior_gap": 0,
+  "total_threshold_rows_with_nontrivial_including_self_interior_gap": 3,
+  "total_threshold_rows_with_nontrivial_gap_with_self_upper_boundary": 3
+}

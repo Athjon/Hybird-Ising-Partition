@@ -1,0 +1,2387 @@
+{
+  "name": "weighted-n12-q3",
+  "family": "weighted",
+  "n": 12,
+  "q": 3,
+  "input_hashes": {
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-repair-20260924/weighted-n12-q3-input.json": "44349e4d2ce2decf57ad89094cdaf6f2a834ec86bd81925d526e032083a2971c",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-repair-20260924/weighted-n12-q3-assignments.npz": "e8cadc35581d04fdf8f4219ca1ab58077ba7bd7fdbb226251a3755ef3eb7b3ae"
+  },
+  "initial_assignment": [
+    2,
+    0,
+    0,
+    2,
+    1,
+    1,
+    0,
+    2,
+    2,
+    1,
+    1,
+    0
+  ],
+  "initial_cost": 48.5,
+  "exact_optimum": 44.5,
+  "feasible_labeled_states": 13560,
+  "runs": [
+    {
+      "method": "zero_local",
+      "seed": 0,
+      "seconds": 0.05530108400853351,
+      "best_cost": 45.0,
+      "best_gap": 0.5,
+      "final_cost": 45.0,
+      "best_assignment": [
+        2,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "final_assignment": [
+        2,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 2,
+        "uphill_accepted": 0,
+        "capacity_rejected": 1071,
+        "metropolis_rejected": 1102,
+        "no_op": 825,
+        "self_loops": 2998,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 3000,
+            "accepted": 2,
+            "uphill_accepted": 0,
+            "capacity_rejected": 1071,
+            "metropolis_rejected": 1102,
+            "no_op": 825,
+            "self_loops": 2998
+          },
+          "block": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 3,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 0
+    },
+    {
+      "method": "zero_local",
+      "seed": 1,
+      "seconds": 0.05560958298156038,
+      "best_cost": 45.0,
+      "best_gap": 0.5,
+      "final_cost": 45.0,
+      "best_assignment": [
+        2,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "final_assignment": [
+        2,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 1,
+        "uphill_accepted": 0,
+        "capacity_rejected": 1055,
+        "metropolis_rejected": 1130,
+        "no_op": 814,
+        "self_loops": 2999,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 3000,
+            "accepted": 1,
+            "uphill_accepted": 0,
+            "capacity_rejected": 1055,
+            "metropolis_rejected": 1130,
+            "no_op": 814,
+            "self_loops": 2999
+          },
+          "block": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 2,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 0
+    },
+    {
+      "method": "zero_local",
+      "seed": 2,
+      "seconds": 0.05532695900183171,
+      "best_cost": 45.0,
+      "best_gap": 0.5,
+      "final_cost": 45.0,
+      "best_assignment": [
+        2,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "final_assignment": [
+        2,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 1,
+        "uphill_accepted": 0,
+        "capacity_rejected": 1087,
+        "metropolis_rejected": 1063,
+        "no_op": 849,
+        "self_loops": 2999,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 3000,
+            "accepted": 1,
+            "uphill_accepted": 0,
+            "capacity_rejected": 1087,
+            "metropolis_rejected": 1063,
+            "no_op": 849,
+            "self_loops": 2999
+          },
+          "block": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 2,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 0
+    },
+    {
+      "method": "zero_local",
+      "seed": 3,
+      "seconds": 0.05491524998797104,
+      "best_cost": 44.5,
+      "best_gap": 0.0,
+      "final_cost": 44.5,
+      "best_assignment": [
+        2,
+        0,
+        0,
+        2,
+        1,
+        1,
+        2,
+        0,
+        0,
+        1,
+        1,
+        2
+      ],
+      "final_assignment": [
+        2,
+        0,
+        0,
+        2,
+        1,
+        1,
+        2,
+        0,
+        0,
+        1,
+        1,
+        2
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 2,
+        "uphill_accepted": 0,
+        "capacity_rejected": 1095,
+        "metropolis_rejected": 1074,
+        "no_op": 829,
+        "self_loops": 2998,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 3000,
+            "accepted": 2,
+            "uphill_accepted": 0,
+            "capacity_rejected": 1095,
+            "metropolis_rejected": 1074,
+            "no_op": 829,
+            "self_loops": 2998
+          },
+          "block": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 3,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 0
+    },
+    {
+      "method": "zero_local",
+      "seed": 4,
+      "seconds": 0.05608408304397017,
+      "best_cost": 45.0,
+      "best_gap": 0.5,
+      "final_cost": 45.0,
+      "best_assignment": [
+        2,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "final_assignment": [
+        2,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 1,
+        "uphill_accepted": 0,
+        "capacity_rejected": 1129,
+        "metropolis_rejected": 1071,
+        "no_op": 799,
+        "self_loops": 2999,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 3000,
+            "accepted": 1,
+            "uphill_accepted": 0,
+            "capacity_rejected": 1129,
+            "metropolis_rejected": 1071,
+            "no_op": 799,
+            "self_loops": 2999
+          },
+          "block": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 2,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 0
+    },
+    {
+      "method": "zero_local",
+      "seed": 5,
+      "seconds": 0.055400584009476006,
+      "best_cost": 45.0,
+      "best_gap": 0.5,
+      "final_cost": 45.0,
+      "best_assignment": [
+        2,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "final_assignment": [
+        2,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 1,
+        "uphill_accepted": 0,
+        "capacity_rejected": 1134,
+        "metropolis_rejected": 1052,
+        "no_op": 813,
+        "self_loops": 2999,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 3000,
+            "accepted": 1,
+            "uphill_accepted": 0,
+            "capacity_rejected": 1134,
+            "metropolis_rejected": 1052,
+            "no_op": 813,
+            "self_loops": 2999
+          },
+          "block": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 2,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 0
+    },
+    {
+      "method": "zero_local",
+      "seed": 6,
+      "seconds": 0.054668207943905145,
+      "best_cost": 45.0,
+      "best_gap": 0.5,
+      "final_cost": 45.0,
+      "best_assignment": [
+        2,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "final_assignment": [
+        2,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 1,
+        "uphill_accepted": 0,
+        "capacity_rejected": 1082,
+        "metropolis_rejected": 1077,
+        "no_op": 840,
+        "self_loops": 2999,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 3000,
+            "accepted": 1,
+            "uphill_accepted": 0,
+            "capacity_rejected": 1082,
+            "metropolis_rejected": 1077,
+            "no_op": 840,
+            "self_loops": 2999
+          },
+          "block": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 2,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 0
+    },
+    {
+      "method": "zero_local",
+      "seed": 7,
+      "seconds": 0.0546739159617573,
+      "best_cost": 44.5,
+      "best_gap": 0.0,
+      "final_cost": 44.5,
+      "best_assignment": [
+        2,
+        0,
+        0,
+        2,
+        1,
+        1,
+        2,
+        0,
+        0,
+        1,
+        1,
+        2
+      ],
+      "final_assignment": [
+        2,
+        0,
+        0,
+        2,
+        1,
+        1,
+        2,
+        0,
+        0,
+        1,
+        1,
+        2
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 2,
+        "uphill_accepted": 0,
+        "capacity_rejected": 1093,
+        "metropolis_rejected": 1053,
+        "no_op": 852,
+        "self_loops": 2998,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 3000,
+            "accepted": 2,
+            "uphill_accepted": 0,
+            "capacity_rejected": 1093,
+            "metropolis_rejected": 1053,
+            "no_op": 852,
+            "self_loops": 2998
+          },
+          "block": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 3,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 0
+    },
+    {
+      "method": "zero_local",
+      "seed": 8,
+      "seconds": 0.05749054200714454,
+      "best_cost": 45.0,
+      "best_gap": 0.5,
+      "final_cost": 45.0,
+      "best_assignment": [
+        2,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "final_assignment": [
+        2,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 1,
+        "uphill_accepted": 0,
+        "capacity_rejected": 1029,
+        "metropolis_rejected": 1123,
+        "no_op": 847,
+        "self_loops": 2999,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 3000,
+            "accepted": 1,
+            "uphill_accepted": 0,
+            "capacity_rejected": 1029,
+            "metropolis_rejected": 1123,
+            "no_op": 847,
+            "self_loops": 2999
+          },
+          "block": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 2,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 0
+    },
+    {
+      "method": "zero_local",
+      "seed": 9,
+      "seconds": 0.05583841702900827,
+      "best_cost": 45.0,
+      "best_gap": 0.5,
+      "final_cost": 45.0,
+      "best_assignment": [
+        2,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "final_assignment": [
+        2,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 1,
+        "uphill_accepted": 0,
+        "capacity_rejected": 1093,
+        "metropolis_rejected": 1098,
+        "no_op": 808,
+        "self_loops": 2999,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 3000,
+            "accepted": 1,
+            "uphill_accepted": 0,
+            "capacity_rejected": 1093,
+            "metropolis_rejected": 1098,
+            "no_op": 808,
+            "self_loops": 2999
+          },
+          "block": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 2,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 0
+    },
+    {
+      "method": "anneal_local",
+      "seed": 0,
+      "seconds": 0.05643483396852389,
+      "best_cost": 44.5,
+      "best_gap": 0.0,
+      "final_cost": 45.0,
+      "best_assignment": [
+        1,
+        2,
+        2,
+        1,
+        0,
+        0,
+        1,
+        2,
+        2,
+        0,
+        0,
+        1
+      ],
+      "final_assignment": [
+        1,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        1,
+        1,
+        2,
+        2,
+        1
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 280,
+        "uphill_accepted": 135,
+        "capacity_rejected": 1103,
+        "metropolis_rejected": 821,
+        "no_op": 796,
+        "self_loops": 2720,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 3000,
+            "accepted": 280,
+            "uphill_accepted": 135,
+            "capacity_rejected": 1103,
+            "metropolis_rejected": 821,
+            "no_op": 796,
+            "self_loops": 2720
+          },
+          "block": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 250,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 135
+    },
+    {
+      "method": "anneal_local",
+      "seed": 1,
+      "seconds": 0.056263000005856156,
+      "best_cost": 44.5,
+      "best_gap": 0.0,
+      "final_cost": 44.5,
+      "best_assignment": [
+        1,
+        0,
+        0,
+        1,
+        2,
+        2,
+        1,
+        0,
+        0,
+        2,
+        2,
+        1
+      ],
+      "final_assignment": [
+        1,
+        0,
+        0,
+        1,
+        2,
+        2,
+        1,
+        0,
+        0,
+        2,
+        2,
+        1
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 300,
+        "uphill_accepted": 142,
+        "capacity_rejected": 1043,
+        "metropolis_rejected": 822,
+        "no_op": 835,
+        "self_loops": 2700,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 3000,
+            "accepted": 300,
+            "uphill_accepted": 142,
+            "capacity_rejected": 1043,
+            "metropolis_rejected": 822,
+            "no_op": 835,
+            "self_loops": 2700
+          },
+          "block": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 266,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 142
+    },
+    {
+      "method": "anneal_local",
+      "seed": 2,
+      "seconds": 0.056575207971036434,
+      "best_cost": 44.5,
+      "best_gap": 0.0,
+      "final_cost": 44.5,
+      "best_assignment": [
+        2,
+        0,
+        0,
+        2,
+        1,
+        1,
+        2,
+        0,
+        0,
+        1,
+        1,
+        2
+      ],
+      "final_assignment": [
+        0,
+        2,
+        2,
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        1,
+        1,
+        0
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 247,
+        "uphill_accepted": 115,
+        "capacity_rejected": 1133,
+        "metropolis_rejected": 791,
+        "no_op": 829,
+        "self_loops": 2753,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 3000,
+            "accepted": 247,
+            "uphill_accepted": 115,
+            "capacity_rejected": 1133,
+            "metropolis_rejected": 791,
+            "no_op": 829,
+            "self_loops": 2753
+          },
+          "block": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 220,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 115
+    },
+    {
+      "method": "anneal_local",
+      "seed": 3,
+      "seconds": 0.05882387503515929,
+      "best_cost": 44.5,
+      "best_gap": 0.0,
+      "final_cost": 44.5,
+      "best_assignment": [
+        1,
+        2,
+        2,
+        1,
+        0,
+        0,
+        1,
+        2,
+        2,
+        0,
+        0,
+        1
+      ],
+      "final_assignment": [
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        0,
+        1,
+        1,
+        2,
+        2,
+        0
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 286,
+        "uphill_accepted": 138,
+        "capacity_rejected": 1085,
+        "metropolis_rejected": 824,
+        "no_op": 805,
+        "self_loops": 2714,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 3000,
+            "accepted": 286,
+            "uphill_accepted": 138,
+            "capacity_rejected": 1085,
+            "metropolis_rejected": 824,
+            "no_op": 805,
+            "self_loops": 2714
+          },
+          "block": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 263,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 138
+    },
+    {
+      "method": "anneal_local",
+      "seed": 4,
+      "seconds": 0.06158695800695568,
+      "best_cost": 44.5,
+      "best_gap": 0.0,
+      "final_cost": 45.0,
+      "best_assignment": [
+        1,
+        0,
+        0,
+        1,
+        2,
+        2,
+        1,
+        0,
+        0,
+        2,
+        2,
+        1
+      ],
+      "final_assignment": [
+        0,
+        1,
+        1,
+        1,
+        2,
+        2,
+        1,
+        0,
+        0,
+        2,
+        2,
+        0
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 257,
+        "uphill_accepted": 120,
+        "capacity_rejected": 1115,
+        "metropolis_rejected": 819,
+        "no_op": 809,
+        "self_loops": 2743,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 3000,
+            "accepted": 257,
+            "uphill_accepted": 120,
+            "capacity_rejected": 1115,
+            "metropolis_rejected": 819,
+            "no_op": 809,
+            "self_loops": 2743
+          },
+          "block": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 233,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 120
+    },
+    {
+      "method": "anneal_local",
+      "seed": 5,
+      "seconds": 0.05724787502549589,
+      "best_cost": 44.5,
+      "best_gap": 0.0,
+      "final_cost": 45.0,
+      "best_assignment": [
+        1,
+        2,
+        2,
+        1,
+        0,
+        0,
+        1,
+        2,
+        2,
+        0,
+        0,
+        1
+      ],
+      "final_assignment": [
+        1,
+        2,
+        2,
+        2,
+        0,
+        0,
+        2,
+        1,
+        1,
+        0,
+        0,
+        1
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 242,
+        "uphill_accepted": 113,
+        "capacity_rejected": 1128,
+        "metropolis_rejected": 827,
+        "no_op": 803,
+        "self_loops": 2758,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 3000,
+            "accepted": 242,
+            "uphill_accepted": 113,
+            "capacity_rejected": 1128,
+            "metropolis_rejected": 827,
+            "no_op": 803,
+            "self_loops": 2758
+          },
+          "block": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 204,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 113
+    },
+    {
+      "method": "anneal_local",
+      "seed": 6,
+      "seconds": 0.05571250000502914,
+      "best_cost": 44.5,
+      "best_gap": 0.0,
+      "final_cost": 44.5,
+      "best_assignment": [
+        0,
+        2,
+        2,
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        1,
+        1,
+        0
+      ],
+      "final_assignment": [
+        2,
+        0,
+        0,
+        2,
+        1,
+        1,
+        2,
+        0,
+        0,
+        1,
+        1,
+        2
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 257,
+        "uphill_accepted": 122,
+        "capacity_rejected": 1058,
+        "metropolis_rejected": 805,
+        "no_op": 880,
+        "self_loops": 2743,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 3000,
+            "accepted": 257,
+            "uphill_accepted": 122,
+            "capacity_rejected": 1058,
+            "metropolis_rejected": 805,
+            "no_op": 880,
+            "self_loops": 2743
+          },
+          "block": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 234,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 122
+    },
+    {
+      "method": "anneal_local",
+      "seed": 7,
+      "seconds": 0.056280082964804024,
+      "best_cost": 44.5,
+      "best_gap": 0.0,
+      "final_cost": 45.0,
+      "best_assignment": [
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        0,
+        1,
+        1,
+        2,
+        2,
+        0
+      ],
+      "final_assignment": [
+        0,
+        1,
+        1,
+        1,
+        2,
+        2,
+        1,
+        0,
+        0,
+        2,
+        2,
+        0
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 303,
+        "uphill_accepted": 160,
+        "capacity_rejected": 1093,
+        "metropolis_rejected": 771,
+        "no_op": 833,
+        "self_loops": 2697,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 3000,
+            "accepted": 303,
+            "uphill_accepted": 160,
+            "capacity_rejected": 1093,
+            "metropolis_rejected": 771,
+            "no_op": 833,
+            "self_loops": 2697
+          },
+          "block": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 272,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 160
+    },
+    {
+      "method": "anneal_local",
+      "seed": 8,
+      "seconds": 0.05622716702055186,
+      "best_cost": 44.5,
+      "best_gap": 0.0,
+      "final_cost": 45.0,
+      "best_assignment": [
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        0,
+        1,
+        1,
+        2,
+        2,
+        0
+      ],
+      "final_assignment": [
+        1,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        1,
+        1,
+        2,
+        2,
+        1
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 298,
+        "uphill_accepted": 147,
+        "capacity_rejected": 1011,
+        "metropolis_rejected": 838,
+        "no_op": 853,
+        "self_loops": 2702,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 3000,
+            "accepted": 298,
+            "uphill_accepted": 147,
+            "capacity_rejected": 1011,
+            "metropolis_rejected": 838,
+            "no_op": 853,
+            "self_loops": 2702
+          },
+          "block": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 255,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 147
+    },
+    {
+      "method": "anneal_local",
+      "seed": 9,
+      "seconds": 0.055609542003367096,
+      "best_cost": 44.5,
+      "best_gap": 0.0,
+      "final_cost": 44.5,
+      "best_assignment": [
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        0,
+        1,
+        1,
+        2,
+        2,
+        0
+      ],
+      "final_assignment": [
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        0,
+        1,
+        1,
+        2,
+        2,
+        0
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 246,
+        "uphill_accepted": 132,
+        "capacity_rejected": 1075,
+        "metropolis_rejected": 826,
+        "no_op": 853,
+        "self_loops": 2754,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 3000,
+            "accepted": 246,
+            "uphill_accepted": 132,
+            "capacity_rejected": 1075,
+            "metropolis_rejected": 826,
+            "no_op": 853,
+            "self_loops": 2754
+          },
+          "block": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 211,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 132
+    },
+    {
+      "method": "anneal_block",
+      "seed": 0,
+      "seconds": 0.06488824996631593,
+      "best_cost": 44.5,
+      "best_gap": 0.0,
+      "final_cost": 44.5,
+      "best_assignment": [
+        1,
+        0,
+        0,
+        1,
+        2,
+        2,
+        1,
+        0,
+        0,
+        2,
+        2,
+        1
+      ],
+      "final_assignment": [
+        1,
+        0,
+        0,
+        1,
+        2,
+        2,
+        1,
+        0,
+        0,
+        2,
+        2,
+        1
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 226,
+        "uphill_accepted": 112,
+        "capacity_rejected": 1455,
+        "metropolis_rejected": 650,
+        "no_op": 669,
+        "self_loops": 2774,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 2296,
+            "accepted": 199,
+            "uphill_accepted": 101,
+            "capacity_rejected": 881,
+            "metropolis_rejected": 568,
+            "no_op": 648,
+            "self_loops": 2097
+          },
+          "block": {
+            "attempted": 704,
+            "accepted": 27,
+            "uphill_accepted": 11,
+            "capacity_rejected": 574,
+            "metropolis_rejected": 82,
+            "no_op": 21,
+            "self_loops": 677
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 197,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 112
+    },
+    {
+      "method": "anneal_block",
+      "seed": 1,
+      "seconds": 0.06552854098845273,
+      "best_cost": 44.5,
+      "best_gap": 0.0,
+      "final_cost": 44.5,
+      "best_assignment": [
+        2,
+        1,
+        1,
+        2,
+        0,
+        0,
+        2,
+        1,
+        1,
+        0,
+        0,
+        2
+      ],
+      "final_assignment": [
+        2,
+        0,
+        0,
+        2,
+        1,
+        1,
+        2,
+        0,
+        0,
+        1,
+        1,
+        2
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 226,
+        "uphill_accepted": 113,
+        "capacity_rejected": 1397,
+        "metropolis_rejected": 737,
+        "no_op": 640,
+        "self_loops": 2774,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 2275,
+            "accepted": 200,
+            "uphill_accepted": 103,
+            "capacity_rejected": 813,
+            "metropolis_rejected": 645,
+            "no_op": 617,
+            "self_loops": 2075
+          },
+          "block": {
+            "attempted": 725,
+            "accepted": 26,
+            "uphill_accepted": 10,
+            "capacity_rejected": 584,
+            "metropolis_rejected": 92,
+            "no_op": 23,
+            "self_loops": 699
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 206,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 113
+    },
+    {
+      "method": "anneal_block",
+      "seed": 2,
+      "seconds": 0.06643216696102172,
+      "best_cost": 44.5,
+      "best_gap": 0.0,
+      "final_cost": 44.5,
+      "best_assignment": [
+        2,
+        0,
+        0,
+        2,
+        1,
+        1,
+        2,
+        0,
+        0,
+        1,
+        1,
+        2
+      ],
+      "final_assignment": [
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        0,
+        1,
+        1,
+        2,
+        2,
+        0
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 220,
+        "uphill_accepted": 100,
+        "capacity_rejected": 1458,
+        "metropolis_rejected": 710,
+        "no_op": 612,
+        "self_loops": 2780,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 2232,
+            "accepted": 188,
+            "uphill_accepted": 84,
+            "capacity_rejected": 834,
+            "metropolis_rejected": 616,
+            "no_op": 594,
+            "self_loops": 2044
+          },
+          "block": {
+            "attempted": 768,
+            "accepted": 32,
+            "uphill_accepted": 16,
+            "capacity_rejected": 624,
+            "metropolis_rejected": 94,
+            "no_op": 18,
+            "self_loops": 736
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 204,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 100
+    },
+    {
+      "method": "anneal_block",
+      "seed": 3,
+      "seconds": 0.06598720798501745,
+      "best_cost": 48.5,
+      "best_gap": 4.0,
+      "final_cost": 49.0,
+      "best_assignment": [
+        2,
+        0,
+        0,
+        2,
+        1,
+        1,
+        0,
+        2,
+        2,
+        1,
+        1,
+        0
+      ],
+      "final_assignment": [
+        1,
+        2,
+        0,
+        1,
+        0,
+        2,
+        0,
+        0,
+        1,
+        2,
+        0,
+        1
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 207,
+        "uphill_accepted": 94,
+        "capacity_rejected": 1547,
+        "metropolis_rejected": 586,
+        "no_op": 660,
+        "self_loops": 2793,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 2239,
+            "accepted": 173,
+            "uphill_accepted": 74,
+            "capacity_rejected": 930,
+            "metropolis_rejected": 493,
+            "no_op": 643,
+            "self_loops": 2066
+          },
+          "block": {
+            "attempted": 761,
+            "accepted": 34,
+            "uphill_accepted": 20,
+            "capacity_rejected": 617,
+            "metropolis_rejected": 93,
+            "no_op": 17,
+            "self_loops": 727
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 174,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 94
+    },
+    {
+      "method": "anneal_block",
+      "seed": 4,
+      "seconds": 0.06618912500562146,
+      "best_cost": 44.5,
+      "best_gap": 0.0,
+      "final_cost": 46.5,
+      "best_assignment": [
+        1,
+        0,
+        0,
+        1,
+        2,
+        2,
+        1,
+        0,
+        0,
+        2,
+        2,
+        1
+      ],
+      "final_assignment": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        2,
+        0,
+        2,
+        2,
+        1,
+        2,
+        0
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 242,
+        "uphill_accepted": 110,
+        "capacity_rejected": 1448,
+        "metropolis_rejected": 679,
+        "no_op": 631,
+        "self_loops": 2758,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 2264,
+            "accepted": 213,
+            "uphill_accepted": 99,
+            "capacity_rejected": 848,
+            "metropolis_rejected": 589,
+            "no_op": 614,
+            "self_loops": 2051
+          },
+          "block": {
+            "attempted": 736,
+            "accepted": 29,
+            "uphill_accepted": 11,
+            "capacity_rejected": 600,
+            "metropolis_rejected": 90,
+            "no_op": 17,
+            "self_loops": 707
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 221,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 110
+    },
+    {
+      "method": "anneal_block",
+      "seed": 5,
+      "seconds": 0.06575020897435024,
+      "best_cost": 44.5,
+      "best_gap": 0.0,
+      "final_cost": 44.5,
+      "best_assignment": [
+        1,
+        2,
+        2,
+        1,
+        0,
+        0,
+        1,
+        2,
+        2,
+        0,
+        0,
+        1
+      ],
+      "final_assignment": [
+        1,
+        0,
+        0,
+        1,
+        2,
+        2,
+        1,
+        0,
+        0,
+        2,
+        2,
+        1
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 219,
+        "uphill_accepted": 107,
+        "capacity_rejected": 1468,
+        "metropolis_rejected": 682,
+        "no_op": 631,
+        "self_loops": 2781,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 2235,
+            "accepted": 187,
+            "uphill_accepted": 92,
+            "capacity_rejected": 845,
+            "metropolis_rejected": 598,
+            "no_op": 605,
+            "self_loops": 2048
+          },
+          "block": {
+            "attempted": 765,
+            "accepted": 32,
+            "uphill_accepted": 15,
+            "capacity_rejected": 623,
+            "metropolis_rejected": 84,
+            "no_op": 26,
+            "self_loops": 733
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 197,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 107
+    },
+    {
+      "method": "anneal_block",
+      "seed": 6,
+      "seconds": 0.06539666600292549,
+      "best_cost": 44.5,
+      "best_gap": 0.0,
+      "final_cost": 44.5,
+      "best_assignment": [
+        2,
+        0,
+        0,
+        2,
+        1,
+        1,
+        2,
+        0,
+        0,
+        1,
+        1,
+        2
+      ],
+      "final_assignment": [
+        2,
+        0,
+        0,
+        2,
+        1,
+        1,
+        2,
+        0,
+        0,
+        1,
+        1,
+        2
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 248,
+        "uphill_accepted": 107,
+        "capacity_rejected": 1431,
+        "metropolis_rejected": 679,
+        "no_op": 642,
+        "self_loops": 2752,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 2268,
+            "accepted": 231,
+            "uphill_accepted": 100,
+            "capacity_rejected": 822,
+            "metropolis_rejected": 595,
+            "no_op": 620,
+            "self_loops": 2037
+          },
+          "block": {
+            "attempted": 732,
+            "accepted": 17,
+            "uphill_accepted": 7,
+            "capacity_rejected": 609,
+            "metropolis_rejected": 84,
+            "no_op": 22,
+            "self_loops": 715
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 216,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 107
+    },
+    {
+      "method": "anneal_block",
+      "seed": 7,
+      "seconds": 0.06477195804473013,
+      "best_cost": 45.0,
+      "best_gap": 0.5,
+      "final_cost": 46.5,
+      "best_assignment": [
+        2,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "final_assignment": [
+        2,
+        1,
+        1,
+        2,
+        2,
+        0,
+        1,
+        0,
+        0,
+        2,
+        0,
+        1
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 215,
+        "uphill_accepted": 102,
+        "capacity_rejected": 1475,
+        "metropolis_rejected": 652,
+        "no_op": 658,
+        "self_loops": 2785,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 2274,
+            "accepted": 190,
+            "uphill_accepted": 91,
+            "capacity_rejected": 872,
+            "metropolis_rejected": 571,
+            "no_op": 641,
+            "self_loops": 2084
+          },
+          "block": {
+            "attempted": 726,
+            "accepted": 25,
+            "uphill_accepted": 11,
+            "capacity_rejected": 603,
+            "metropolis_rejected": 81,
+            "no_op": 17,
+            "self_loops": 701
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 197,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 102
+    },
+    {
+      "method": "anneal_block",
+      "seed": 8,
+      "seconds": 0.06673204200342298,
+      "best_cost": 44.5,
+      "best_gap": 0.0,
+      "final_cost": 44.5,
+      "best_assignment": [
+        0,
+        2,
+        2,
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        1,
+        1,
+        0
+      ],
+      "final_assignment": [
+        0,
+        2,
+        2,
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        1,
+        1,
+        0
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 200,
+        "uphill_accepted": 93,
+        "capacity_rejected": 1443,
+        "metropolis_rejected": 722,
+        "no_op": 635,
+        "self_loops": 2800,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 2257,
+            "accepted": 178,
+            "uphill_accepted": 80,
+            "capacity_rejected": 838,
+            "metropolis_rejected": 635,
+            "no_op": 606,
+            "self_loops": 2079
+          },
+          "block": {
+            "attempted": 743,
+            "accepted": 22,
+            "uphill_accepted": 13,
+            "capacity_rejected": 605,
+            "metropolis_rejected": 87,
+            "no_op": 29,
+            "self_loops": 721
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 176,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 93
+    },
+    {
+      "method": "anneal_block",
+      "seed": 9,
+      "seconds": 0.07435158296721056,
+      "best_cost": 44.5,
+      "best_gap": 0.0,
+      "final_cost": 45.0,
+      "best_assignment": [
+        0,
+        2,
+        2,
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        1,
+        1,
+        0
+      ],
+      "final_assignment": [
+        1,
+        2,
+        2,
+        2,
+        0,
+        0,
+        2,
+        1,
+        1,
+        0,
+        0,
+        1
+      ],
+      "proposal_statistics": {
+        "attempted": 3000,
+        "accepted": 235,
+        "uphill_accepted": 119,
+        "capacity_rejected": 1458,
+        "metropolis_rejected": 701,
+        "no_op": 606,
+        "self_loops": 2765,
+        "by_kind": {
+          "move": {
+            "attempted": 0,
+            "accepted": 0,
+            "uphill_accepted": 0,
+            "capacity_rejected": 0,
+            "metropolis_rejected": 0,
+            "no_op": 0,
+            "self_loops": 0
+          },
+          "swap": {
+            "attempted": 2236,
+            "accepted": 208,
+            "uphill_accepted": 107,
+            "capacity_rejected": 833,
+            "metropolis_rejected": 615,
+            "no_op": 580,
+            "self_loops": 2028
+          },
+          "block": {
+            "attempted": 764,
+            "accepted": 27,
+            "uphill_accepted": 12,
+            "capacity_rejected": 625,
+            "metropolis_rejected": 86,
+            "no_op": 26,
+            "self_loops": 737
+          }
+        }
+      },
+      "distinct_labeled_states_visited": 215,
+      "all_states_oracle_verified": true,
+      "accepted_uphill_steps": 119
+    }
+  ],
+  "local_reachability": {
+    "profile": [
+      {
+        "weight": 1.0,
+        "counts_by_block": [
+          2,
+          2,
+          2
+        ]
+      },
+      {
+        "weight": 2.0,
+        "counts_by_block": [
+          2,
+          2,
+          2
+        ]
+      }
+    ],
+    "reachable_labeled_states": 8100,
+    "restricted_optimum": 44.5
+  },
+  "aggregate": [
+    {
+      "method": "zero_local",
+      "runs": 10,
+      "optimal_hits": 2,
+      "mean_best_gap": 0.4,
+      "median_seconds": 0.05536377150565386,
+      "visited_other_optimal_class": 0
+    },
+    {
+      "method": "anneal_local",
+      "runs": 10,
+      "optimal_hits": 10,
+      "mean_best_gap": 0.0,
+      "median_seconds": 0.05635745846666396,
+      "visited_other_optimal_class": 0
+    },
+    {
+      "method": "anneal_block",
+      "runs": 10,
+      "optimal_hits": 8,
+      "mean_best_gap": 0.45,
+      "median_seconds": 0.06586870847968385,
+      "visited_other_optimal_class": 0
+    }
+  ]
+}

@@ -1,0 +1,1308 @@
+{
+  "started_utc": "2026-09-24T11:25:36.651251+00:00",
+  "environment": {
+    "python": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 08:22:19) [Clang 14.0.6 ]",
+    "numpy": "1.26.4",
+    "torch": "2.9.0",
+    "platform": "macOS-26.3-arm64-arm-64bit",
+    "torch_threads": 1
+  },
+  "git_head": "6008ff62adea4f24492ce0e2d9610a95036d92a0",
+  "scope": {
+    "included": [
+      "objective exact set (40)",
+      "weighted-capacity set (4)",
+      "IBM01/IBM02 seeds 30--39 (20)",
+      "bad_for_ec seeds 30--39"
+    ],
+    "excluded": {
+      "geometry 60": "OGP/overlap diagnostic, not an IEP performance suite",
+      "coarsening 400": "coarsening representational/feasibility diagnostic, not an IEP solver suite",
+      "finite-gap 3": "subset of geometry 60, not independent cases",
+      "legacy named cases": "raw inputs are unavailable locally"
+    }
+  },
+  "input_hashes": {
+    "ibm01.hgr": "40f7f7c4dfd96c06b0570f696e67b9c667ac2cbdf4d0858da5e690f4f4d5ac72",
+    "ibm02.hgr": "ff09f3be9ed84a8c13257f1655555938072cdf01fae40f1548795763981eae05",
+    "bad_for_ec.hgr": "33ddff8bb4c3f9ccbb36a2df1deb8184c5157d2d340a9e39a952e237caf56416"
+  },
+  "objective": {
+    "case_count": 40,
+    "successful": 40,
+    "feasible": 40,
+    "exact_hits": 40,
+    "input_sha256": "0a82ede2b8047270a51a15fc2419451ac75f22e8d008e5d1654249bc4d622ec2",
+    "rows": [
+      {
+        "n": 12,
+        "family": "random",
+        "seed": 16000,
+        "native_cut": 18.0,
+        "block_loads": [
+          6.0,
+          6.0
+        ],
+        "capacity": 6.0,
+        "capacity_tolerance": 1.2e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 12,
+        "family": "random",
+        "seed": 16001,
+        "native_cut": 19.0,
+        "block_loads": [
+          6.0,
+          6.0
+        ],
+        "capacity": 6.0,
+        "capacity_tolerance": 1.2e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 12,
+        "family": "random",
+        "seed": 16002,
+        "native_cut": 18.0,
+        "block_loads": [
+          6.0,
+          6.0
+        ],
+        "capacity": 6.0,
+        "capacity_tolerance": 1.2e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 12,
+        "family": "random",
+        "seed": 16003,
+        "native_cut": 17.0,
+        "block_loads": [
+          6.0,
+          6.0
+        ],
+        "capacity": 6.0,
+        "capacity_tolerance": 1.2e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 12,
+        "family": "random",
+        "seed": 16004,
+        "native_cut": 19.0,
+        "block_loads": [
+          6.0,
+          6.0
+        ],
+        "capacity": 6.0,
+        "capacity_tolerance": 1.2e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 12,
+        "family": "random",
+        "seed": 16005,
+        "native_cut": 19.0,
+        "block_loads": [
+          6.0,
+          6.0
+        ],
+        "capacity": 6.0,
+        "capacity_tolerance": 1.2e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 12,
+        "family": "random",
+        "seed": 16006,
+        "native_cut": 18.0,
+        "block_loads": [
+          6.0,
+          6.0
+        ],
+        "capacity": 6.0,
+        "capacity_tolerance": 1.2e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 12,
+        "family": "random",
+        "seed": 16007,
+        "native_cut": 19.0,
+        "block_loads": [
+          6.0,
+          6.0
+        ],
+        "capacity": 6.0,
+        "capacity_tolerance": 1.2e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 12,
+        "family": "random",
+        "seed": 16008,
+        "native_cut": 18.0,
+        "block_loads": [
+          6.0,
+          6.0
+        ],
+        "capacity": 6.0,
+        "capacity_tolerance": 1.2e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 12,
+        "family": "random",
+        "seed": 16009,
+        "native_cut": 19.0,
+        "block_loads": [
+          6.0,
+          6.0
+        ],
+        "capacity": 6.0,
+        "capacity_tolerance": 1.2e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 12,
+        "family": "planted",
+        "seed": 116000,
+        "native_cut": 6.0,
+        "block_loads": [
+          6.0,
+          6.0
+        ],
+        "capacity": 6.0,
+        "capacity_tolerance": 1.2e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 12,
+        "family": "planted",
+        "seed": 116001,
+        "native_cut": 8.0,
+        "block_loads": [
+          6.0,
+          6.0
+        ],
+        "capacity": 6.0,
+        "capacity_tolerance": 1.2e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 12,
+        "family": "planted",
+        "seed": 116002,
+        "native_cut": 4.0,
+        "block_loads": [
+          6.0,
+          6.0
+        ],
+        "capacity": 6.0,
+        "capacity_tolerance": 1.2e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 12,
+        "family": "planted",
+        "seed": 116003,
+        "native_cut": 5.0,
+        "block_loads": [
+          6.0,
+          6.0
+        ],
+        "capacity": 6.0,
+        "capacity_tolerance": 1.2e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 12,
+        "family": "planted",
+        "seed": 116004,
+        "native_cut": 5.0,
+        "block_loads": [
+          6.0,
+          6.0
+        ],
+        "capacity": 6.0,
+        "capacity_tolerance": 1.2e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 12,
+        "family": "planted",
+        "seed": 116005,
+        "native_cut": 4.0,
+        "block_loads": [
+          6.0,
+          6.0
+        ],
+        "capacity": 6.0,
+        "capacity_tolerance": 1.2e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 12,
+        "family": "planted",
+        "seed": 116006,
+        "native_cut": 3.0,
+        "block_loads": [
+          6.0,
+          6.0
+        ],
+        "capacity": 6.0,
+        "capacity_tolerance": 1.2e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 12,
+        "family": "planted",
+        "seed": 116007,
+        "native_cut": 4.0,
+        "block_loads": [
+          6.0,
+          6.0
+        ],
+        "capacity": 6.0,
+        "capacity_tolerance": 1.2e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 12,
+        "family": "planted",
+        "seed": 116008,
+        "native_cut": 1.0,
+        "block_loads": [
+          6.0,
+          6.0
+        ],
+        "capacity": 6.0,
+        "capacity_tolerance": 1.2e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 12,
+        "family": "planted",
+        "seed": 116009,
+        "native_cut": 2.0,
+        "block_loads": [
+          6.0,
+          6.0
+        ],
+        "capacity": 6.0,
+        "capacity_tolerance": 1.2e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 16,
+        "family": "random",
+        "seed": 20000,
+        "native_cut": 24.0,
+        "block_loads": [
+          8.0,
+          8.0
+        ],
+        "capacity": 8.0,
+        "capacity_tolerance": 1.6e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 16,
+        "family": "random",
+        "seed": 20001,
+        "native_cut": 23.0,
+        "block_loads": [
+          8.0,
+          8.0
+        ],
+        "capacity": 8.0,
+        "capacity_tolerance": 1.6e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 16,
+        "family": "random",
+        "seed": 20002,
+        "native_cut": 25.0,
+        "block_loads": [
+          8.0,
+          8.0
+        ],
+        "capacity": 8.0,
+        "capacity_tolerance": 1.6e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 16,
+        "family": "random",
+        "seed": 20003,
+        "native_cut": 22.0,
+        "block_loads": [
+          8.0,
+          8.0
+        ],
+        "capacity": 8.0,
+        "capacity_tolerance": 1.6e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 16,
+        "family": "random",
+        "seed": 20004,
+        "native_cut": 22.0,
+        "block_loads": [
+          8.0,
+          8.0
+        ],
+        "capacity": 8.0,
+        "capacity_tolerance": 1.6e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 16,
+        "family": "random",
+        "seed": 20005,
+        "native_cut": 23.0,
+        "block_loads": [
+          8.0,
+          8.0
+        ],
+        "capacity": 8.0,
+        "capacity_tolerance": 1.6e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 16,
+        "family": "random",
+        "seed": 20006,
+        "native_cut": 23.0,
+        "block_loads": [
+          8.0,
+          8.0
+        ],
+        "capacity": 8.0,
+        "capacity_tolerance": 1.6e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 16,
+        "family": "random",
+        "seed": 20007,
+        "native_cut": 24.0,
+        "block_loads": [
+          8.0,
+          8.0
+        ],
+        "capacity": 8.0,
+        "capacity_tolerance": 1.6e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 16,
+        "family": "random",
+        "seed": 20008,
+        "native_cut": 23.0,
+        "block_loads": [
+          8.0,
+          8.0
+        ],
+        "capacity": 8.0,
+        "capacity_tolerance": 1.6e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 16,
+        "family": "random",
+        "seed": 20009,
+        "native_cut": 24.0,
+        "block_loads": [
+          8.0,
+          8.0
+        ],
+        "capacity": 8.0,
+        "capacity_tolerance": 1.6e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 16,
+        "family": "planted",
+        "seed": 120000,
+        "native_cut": 0.0,
+        "block_loads": [
+          8.0,
+          8.0
+        ],
+        "capacity": 8.0,
+        "capacity_tolerance": 1.6e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 16,
+        "family": "planted",
+        "seed": 120001,
+        "native_cut": 6.0,
+        "block_loads": [
+          8.0,
+          8.0
+        ],
+        "capacity": 8.0,
+        "capacity_tolerance": 1.6e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 16,
+        "family": "planted",
+        "seed": 120002,
+        "native_cut": 3.0,
+        "block_loads": [
+          8.0,
+          8.0
+        ],
+        "capacity": 8.0,
+        "capacity_tolerance": 1.6e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 16,
+        "family": "planted",
+        "seed": 120003,
+        "native_cut": 2.0,
+        "block_loads": [
+          8.0,
+          8.0
+        ],
+        "capacity": 8.0,
+        "capacity_tolerance": 1.6e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 16,
+        "family": "planted",
+        "seed": 120004,
+        "native_cut": 6.0,
+        "block_loads": [
+          8.0,
+          8.0
+        ],
+        "capacity": 8.0,
+        "capacity_tolerance": 1.6e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 16,
+        "family": "planted",
+        "seed": 120005,
+        "native_cut": 4.0,
+        "block_loads": [
+          8.0,
+          8.0
+        ],
+        "capacity": 8.0,
+        "capacity_tolerance": 1.6e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 16,
+        "family": "planted",
+        "seed": 120006,
+        "native_cut": 3.0,
+        "block_loads": [
+          8.0,
+          8.0
+        ],
+        "capacity": 8.0,
+        "capacity_tolerance": 1.6e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 16,
+        "family": "planted",
+        "seed": 120007,
+        "native_cut": 6.0,
+        "block_loads": [
+          8.0,
+          8.0
+        ],
+        "capacity": 8.0,
+        "capacity_tolerance": 1.6e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 16,
+        "family": "planted",
+        "seed": 120008,
+        "native_cut": 3.0,
+        "block_loads": [
+          8.0,
+          8.0
+        ],
+        "capacity": 8.0,
+        "capacity_tolerance": 1.6e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "n": 16,
+        "family": "planted",
+        "seed": 120009,
+        "native_cut": 7.0,
+        "block_loads": [
+          8.0,
+          8.0
+        ],
+        "capacity": 8.0,
+        "capacity_tolerance": 1.6e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      }
+    ]
+  },
+  "weighted": {
+    "case_count": 4,
+    "successful": 4,
+    "feasible": 4,
+    "exact_hits": 1,
+    "rows": [
+      {
+        "name": "weighted-n08-q2",
+        "n": 8,
+        "q": 2,
+        "exact_optimum": 17.5,
+        "exact_feasible_states": 44,
+        "fem_gap": 3.5,
+        "input_sha256": "3c42849391e71f3c9797b6e05614832eb5675dbe3bb7750c190315b78cc6ff94",
+        "native_cut": 21.0,
+        "block_loads": [
+          6.0,
+          6.0
+        ],
+        "capacity": 6.0,
+        "capacity_tolerance": 1.2e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "name": "weighted-n08-q3",
+        "n": 8,
+        "q": 3,
+        "exact_optimum": 37.0,
+        "exact_feasible_states": 234,
+        "fem_gap": 0.0,
+        "input_sha256": "a5302d3f3ba6623b0790d8ef2094f54247bf8d7c1ed4ad2608455b601106fb31",
+        "native_cut": 37.0,
+        "block_loads": [
+          4.0,
+          4.0,
+          4.0
+        ],
+        "capacity": 4.0,
+        "capacity_tolerance": 1.2e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "name": "weighted-n12-q2",
+        "n": 12,
+        "q": 2,
+        "exact_optimum": 22.0,
+        "exact_feasible_states": 580,
+        "fem_gap": 3.5,
+        "input_sha256": "cebf7aca4a012ab8dba498551bd1f2556e6364baba9df4a2fb1d2fe1dd31a0d6",
+        "native_cut": 25.5,
+        "block_loads": [
+          9.0,
+          9.0
+        ],
+        "capacity": 9.0,
+        "capacity_tolerance": 1.8e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      },
+      {
+        "name": "weighted-n12-q3",
+        "n": 12,
+        "q": 3,
+        "exact_optimum": 44.5,
+        "exact_feasible_states": 13560,
+        "fem_gap": 4.0,
+        "input_sha256": "44349e4d2ce2decf57ad89094cdaf6f2a834ec86bd81925d526e032083a2971c",
+        "native_cut": 48.5,
+        "block_loads": [
+          6.0,
+          6.0,
+          6.0
+        ],
+        "capacity": 6.0,
+        "capacity_tolerance": 1.8e-09,
+        "feasible": true,
+        "independent_native_cut_verified": true
+      }
+    ]
+  },
+  "ibm": {
+    "case_count": 20,
+    "successful": 20,
+    "feasible_coarse_and_final": 20,
+    "rows": [
+      {
+        "instance": "ibm01",
+        "seed": 30,
+        "coarse_lifted": {
+          "native_cut": 1571.0,
+          "block_loads": [
+            3235.0,
+            3235.0,
+            3121.0,
+            3161.0
+          ],
+          "capacity": 3283.64,
+          "capacity_tolerance": 1.2752e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "final": {
+          "native_cut": 806.0,
+          "block_loads": [
+            3234.0,
+            3201.0,
+            3280.0,
+            3037.0
+          ],
+          "capacity": 3283.64,
+          "capacity_tolerance": 1.2752e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "input_sha256": "40f7f7c4dfd96c06b0570f696e67b9c667ac2cbdf4d0858da5e690f4f4d5ac72"
+      },
+      {
+        "instance": "ibm01",
+        "seed": 31,
+        "coarse_lifted": {
+          "native_cut": 1433.0,
+          "block_loads": [
+            3153.0,
+            3179.0,
+            3240.0,
+            3180.0
+          ],
+          "capacity": 3283.64,
+          "capacity_tolerance": 1.2752e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "final": {
+          "native_cut": 841.0,
+          "block_loads": [
+            3283.0,
+            3179.0,
+            3007.0,
+            3283.0
+          ],
+          "capacity": 3283.64,
+          "capacity_tolerance": 1.2752e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "input_sha256": "40f7f7c4dfd96c06b0570f696e67b9c667ac2cbdf4d0858da5e690f4f4d5ac72"
+      },
+      {
+        "instance": "ibm01",
+        "seed": 32,
+        "coarse_lifted": {
+          "native_cut": 1591.0,
+          "block_loads": [
+            3121.0,
+            3267.0,
+            3110.0,
+            3254.0
+          ],
+          "capacity": 3283.64,
+          "capacity_tolerance": 1.2752e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "final": {
+          "native_cut": 672.0,
+          "block_loads": [
+            3167.0,
+            3170.0,
+            3154.0,
+            3261.0
+          ],
+          "capacity": 3283.64,
+          "capacity_tolerance": 1.2752e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "input_sha256": "40f7f7c4dfd96c06b0570f696e67b9c667ac2cbdf4d0858da5e690f4f4d5ac72"
+      },
+      {
+        "instance": "ibm01",
+        "seed": 33,
+        "coarse_lifted": {
+          "native_cut": 1467.0,
+          "block_loads": [
+            3226.0,
+            3192.0,
+            3203.0,
+            3131.0
+          ],
+          "capacity": 3283.64,
+          "capacity_tolerance": 1.2752e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "final": {
+          "native_cut": 864.0,
+          "block_loads": [
+            3283.0,
+            3283.0,
+            3235.0,
+            2951.0
+          ],
+          "capacity": 3283.64,
+          "capacity_tolerance": 1.2752e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "input_sha256": "40f7f7c4dfd96c06b0570f696e67b9c667ac2cbdf4d0858da5e690f4f4d5ac72"
+      },
+      {
+        "instance": "ibm01",
+        "seed": 34,
+        "coarse_lifted": {
+          "native_cut": 1730.0,
+          "block_loads": [
+            3061.0,
+            3273.0,
+            3135.0,
+            3283.0
+          ],
+          "capacity": 3283.64,
+          "capacity_tolerance": 1.2752e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "final": {
+          "native_cut": 845.0,
+          "block_loads": [
+            3029.0,
+            3283.0,
+            3157.0,
+            3283.0
+          ],
+          "capacity": 3283.64,
+          "capacity_tolerance": 1.2752e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "input_sha256": "40f7f7c4dfd96c06b0570f696e67b9c667ac2cbdf4d0858da5e690f4f4d5ac72"
+      },
+      {
+        "instance": "ibm01",
+        "seed": 35,
+        "coarse_lifted": {
+          "native_cut": 1503.0,
+          "block_loads": [
+            3262.0,
+            3187.0,
+            3074.0,
+            3229.0
+          ],
+          "capacity": 3283.64,
+          "capacity_tolerance": 1.2752e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "final": {
+          "native_cut": 921.0,
+          "block_loads": [
+            3283.0,
+            3060.0,
+            3126.0,
+            3283.0
+          ],
+          "capacity": 3283.64,
+          "capacity_tolerance": 1.2752e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "input_sha256": "40f7f7c4dfd96c06b0570f696e67b9c667ac2cbdf4d0858da5e690f4f4d5ac72"
+      },
+      {
+        "instance": "ibm01",
+        "seed": 36,
+        "coarse_lifted": {
+          "native_cut": 1449.0,
+          "block_loads": [
+            3150.0,
+            3166.0,
+            3191.0,
+            3245.0
+          ],
+          "capacity": 3283.64,
+          "capacity_tolerance": 1.2752e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "final": {
+          "native_cut": 927.0,
+          "block_loads": [
+            3283.0,
+            2903.0,
+            3283.0,
+            3283.0
+          ],
+          "capacity": 3283.64,
+          "capacity_tolerance": 1.2752e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "input_sha256": "40f7f7c4dfd96c06b0570f696e67b9c667ac2cbdf4d0858da5e690f4f4d5ac72"
+      },
+      {
+        "instance": "ibm01",
+        "seed": 37,
+        "coarse_lifted": {
+          "native_cut": 1427.0,
+          "block_loads": [
+            3206.0,
+            3047.0,
+            3272.0,
+            3227.0
+          ],
+          "capacity": 3283.64,
+          "capacity_tolerance": 1.2752e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "final": {
+          "native_cut": 891.0,
+          "block_loads": [
+            3283.0,
+            2903.0,
+            3283.0,
+            3283.0
+          ],
+          "capacity": 3283.64,
+          "capacity_tolerance": 1.2752e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "input_sha256": "40f7f7c4dfd96c06b0570f696e67b9c667ac2cbdf4d0858da5e690f4f4d5ac72"
+      },
+      {
+        "instance": "ibm01",
+        "seed": 38,
+        "coarse_lifted": {
+          "native_cut": 1516.0,
+          "block_loads": [
+            3166.0,
+            3177.0,
+            3224.0,
+            3185.0
+          ],
+          "capacity": 3283.64,
+          "capacity_tolerance": 1.2752e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "final": {
+          "native_cut": 827.0,
+          "block_loads": [
+            3283.0,
+            3277.0,
+            3280.0,
+            2912.0
+          ],
+          "capacity": 3283.64,
+          "capacity_tolerance": 1.2752e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "input_sha256": "40f7f7c4dfd96c06b0570f696e67b9c667ac2cbdf4d0858da5e690f4f4d5ac72"
+      },
+      {
+        "instance": "ibm01",
+        "seed": 39,
+        "coarse_lifted": {
+          "native_cut": 1295.0,
+          "block_loads": [
+            3229.0,
+            3270.0,
+            3128.0,
+            3125.0
+          ],
+          "capacity": 3283.64,
+          "capacity_tolerance": 1.2752e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "final": {
+          "native_cut": 607.0,
+          "block_loads": [
+            3283.0,
+            3212.0,
+            3043.0,
+            3214.0
+          ],
+          "capacity": 3283.64,
+          "capacity_tolerance": 1.2752e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "input_sha256": "40f7f7c4dfd96c06b0570f696e67b9c667ac2cbdf4d0858da5e690f4f4d5ac72"
+      },
+      {
+        "instance": "ibm02",
+        "seed": 30,
+        "coarse_lifted": {
+          "native_cut": 2431.0,
+          "block_loads": [
+            4954.0,
+            4676.0,
+            4924.0,
+            5047.0
+          ],
+          "capacity": 5047.2575,
+          "capacity_tolerance": 1.9601e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "final": {
+          "native_cut": 1296.0,
+          "block_loads": [
+            4720.0,
+            4787.0,
+            5047.0,
+            5047.0
+          ],
+          "capacity": 5047.2575,
+          "capacity_tolerance": 1.9601e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "input_sha256": "ff09f3be9ed84a8c13257f1655555938072cdf01fae40f1548795763981eae05"
+      },
+      {
+        "instance": "ibm02",
+        "seed": 31,
+        "coarse_lifted": {
+          "native_cut": 2152.0,
+          "block_loads": [
+            4835.0,
+            4939.0,
+            4836.0,
+            4991.0
+          ],
+          "capacity": 5047.2575,
+          "capacity_tolerance": 1.9601e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "final": {
+          "native_cut": 946.0,
+          "block_loads": [
+            4498.0,
+            5015.0,
+            5047.0,
+            5041.0
+          ],
+          "capacity": 5047.2575,
+          "capacity_tolerance": 1.9601e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "input_sha256": "ff09f3be9ed84a8c13257f1655555938072cdf01fae40f1548795763981eae05"
+      },
+      {
+        "instance": "ibm02",
+        "seed": 32,
+        "coarse_lifted": {
+          "native_cut": 2403.0,
+          "block_loads": [
+            4964.0,
+            4812.0,
+            4778.0,
+            5047.0
+          ],
+          "capacity": 5047.2575,
+          "capacity_tolerance": 1.9601e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "final": {
+          "native_cut": 1526.0,
+          "block_loads": [
+            5047.0,
+            5047.0,
+            4460.0,
+            5047.0
+          ],
+          "capacity": 5047.2575,
+          "capacity_tolerance": 1.9601e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "input_sha256": "ff09f3be9ed84a8c13257f1655555938072cdf01fae40f1548795763981eae05"
+      },
+      {
+        "instance": "ibm02",
+        "seed": 33,
+        "coarse_lifted": {
+          "native_cut": 2253.0,
+          "block_loads": [
+            4874.0,
+            4993.0,
+            4866.0,
+            4868.0
+          ],
+          "capacity": 5047.2575,
+          "capacity_tolerance": 1.9601e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "final": {
+          "native_cut": 838.0,
+          "block_loads": [
+            4957.0,
+            4932.0,
+            4684.0,
+            5028.0
+          ],
+          "capacity": 5047.2575,
+          "capacity_tolerance": 1.9601e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "input_sha256": "ff09f3be9ed84a8c13257f1655555938072cdf01fae40f1548795763981eae05"
+      },
+      {
+        "instance": "ibm02",
+        "seed": 34,
+        "coarse_lifted": {
+          "native_cut": 2507.0,
+          "block_loads": [
+            4978.0,
+            4905.0,
+            4931.0,
+            4787.0
+          ],
+          "capacity": 5047.2575,
+          "capacity_tolerance": 1.9601e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "final": {
+          "native_cut": 1245.0,
+          "block_loads": [
+            5047.0,
+            4983.0,
+            5035.0,
+            4536.0
+          ],
+          "capacity": 5047.2575,
+          "capacity_tolerance": 1.9601e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "input_sha256": "ff09f3be9ed84a8c13257f1655555938072cdf01fae40f1548795763981eae05"
+      },
+      {
+        "instance": "ibm02",
+        "seed": 35,
+        "coarse_lifted": {
+          "native_cut": 2506.0,
+          "block_loads": [
+            4869.0,
+            4840.0,
+            4870.0,
+            5022.0
+          ],
+          "capacity": 5047.2575,
+          "capacity_tolerance": 1.9601e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "final": {
+          "native_cut": 1204.0,
+          "block_loads": [
+            4528.0,
+            5047.0,
+            4992.0,
+            5034.0
+          ],
+          "capacity": 5047.2575,
+          "capacity_tolerance": 1.9601e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "input_sha256": "ff09f3be9ed84a8c13257f1655555938072cdf01fae40f1548795763981eae05"
+      },
+      {
+        "instance": "ibm02",
+        "seed": 36,
+        "coarse_lifted": {
+          "native_cut": 2521.0,
+          "block_loads": [
+            4672.0,
+            4925.0,
+            4957.0,
+            5047.0
+          ],
+          "capacity": 5047.2575,
+          "capacity_tolerance": 1.9601e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "final": {
+          "native_cut": 1766.0,
+          "block_loads": [
+            4460.0,
+            5047.0,
+            5047.0,
+            5047.0
+          ],
+          "capacity": 5047.2575,
+          "capacity_tolerance": 1.9601e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "input_sha256": "ff09f3be9ed84a8c13257f1655555938072cdf01fae40f1548795763981eae05"
+      },
+      {
+        "instance": "ibm02",
+        "seed": 37,
+        "coarse_lifted": {
+          "native_cut": 2206.0,
+          "block_loads": [
+            4825.0,
+            4988.0,
+            4763.0,
+            5025.0
+          ],
+          "capacity": 5047.2575,
+          "capacity_tolerance": 1.9601e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "final": {
+          "native_cut": 1094.0,
+          "block_loads": [
+            4585.0,
+            5047.0,
+            4922.0,
+            5047.0
+          ],
+          "capacity": 5047.2575,
+          "capacity_tolerance": 1.9601e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "input_sha256": "ff09f3be9ed84a8c13257f1655555938072cdf01fae40f1548795763981eae05"
+      },
+      {
+        "instance": "ibm02",
+        "seed": 38,
+        "coarse_lifted": {
+          "native_cut": 2580.0,
+          "block_loads": [
+            4787.0,
+            5020.0,
+            5047.0,
+            4747.0
+          ],
+          "capacity": 5047.2575,
+          "capacity_tolerance": 1.9601e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "final": {
+          "native_cut": 1880.0,
+          "block_loads": [
+            4460.0,
+            5047.0,
+            5047.0,
+            5047.0
+          ],
+          "capacity": 5047.2575,
+          "capacity_tolerance": 1.9601e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "input_sha256": "ff09f3be9ed84a8c13257f1655555938072cdf01fae40f1548795763981eae05"
+      },
+      {
+        "instance": "ibm02",
+        "seed": 39,
+        "coarse_lifted": {
+          "native_cut": 2231.0,
+          "block_loads": [
+            4832.0,
+            4886.0,
+            5047.0,
+            4836.0
+          ],
+          "capacity": 5047.2575,
+          "capacity_tolerance": 1.9601e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "final": {
+          "native_cut": 1375.0,
+          "block_loads": [
+            5016.0,
+            5047.0,
+            5047.0,
+            4491.0
+          ],
+          "capacity": 5047.2575,
+          "capacity_tolerance": 1.9601e-06,
+          "feasible": true,
+          "independent_native_cut_verified": true
+        },
+        "input_sha256": "ff09f3be9ed84a8c13257f1655555938072cdf01fae40f1548795763981eae05"
+      }
+    ]
+  }
+}

@@ -1,0 +1,1686 @@
+{
+  "started_utc": "2026-09-24T11:20:18.345950+00:00",
+  "invocation": "/opt/anaconda3/bin/python benchmarks/hypergraph/validate_fem_ier.py --seeds 30 31 32 33 34 --rounds 2 --output benchmarks/hypergraph/results/fem-ier-20260924",
+  "working_directory": "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition",
+  "config": {
+    "seeds": [
+      30,
+      31,
+      32,
+      33,
+      34
+    ],
+    "rounds": 2,
+    "q_ibm": 4,
+    "epsilon_ibm": 0.03,
+    "ier_max_moves": 24,
+    "ier_boundary_pool": 96,
+    "ier_pool_strategy": "local",
+    "ier_num_trials": 8,
+    "ier_num_steps": 100,
+    "ier_random_samples": 800,
+    "random_selector_budget": "800 independent Bernoulli selectors per round, plus deterministic all-off/all-on/single-atom candidates in both backends; fixed count, not equal wall time.",
+    "a_b_order": "Alternate by instance_index+seed_index; only first-round initial state/seed/pool are shared, later states may diverge.",
+    "flow_control": "Sequential complete flow(2 passes) calls from an independent copy of saved initial; only full returns by the measured A deadline can win.",
+    "integration": "Seed30 same reconstructed hierarchy and saved coarse FEM assignment; flow versus fem_ier+flow, not equal time.",
+    "weighted": "Four saved weighted repair-final starts; epsilon0, original node/edge weights, exhaustive native feasible-state oracle."
+  },
+  "source_sha256_before": {
+    "benchmarks/hypergraph/validate_fem_ier.py": "2363c98f0fd865ee998503155d1088660090aeb7d16d28326e157eff43eed7d0",
+    "src/hyper_solver.py": "932bff78932030209f21d46d3b19ebbb26b0bc44ab76d61d70ccb43c44e774d4",
+    "benchmarks/hypergraph/compare_fem_multiseed.py": "3cc6a79b36c4ab73d699c23aa2ac08df2ba0cf7d7c77586d4df4ccdbd55bead4",
+    "benchmarks/hypergraph/native_search_probe.py": "8211b6aefb588a3dd016be93472977fd13f8bde6a18a4c1ef251836b81115de6",
+    "benchmarks/hypergraph/native_mcmc.py": "b8ba19d9b4dec8e0c0bbba9eaad5aad798f31b7e1d5562c1a5cc0376ef7209c2",
+    "benchmarks/hypergraph/time_budget_hgr.py": "601f59e7d1346b8af8bf419f889be152fbe1ab379036250ab082f15dda899198",
+    "src/partition/__init__.py": "a6b8fe4ebc6382f41072e4bc46f78a4b158641b9f031d0782f05294109adaef4",
+    "src/partition/coarsen.py": "5736739b4434ce01327155f294ad9cbe7b79751f3ec66b7cbeea786948afdc40",
+    "src/partition/hyper_coarsen.py": "6d415e8bbe80e63fa393f0d3aea000a04f9fe9b569e0e072a5ba8308a073f3db",
+    "src/partition/hyper_ier.py": "b90f81e99629bdeb6a7021630a1647cf137cfe45403b48274abefeb002e14c0d",
+    "src/partition/hyper_ier_candidates.py": "125898c8d20589626a5050308318c7eae816213d8e8cd7e8dcd3aadc92a0bba4",
+    "src/partition/hyper_ier_objective.py": "457028c52733f7b9e0c23bb84bb37a1f737ec0d8efe834a6fa540b56ee4af1a4",
+    "src/partition/hyper_objective.py": "0a1569ec9737033eb0970a9bfdc644e60c7ec533abdfe8bfaa7f8ca986b0113b",
+    "src/partition/hyper_quotient.py": "de13bea84ae998e4656be3290b5f7a89111d2ce6a7f7fe54e301cd82dd5b014c",
+    "src/partition/hyper_refine.py": "ff4fd24818858cbc054826a3a181926191e8e3b950db8fa758b268ad2502329c",
+    "src/partition/hyper_refine_contract.py": "ac7daef21fd2e2eb5cd48d50f08a6b46e47a2e7bc958dcfa1aefd3f78161b429",
+    "src/partition/hyper_utils.py": "6baa367f66d64524f76828f12d1449e66f8da7f803f051bd5f669713a04c05b5",
+    "src/partition/kaffpa_multiway.py": "bf4f0b774f0bdae105a16a5c6e9f10957bd0485a3ed17a1ff0697c8df5818acd",
+    "src/partition/refine.py": "be32428422ba9a851a871174e73c0158064f2f4ccb5d78da4147157fcc331023",
+    "src/partition/script/test_kahypar.py": "fdf148cda11575763643b082b72082d451ae61b103cb98dae2b38164ababc889",
+    "src/partition/tests.py": "a793339940b6c06d7317f787aa14b424cd7721bcb369100a728ec4dc51b63330",
+    "src/partition/utils.py": "e5101843681268b14defa0e3c677f1425176741f84c5593f1d8167c8fb5c320a",
+    "lib/qubo-solver/src/fem/__init__.py": "eb1c028b0b5c347ce1fd558e3f77d21948407ffd42bc86a917fd957e6c443da0",
+    "lib/qubo-solver/src/fem/customized_problem/__init__.py": "e102bb39e99bbf1e753df64ae4b6c5e2e285250827d3ae2e8f9b0f4e84461aed",
+    "lib/qubo-solver/src/fem/customized_problem/hyper_bmincut.py": "78273308009a2d339974e7b2f63c1c1e2ff6067281ffaf326e2021141af88df0",
+    "lib/qubo-solver/src/fem/interface.py": "edfb2165c0021c2ecb1ff415084f69285ad3579a2db1007664f9db8d90675f48",
+    "lib/qubo-solver/src/fem/problem.py": "34e9a36d87390c504034296c0fc8ece3c46b7a6e0e7b83f75d8d50f9076b311b",
+    "lib/qubo-solver/src/fem/solver_fem.py": "5919f70d9b261d1550edd0633c95bcd8fdcbee1f5f8add3754e319819b4a03d7",
+    "lib/qubo-solver/src/fem/utils.py": "364833410ff492b72bbad5279455619e924bbb9757057bfaafb87f2e78e8b49d"
+  },
+  "input_sha256_before": {
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/manifest.json": "30f189c6453ec206b2ab422423ba9a3115ae7dbe5a3705e611a29ffe394571c3",
+    "/private/tmp/ising-hgr.K5jm2Y/ibm01.hgr": "40f7f7c4dfd96c06b0570f696e67b9c667ac2cbdf4d0858da5e690f4f4d5ac72",
+    "/private/tmp/ising-hgr.K5jm2Y/ibm02.hgr": "ff09f3be9ed84a8c13257f1655555938072cdf01fae40f1548795763981eae05",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-repair-20260924/weighted-n08-q2-input.json": "3c42849391e71f3c9797b6e05614832eb5675dbe3bb7750c190315b78cc6ff94",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-repair-20260924/weighted-n08-q2-assignments.npz": "1fd8517a32baa13919686e0a5f7134e8f42ba0ebdb6d518e124ede57646a424b",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-repair-20260924/weighted-n08-q3-input.json": "a5302d3f3ba6623b0790d8ef2094f54247bf8d7c1ed4ad2608455b601106fb31",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-repair-20260924/weighted-n08-q3-assignments.npz": "b61d38cac1bee18e04cfcbdca3af6f288b3a2792b0daea45a7f33bb98e2bfc96",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-repair-20260924/weighted-n12-q2-input.json": "cebf7aca4a012ab8dba498551bd1f2556e6364baba9df4a2fb1d2fe1dd31a0d6",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-repair-20260924/weighted-n12-q2-assignments.npz": "b2e8d93ea79b33e3e7bd145c64b52e46f6fa993b1db7ea9e61c9bc4b069f40be",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-repair-20260924/weighted-n12-q3-input.json": "44349e4d2ce2decf57ad89094cdaf6f2a834ec86bd81925d526e032083a2971c",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-repair-20260924/weighted-n12-q3-assignments.npz": "e8cadc35581d04fdf8f4219ca1ab58077ba7bd7fdbb226251a3755ef3eb7b3ae",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed30/runs.json": "e13104f43aa95eb667ba8c96d19fec5993992d8de9e29437907a3c345bc1e29b",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed30/assignments.npz": "1ec163bf838061e09fe25339f1db9948fbd38ba2c86b7c06f7fdee4df871406a",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed31/runs.json": "a1dea4ccb203ce68d10d000154bc7d6e65e7fabe71267b5e212c1279b8bd3db3",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed31/assignments.npz": "6b80ac0c1ef7557fcf196e7f32d5aac059ddd50a89ccc0b86c29440607944977",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed32/runs.json": "9ba336e1cf398597a12af5ae575bd6482a0952a13611bf7eef5e6e2a4192ca0d",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed32/assignments.npz": "2e28e8b4d46fd539660b1116929e4276a4badd1c0b4b1c60da47f8308e478334",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed33/runs.json": "44a292b5272b9bc10f7038f08bcd468e3a124044b641deae777a2b4ee86d8654",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed33/assignments.npz": "5796844be71d3d59b078ef7982e78d3a1dd3a787148c0cbea5b4f7f6a586ac66",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed34/runs.json": "045706d5fda0db00ede07faec6664d27b818097428277811b1f516a3ea974c20",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm01-seed34/assignments.npz": "1c847c380f412fb567006e23be9fecbd06224df598c308f5d673a1d16a86a956",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed30/runs.json": "1f964128c4c536fadcefc6d8b29be98f32ec17c5ada1c898ba02fab3e5b82184",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed30/assignments.npz": "9945f97345d44e17c500ecb02c3977ca26de5cd7052307ad89f64b0854f9b368",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed31/runs.json": "d71a3194d0678254be03b606a2a03bb8dd3819186d71f535f7cf6b4734e4469d",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed31/assignments.npz": "72f669b85c2b6674a0b79425a041603a468afe4affc0b105b58fe4eca2580e15",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed32/runs.json": "6c265be422df15ccb3abce7ba9ca00369dcda868d6f0f79de61162b68fd47b45",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed32/assignments.npz": "2d0706b36e0a4e853c72b58bd6a5fb22a9f213e831731b57d929a1f0b2ef319a",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed33/runs.json": "2ebba149730d0f288727b177207a249bdb9cc14b1b9ad493d926ac0e3368f7b8",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed33/assignments.npz": "0f4a6c3431ad7e20e2968f9a235eab6ee9a6ba3d4bd8b5bbbcbd0a68b571b3cd",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed34/runs.json": "4ab3c354cb723fdf2ae8b4976dd72c4e7decbe6e234559c031d0c49fa9eb39c5",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/ibm02-seed34/assignments.npz": "7e18b15d99ee1c3d079f4777b265efaa7114c456544618ed1d8247d9a9f2fd8e"
+  },
+  "environment": {
+    "python": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 08:22:19) [Clang 14.0.6 ]",
+    "executable": "/opt/anaconda3/bin/python",
+    "numpy": "1.26.4",
+    "torch": "2.9.0",
+    "torch_threads": 1,
+    "platform": "macOS-26.3-arm64-arm-64bit",
+    "thread_environment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1"
+    }
+  },
+  "git_head": "6008ff62adea4f24492ce0e2d9610a95036d92a0",
+  "submodule_head": "1f252698aaa3df19527b8dcab7f79d18e73941b9",
+  "weighted": [
+    {
+      "name": "weighted-n08-q2",
+      "initial": {
+        "native_cut": 21.0,
+        "block_loads": [
+          6.0,
+          6.0
+        ],
+        "capacity": 6.0,
+        "capacity_tolerance": 1.2e-09,
+        "feasible": true,
+        "independent_cut_and_loads_verified": true
+      },
+      "exact_optimum": 17.5,
+      "arms": {
+        "fem_ier": {
+          "status": "success",
+          "pipeline_seconds": 0.07079391699517146,
+          "initial": {
+            "native_cut": 21.0,
+            "block_loads": [
+              6.0,
+              6.0
+            ],
+            "capacity": 6.0,
+            "capacity_tolerance": 1.2e-09,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 17.5,
+            "block_loads": [
+              6.0,
+              6.0
+            ],
+            "capacity": 6.0,
+            "capacity_tolerance": 1.2e-09,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "exact_gap": 0.0,
+          "exact_oracle_verified": true
+        },
+        "random": {
+          "status": "success",
+          "pipeline_seconds": 0.0038546249852515757,
+          "initial": {
+            "native_cut": 21.0,
+            "block_loads": [
+              6.0,
+              6.0
+            ],
+            "capacity": 6.0,
+            "capacity_tolerance": 1.2e-09,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 17.5,
+            "block_loads": [
+              6.0,
+              6.0
+            ],
+            "capacity": 6.0,
+            "capacity_tolerance": 1.2e-09,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "exact_gap": 0.0,
+          "exact_oracle_verified": true
+        }
+      },
+      "detail_file": "weighted/weighted-n08-q2/result.json"
+    },
+    {
+      "name": "weighted-n08-q3",
+      "initial": {
+        "native_cut": 37.0,
+        "block_loads": [
+          4.0,
+          4.0,
+          4.0
+        ],
+        "capacity": 4.0,
+        "capacity_tolerance": 1.2e-09,
+        "feasible": true,
+        "independent_cut_and_loads_verified": true
+      },
+      "exact_optimum": 37.0,
+      "arms": {
+        "fem_ier": {
+          "status": "success",
+          "pipeline_seconds": 0.06053687504027039,
+          "initial": {
+            "native_cut": 37.0,
+            "block_loads": [
+              4.0,
+              4.0,
+              4.0
+            ],
+            "capacity": 4.0,
+            "capacity_tolerance": 1.2e-09,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 37.0,
+            "block_loads": [
+              4.0,
+              4.0,
+              4.0
+            ],
+            "capacity": 4.0,
+            "capacity_tolerance": 1.2e-09,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "exact_gap": 0.0,
+          "exact_oracle_verified": true
+        },
+        "random": {
+          "status": "success",
+          "pipeline_seconds": 0.003901417017914355,
+          "initial": {
+            "native_cut": 37.0,
+            "block_loads": [
+              4.0,
+              4.0,
+              4.0
+            ],
+            "capacity": 4.0,
+            "capacity_tolerance": 1.2e-09,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 37.0,
+            "block_loads": [
+              4.0,
+              4.0,
+              4.0
+            ],
+            "capacity": 4.0,
+            "capacity_tolerance": 1.2e-09,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "exact_gap": 0.0,
+          "exact_oracle_verified": true
+        }
+      },
+      "detail_file": "weighted/weighted-n08-q3/result.json"
+    },
+    {
+      "name": "weighted-n12-q2",
+      "initial": {
+        "native_cut": 25.5,
+        "block_loads": [
+          9.0,
+          9.0
+        ],
+        "capacity": 9.0,
+        "capacity_tolerance": 1.8e-09,
+        "feasible": true,
+        "independent_cut_and_loads_verified": true
+      },
+      "exact_optimum": 22.0,
+      "arms": {
+        "fem_ier": {
+          "status": "success",
+          "pipeline_seconds": 0.08260308398166671,
+          "initial": {
+            "native_cut": 25.5,
+            "block_loads": [
+              9.0,
+              9.0
+            ],
+            "capacity": 9.0,
+            "capacity_tolerance": 1.8e-09,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 22.0,
+            "block_loads": [
+              9.0,
+              9.0
+            ],
+            "capacity": 9.0,
+            "capacity_tolerance": 1.8e-09,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "exact_gap": 0.0,
+          "exact_oracle_verified": true
+        },
+        "random": {
+          "status": "success",
+          "pipeline_seconds": 0.006104249972850084,
+          "initial": {
+            "native_cut": 25.5,
+            "block_loads": [
+              9.0,
+              9.0
+            ],
+            "capacity": 9.0,
+            "capacity_tolerance": 1.8e-09,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 22.0,
+            "block_loads": [
+              9.0,
+              9.0
+            ],
+            "capacity": 9.0,
+            "capacity_tolerance": 1.8e-09,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "exact_gap": 0.0,
+          "exact_oracle_verified": true
+        }
+      },
+      "detail_file": "weighted/weighted-n12-q2/result.json"
+    },
+    {
+      "name": "weighted-n12-q3",
+      "initial": {
+        "native_cut": 48.5,
+        "block_loads": [
+          6.0,
+          6.0,
+          6.0
+        ],
+        "capacity": 6.0,
+        "capacity_tolerance": 1.8e-09,
+        "feasible": true,
+        "independent_cut_and_loads_verified": true
+      },
+      "exact_optimum": 44.5,
+      "arms": {
+        "fem_ier": {
+          "status": "success",
+          "pipeline_seconds": 0.08000720798736438,
+          "initial": {
+            "native_cut": 48.5,
+            "block_loads": [
+              6.0,
+              6.0,
+              6.0
+            ],
+            "capacity": 6.0,
+            "capacity_tolerance": 1.8e-09,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 45.0,
+            "block_loads": [
+              6.0,
+              6.0,
+              6.0
+            ],
+            "capacity": 6.0,
+            "capacity_tolerance": 1.8e-09,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "exact_gap": 0.5,
+          "exact_oracle_verified": true
+        },
+        "random": {
+          "status": "success",
+          "pipeline_seconds": 0.005362208001315594,
+          "initial": {
+            "native_cut": 48.5,
+            "block_loads": [
+              6.0,
+              6.0,
+              6.0
+            ],
+            "capacity": 6.0,
+            "capacity_tolerance": 1.8e-09,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 45.0,
+            "block_loads": [
+              6.0,
+              6.0,
+              6.0
+            ],
+            "capacity": 6.0,
+            "capacity_tolerance": 1.8e-09,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "exact_gap": 0.5,
+          "exact_oracle_verified": true
+        }
+      },
+      "detail_file": "weighted/weighted-n12-q3/result.json"
+    }
+  ],
+  "fixed_starts": [
+    {
+      "instance": "ibm01",
+      "seed": 30,
+      "initial": {
+        "native_cut": 806.0,
+        "block_loads": [
+          3234.0,
+          3201.0,
+          3280.0,
+          3037.0
+        ],
+        "capacity": 3283.64,
+        "capacity_tolerance": 1.2752e-06,
+        "feasible": true,
+        "independent_cut_and_loads_verified": true
+      },
+      "arm_order": [
+        "fem_ier",
+        "random"
+      ],
+      "arms": {
+        "fem_ier": {
+          "status": "success",
+          "pipeline_seconds": 0.3423257920076139,
+          "initial": {
+            "native_cut": 806.0,
+            "block_loads": [
+              3234.0,
+              3201.0,
+              3280.0,
+              3037.0
+            ],
+            "capacity": 3283.64,
+            "capacity_tolerance": 1.2752e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 806.0,
+            "block_loads": [
+              3234.0,
+              3201.0,
+              3280.0,
+              3037.0
+            ],
+            "capacity": 3283.64,
+            "capacity_tolerance": 1.2752e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        },
+        "random": {
+          "status": "success",
+          "pipeline_seconds": 0.2327953749918379,
+          "initial": {
+            "native_cut": 806.0,
+            "block_loads": [
+              3234.0,
+              3201.0,
+              3280.0,
+              3037.0
+            ],
+            "capacity": 3283.64,
+            "capacity_tolerance": 1.2752e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 806.0,
+            "block_loads": [
+              3234.0,
+              3201.0,
+              3280.0,
+              3037.0
+            ],
+            "capacity": 3283.64,
+            "capacity_tolerance": 1.2752e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        }
+      },
+      "additional_flow": {
+        "budget_seconds": 0.3423257920076139,
+        "wall_seconds_including_overshoot": 0.5193763329880312,
+        "attempts": 2,
+        "max_attempts_reached": false,
+        "overshoot_seconds": 0.17702899896539748,
+        "timing_definition": "Wall completion time from restart-loop start; verification and artifact writes occur after this loop.",
+        "eligible_completed_runs": 1,
+        "status": "success",
+        "winner_run_id": "flow_0000",
+        "winner": {
+          "native_cut": 806.0,
+          "block_loads": [
+            3234.0,
+            3201.0,
+            3280.0,
+            3037.0
+          ],
+          "solver_seed": 30,
+          "completion_seconds": 0.2713244999758899,
+          "pipeline_seconds": 0.27131679200101644
+        },
+        "continuation_policy": "Start from the saved initial partition; each attempt continues only its own previous flow state."
+      },
+      "detail_file": "fixed/ibm01-seed30/result.json"
+    },
+    {
+      "instance": "ibm01",
+      "seed": 31,
+      "initial": {
+        "native_cut": 841.0,
+        "block_loads": [
+          3283.0,
+          3179.0,
+          3007.0,
+          3283.0
+        ],
+        "capacity": 3283.64,
+        "capacity_tolerance": 1.2752e-06,
+        "feasible": true,
+        "independent_cut_and_loads_verified": true
+      },
+      "arm_order": [
+        "random",
+        "fem_ier"
+      ],
+      "arms": {
+        "random": {
+          "status": "success",
+          "pipeline_seconds": 0.23791516601340845,
+          "initial": {
+            "native_cut": 841.0,
+            "block_loads": [
+              3283.0,
+              3179.0,
+              3007.0,
+              3283.0
+            ],
+            "capacity": 3283.64,
+            "capacity_tolerance": 1.2752e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 841.0,
+            "block_loads": [
+              3283.0,
+              3179.0,
+              3007.0,
+              3283.0
+            ],
+            "capacity": 3283.64,
+            "capacity_tolerance": 1.2752e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        },
+        "fem_ier": {
+          "status": "success",
+          "pipeline_seconds": 0.3407087919767946,
+          "initial": {
+            "native_cut": 841.0,
+            "block_loads": [
+              3283.0,
+              3179.0,
+              3007.0,
+              3283.0
+            ],
+            "capacity": 3283.64,
+            "capacity_tolerance": 1.2752e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 841.0,
+            "block_loads": [
+              3283.0,
+              3179.0,
+              3007.0,
+              3283.0
+            ],
+            "capacity": 3283.64,
+            "capacity_tolerance": 1.2752e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        }
+      },
+      "additional_flow": {
+        "budget_seconds": 0.3407087919767946,
+        "wall_seconds_including_overshoot": 0.3455885410076007,
+        "attempts": 2,
+        "max_attempts_reached": false,
+        "overshoot_seconds": 0.0048597080167382956,
+        "timing_definition": "Wall completion time from restart-loop start; verification and artifact writes occur after this loop.",
+        "eligible_completed_runs": 1,
+        "status": "success",
+        "winner_run_id": "flow_0000",
+        "winner": {
+          "native_cut": 841.0,
+          "block_loads": [
+            3283.0,
+            3179.0,
+            3007.0,
+            3283.0
+          ],
+          "solver_seed": 31,
+          "completion_seconds": 0.18928183300886303,
+          "pipeline_seconds": 0.1892750000115484
+        },
+        "continuation_policy": "Start from the saved initial partition; each attempt continues only its own previous flow state."
+      },
+      "detail_file": "fixed/ibm01-seed31/result.json"
+    },
+    {
+      "instance": "ibm01",
+      "seed": 32,
+      "initial": {
+        "native_cut": 672.0,
+        "block_loads": [
+          3167.0,
+          3170.0,
+          3154.0,
+          3261.0
+        ],
+        "capacity": 3283.64,
+        "capacity_tolerance": 1.2752e-06,
+        "feasible": true,
+        "independent_cut_and_loads_verified": true
+      },
+      "arm_order": [
+        "fem_ier",
+        "random"
+      ],
+      "arms": {
+        "fem_ier": {
+          "status": "success",
+          "pipeline_seconds": 0.35434187500504777,
+          "initial": {
+            "native_cut": 672.0,
+            "block_loads": [
+              3167.0,
+              3170.0,
+              3154.0,
+              3261.0
+            ],
+            "capacity": 3283.64,
+            "capacity_tolerance": 1.2752e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 672.0,
+            "block_loads": [
+              3167.0,
+              3170.0,
+              3154.0,
+              3261.0
+            ],
+            "capacity": 3283.64,
+            "capacity_tolerance": 1.2752e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        },
+        "random": {
+          "status": "success",
+          "pipeline_seconds": 0.2392453330103308,
+          "initial": {
+            "native_cut": 672.0,
+            "block_loads": [
+              3167.0,
+              3170.0,
+              3154.0,
+              3261.0
+            ],
+            "capacity": 3283.64,
+            "capacity_tolerance": 1.2752e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 672.0,
+            "block_loads": [
+              3167.0,
+              3170.0,
+              3154.0,
+              3261.0
+            ],
+            "capacity": 3283.64,
+            "capacity_tolerance": 1.2752e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        }
+      },
+      "additional_flow": {
+        "budget_seconds": 0.35434187500504777,
+        "wall_seconds_including_overshoot": 0.5070806670119055,
+        "attempts": 2,
+        "max_attempts_reached": false,
+        "overshoot_seconds": 0.1527195000089705,
+        "timing_definition": "Wall completion time from restart-loop start; verification and artifact writes occur after this loop.",
+        "eligible_completed_runs": 1,
+        "status": "success",
+        "winner_run_id": "flow_0000",
+        "winner": {
+          "native_cut": 672.0,
+          "block_loads": [
+            3167.0,
+            3170.0,
+            3154.0,
+            3261.0
+          ],
+          "solver_seed": 32,
+          "completion_seconds": 0.2670802919892594,
+          "pipeline_seconds": 0.26707391696982086
+        },
+        "continuation_policy": "Start from the saved initial partition; each attempt continues only its own previous flow state."
+      },
+      "detail_file": "fixed/ibm01-seed32/result.json"
+    },
+    {
+      "instance": "ibm01",
+      "seed": 33,
+      "initial": {
+        "native_cut": 864.0,
+        "block_loads": [
+          3283.0,
+          3283.0,
+          3235.0,
+          2951.0
+        ],
+        "capacity": 3283.64,
+        "capacity_tolerance": 1.2752e-06,
+        "feasible": true,
+        "independent_cut_and_loads_verified": true
+      },
+      "arm_order": [
+        "random",
+        "fem_ier"
+      ],
+      "arms": {
+        "random": {
+          "status": "success",
+          "pipeline_seconds": 0.24210729100741446,
+          "initial": {
+            "native_cut": 864.0,
+            "block_loads": [
+              3283.0,
+              3283.0,
+              3235.0,
+              2951.0
+            ],
+            "capacity": 3283.64,
+            "capacity_tolerance": 1.2752e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 864.0,
+            "block_loads": [
+              3283.0,
+              3283.0,
+              3235.0,
+              2951.0
+            ],
+            "capacity": 3283.64,
+            "capacity_tolerance": 1.2752e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        },
+        "fem_ier": {
+          "status": "success",
+          "pipeline_seconds": 0.3483621249906719,
+          "initial": {
+            "native_cut": 864.0,
+            "block_loads": [
+              3283.0,
+              3283.0,
+              3235.0,
+              2951.0
+            ],
+            "capacity": 3283.64,
+            "capacity_tolerance": 1.2752e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 863.0,
+            "block_loads": [
+              3283.0,
+              3283.0,
+              3235.0,
+              2951.0
+            ],
+            "capacity": 3283.64,
+            "capacity_tolerance": 1.2752e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        }
+      },
+      "additional_flow": {
+        "budget_seconds": 0.3483621249906719,
+        "wall_seconds_including_overshoot": 0.3500355419819243,
+        "attempts": 2,
+        "max_attempts_reached": false,
+        "overshoot_seconds": 0.0016484169755131006,
+        "timing_definition": "Wall completion time from restart-loop start; verification and artifact writes occur after this loop.",
+        "eligible_completed_runs": 1,
+        "status": "success",
+        "winner_run_id": "flow_0000",
+        "winner": {
+          "native_cut": 864.0,
+          "block_loads": [
+            3283.0,
+            3283.0,
+            3235.0,
+            2951.0
+          ],
+          "solver_seed": 33,
+          "completion_seconds": 0.18772537499899045,
+          "pipeline_seconds": 0.18771929101785645
+        },
+        "continuation_policy": "Start from the saved initial partition; each attempt continues only its own previous flow state."
+      },
+      "detail_file": "fixed/ibm01-seed33/result.json"
+    },
+    {
+      "instance": "ibm01",
+      "seed": 34,
+      "initial": {
+        "native_cut": 845.0,
+        "block_loads": [
+          3029.0,
+          3283.0,
+          3157.0,
+          3283.0
+        ],
+        "capacity": 3283.64,
+        "capacity_tolerance": 1.2752e-06,
+        "feasible": true,
+        "independent_cut_and_loads_verified": true
+      },
+      "arm_order": [
+        "fem_ier",
+        "random"
+      ],
+      "arms": {
+        "fem_ier": {
+          "status": "success",
+          "pipeline_seconds": 0.37455645797308534,
+          "initial": {
+            "native_cut": 845.0,
+            "block_loads": [
+              3029.0,
+              3283.0,
+              3157.0,
+              3283.0
+            ],
+            "capacity": 3283.64,
+            "capacity_tolerance": 1.2752e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 842.0,
+            "block_loads": [
+              3029.0,
+              3283.0,
+              3157.0,
+              3283.0
+            ],
+            "capacity": 3283.64,
+            "capacity_tolerance": 1.2752e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        },
+        "random": {
+          "status": "success",
+          "pipeline_seconds": 0.23650374996941537,
+          "initial": {
+            "native_cut": 845.0,
+            "block_loads": [
+              3029.0,
+              3283.0,
+              3157.0,
+              3283.0
+            ],
+            "capacity": 3283.64,
+            "capacity_tolerance": 1.2752e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 843.0,
+            "block_loads": [
+              3029.0,
+              3283.0,
+              3157.0,
+              3283.0
+            ],
+            "capacity": 3283.64,
+            "capacity_tolerance": 1.2752e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        }
+      },
+      "additional_flow": {
+        "budget_seconds": 0.37455645797308534,
+        "wall_seconds_including_overshoot": 0.5079763339599594,
+        "attempts": 3,
+        "max_attempts_reached": false,
+        "overshoot_seconds": 0.13339475099928677,
+        "timing_definition": "Wall completion time from restart-loop start; verification and artifact writes occur after this loop.",
+        "eligible_completed_runs": 2,
+        "status": "success",
+        "winner_run_id": "flow_0000",
+        "winner": {
+          "native_cut": 845.0,
+          "block_loads": [
+            3029.0,
+            3283.0,
+            3157.0,
+            3283.0
+          ],
+          "solver_seed": 34,
+          "completion_seconds": 0.19394791696686298,
+          "pipeline_seconds": 0.19393274997128174
+        },
+        "continuation_policy": "Start from the saved initial partition; each attempt continues only its own previous flow state."
+      },
+      "detail_file": "fixed/ibm01-seed34/result.json"
+    },
+    {
+      "instance": "ibm02",
+      "seed": 30,
+      "initial": {
+        "native_cut": 1296.0,
+        "block_loads": [
+          4720.0,
+          4787.0,
+          5047.0,
+          5047.0
+        ],
+        "capacity": 5047.2575,
+        "capacity_tolerance": 1.9601e-06,
+        "feasible": true,
+        "independent_cut_and_loads_verified": true
+      },
+      "arm_order": [
+        "random",
+        "fem_ier"
+      ],
+      "arms": {
+        "random": {
+          "status": "success",
+          "pipeline_seconds": 0.3530240830150433,
+          "initial": {
+            "native_cut": 1296.0,
+            "block_loads": [
+              4720.0,
+              4787.0,
+              5047.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 1296.0,
+            "block_loads": [
+              4720.0,
+              4787.0,
+              5047.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        },
+        "fem_ier": {
+          "status": "success",
+          "pipeline_seconds": 0.44210629200097173,
+          "initial": {
+            "native_cut": 1296.0,
+            "block_loads": [
+              4720.0,
+              4787.0,
+              5047.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 1296.0,
+            "block_loads": [
+              4720.0,
+              4787.0,
+              5047.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        }
+      },
+      "additional_flow": {
+        "budget_seconds": 0.44210629200097173,
+        "wall_seconds_including_overshoot": 0.5902200000127777,
+        "attempts": 2,
+        "max_attempts_reached": false,
+        "overshoot_seconds": 0.14806616702117026,
+        "timing_definition": "Wall completion time from restart-loop start; verification and artifact writes occur after this loop.",
+        "eligible_completed_runs": 1,
+        "status": "success",
+        "winner_run_id": "flow_0000",
+        "winner": {
+          "native_cut": 1296.0,
+          "block_loads": [
+            4720.0,
+            4787.0,
+            5047.0,
+            5047.0
+          ],
+          "solver_seed": 30,
+          "completion_seconds": 0.2833223750349134,
+          "pipeline_seconds": 0.2833125829929486
+        },
+        "continuation_policy": "Start from the saved initial partition; each attempt continues only its own previous flow state."
+      },
+      "detail_file": "fixed/ibm02-seed30/result.json"
+    },
+    {
+      "instance": "ibm02",
+      "seed": 31,
+      "initial": {
+        "native_cut": 946.0,
+        "block_loads": [
+          4498.0,
+          5015.0,
+          5047.0,
+          5041.0
+        ],
+        "capacity": 5047.2575,
+        "capacity_tolerance": 1.9601e-06,
+        "feasible": true,
+        "independent_cut_and_loads_verified": true
+      },
+      "arm_order": [
+        "fem_ier",
+        "random"
+      ],
+      "arms": {
+        "fem_ier": {
+          "status": "success",
+          "pipeline_seconds": 0.48681383300572634,
+          "initial": {
+            "native_cut": 946.0,
+            "block_loads": [
+              4498.0,
+              5015.0,
+              5047.0,
+              5041.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 945.0,
+            "block_loads": [
+              4498.0,
+              5015.0,
+              5047.0,
+              5041.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        },
+        "random": {
+          "status": "success",
+          "pipeline_seconds": 0.37301304197171703,
+          "initial": {
+            "native_cut": 946.0,
+            "block_loads": [
+              4498.0,
+              5015.0,
+              5047.0,
+              5041.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 945.0,
+            "block_loads": [
+              4498.0,
+              5015.0,
+              5047.0,
+              5041.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        }
+      },
+      "additional_flow": {
+        "budget_seconds": 0.48681383300572634,
+        "wall_seconds_including_overshoot": 0.7208935829694383,
+        "attempts": 2,
+        "max_attempts_reached": false,
+        "overshoot_seconds": 0.2340579999727197,
+        "timing_definition": "Wall completion time from restart-loop start; verification and artifact writes occur after this loop.",
+        "eligible_completed_runs": 1,
+        "status": "success",
+        "winner_run_id": "flow_0000",
+        "winner": {
+          "native_cut": 946.0,
+          "block_loads": [
+            4498.0,
+            5015.0,
+            5047.0,
+            5041.0
+          ],
+          "solver_seed": 31,
+          "completion_seconds": 0.37839008297305554,
+          "pipeline_seconds": 0.3783794160117395
+        },
+        "continuation_policy": "Start from the saved initial partition; each attempt continues only its own previous flow state."
+      },
+      "detail_file": "fixed/ibm02-seed31/result.json"
+    },
+    {
+      "instance": "ibm02",
+      "seed": 32,
+      "initial": {
+        "native_cut": 1526.0,
+        "block_loads": [
+          5047.0,
+          5047.0,
+          4460.0,
+          5047.0
+        ],
+        "capacity": 5047.2575,
+        "capacity_tolerance": 1.9601e-06,
+        "feasible": true,
+        "independent_cut_and_loads_verified": true
+      },
+      "arm_order": [
+        "random",
+        "fem_ier"
+      ],
+      "arms": {
+        "random": {
+          "status": "success",
+          "pipeline_seconds": 0.3750331249902956,
+          "initial": {
+            "native_cut": 1526.0,
+            "block_loads": [
+              5047.0,
+              5047.0,
+              4460.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 1525.0,
+            "block_loads": [
+              5047.0,
+              5047.0,
+              4460.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        },
+        "fem_ier": {
+          "status": "success",
+          "pipeline_seconds": 0.49583779100794345,
+          "initial": {
+            "native_cut": 1526.0,
+            "block_loads": [
+              5047.0,
+              5047.0,
+              4460.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 1525.0,
+            "block_loads": [
+              5047.0,
+              5047.0,
+              4460.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        }
+      },
+      "additional_flow": {
+        "budget_seconds": 0.49583779100794345,
+        "wall_seconds_including_overshoot": 0.6926257080049254,
+        "attempts": 3,
+        "max_attempts_reached": false,
+        "overshoot_seconds": 0.19661037501646206,
+        "timing_definition": "Wall completion time from restart-loop start; verification and artifact writes occur after this loop.",
+        "eligible_completed_runs": 2,
+        "status": "success",
+        "winner_run_id": "flow_0000",
+        "winner": {
+          "native_cut": 1526.0,
+          "block_loads": [
+            5047.0,
+            5047.0,
+            4460.0,
+            5047.0
+          ],
+          "solver_seed": 32,
+          "completion_seconds": 0.2409789160010405,
+          "pipeline_seconds": 0.24096937495050952
+        },
+        "continuation_policy": "Start from the saved initial partition; each attempt continues only its own previous flow state."
+      },
+      "detail_file": "fixed/ibm02-seed32/result.json"
+    },
+    {
+      "instance": "ibm02",
+      "seed": 33,
+      "initial": {
+        "native_cut": 838.0,
+        "block_loads": [
+          4957.0,
+          4932.0,
+          4684.0,
+          5028.0
+        ],
+        "capacity": 5047.2575,
+        "capacity_tolerance": 1.9601e-06,
+        "feasible": true,
+        "independent_cut_and_loads_verified": true
+      },
+      "arm_order": [
+        "fem_ier",
+        "random"
+      ],
+      "arms": {
+        "fem_ier": {
+          "status": "success",
+          "pipeline_seconds": 0.46606616699136794,
+          "initial": {
+            "native_cut": 838.0,
+            "block_loads": [
+              4957.0,
+              4932.0,
+              4684.0,
+              5028.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 838.0,
+            "block_loads": [
+              4957.0,
+              4932.0,
+              4684.0,
+              5028.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        },
+        "random": {
+          "status": "success",
+          "pipeline_seconds": 0.3700208340305835,
+          "initial": {
+            "native_cut": 838.0,
+            "block_loads": [
+              4957.0,
+              4932.0,
+              4684.0,
+              5028.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 838.0,
+            "block_loads": [
+              4957.0,
+              4932.0,
+              4684.0,
+              5028.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        }
+      },
+      "additional_flow": {
+        "budget_seconds": 0.46606616699136794,
+        "wall_seconds_including_overshoot": 0.9218621249892749,
+        "attempts": 2,
+        "max_attempts_reached": false,
+        "overshoot_seconds": 0.45577404100913554,
+        "timing_definition": "Wall completion time from restart-loop start; verification and artifact writes occur after this loop.",
+        "eligible_completed_runs": 1,
+        "status": "success",
+        "winner_run_id": "flow_0000",
+        "winner": {
+          "native_cut": 838.0,
+          "block_loads": [
+            4957.0,
+            4932.0,
+            4684.0,
+            5028.0
+          ],
+          "solver_seed": 33,
+          "completion_seconds": 0.4471280419966206,
+          "pipeline_seconds": 0.44711983401793987
+        },
+        "continuation_policy": "Start from the saved initial partition; each attempt continues only its own previous flow state."
+      },
+      "detail_file": "fixed/ibm02-seed33/result.json"
+    },
+    {
+      "instance": "ibm02",
+      "seed": 34,
+      "initial": {
+        "native_cut": 1245.0,
+        "block_loads": [
+          5047.0,
+          4983.0,
+          5035.0,
+          4536.0
+        ],
+        "capacity": 5047.2575,
+        "capacity_tolerance": 1.9601e-06,
+        "feasible": true,
+        "independent_cut_and_loads_verified": true
+      },
+      "arm_order": [
+        "random",
+        "fem_ier"
+      ],
+      "arms": {
+        "random": {
+          "status": "success",
+          "pipeline_seconds": 0.3676233339938335,
+          "initial": {
+            "native_cut": 1245.0,
+            "block_loads": [
+              5047.0,
+              4983.0,
+              5035.0,
+              4536.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 1242.0,
+            "block_loads": [
+              5047.0,
+              4983.0,
+              5035.0,
+              4536.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        },
+        "fem_ier": {
+          "status": "success",
+          "pipeline_seconds": 0.48251483304193243,
+          "initial": {
+            "native_cut": 1245.0,
+            "block_loads": [
+              5047.0,
+              4983.0,
+              5035.0,
+              4536.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "final": {
+            "native_cut": 1241.0,
+            "block_loads": [
+              5047.0,
+              4983.0,
+              5035.0,
+              4536.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          }
+        }
+      },
+      "additional_flow": {
+        "budget_seconds": 0.48251483304193243,
+        "wall_seconds_including_overshoot": 0.7069776660064235,
+        "attempts": 2,
+        "max_attempts_reached": false,
+        "overshoot_seconds": 0.2244406669633463,
+        "timing_definition": "Wall completion time from restart-loop start; verification and artifact writes occur after this loop.",
+        "eligible_completed_runs": 1,
+        "status": "success",
+        "winner_run_id": "flow_0000",
+        "winner": {
+          "native_cut": 1245.0,
+          "block_loads": [
+            5047.0,
+            4983.0,
+            5035.0,
+            4536.0
+          ],
+          "solver_seed": 34,
+          "completion_seconds": 0.34267745801480487,
+          "pipeline_seconds": 0.34266704198671505
+        },
+        "continuation_policy": "Start from the saved initial partition; each attempt continues only its own previous flow state."
+      },
+      "detail_file": "fixed/ibm02-seed34/result.json"
+    }
+  ],
+  "integration": [
+    {
+      "instance": "ibm01",
+      "seed": 30,
+      "detail_file": "integration/ibm01-seed30/result.json",
+      "reconstructed_hierarchy_matches_saved": true,
+      "arms": {
+        "flow": {
+          "mode_cycle": [
+            "flow"
+          ],
+          "status": "success",
+          "final": {
+            "native_cut": 806.0,
+            "block_loads": [
+              3234.0,
+              3201.0,
+              3280.0,
+              3037.0
+            ],
+            "capacity": 3283.64,
+            "capacity_tolerance": 1.2752e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "wall_seconds_with_instrumentation_not_a_timing_comparison": 2.1554898750036955
+        },
+        "fem_ier_flow": {
+          "mode_cycle": [
+            "fem_ier",
+            "flow"
+          ],
+          "status": "success",
+          "final": {
+            "native_cut": 802.0,
+            "block_loads": [
+              3238.0,
+              3203.0,
+              3281.0,
+              3030.0
+            ],
+            "capacity": 3283.64,
+            "capacity_tolerance": 1.2752e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "wall_seconds_with_instrumentation_not_a_timing_comparison": 6.010579249996226
+        }
+      }
+    },
+    {
+      "instance": "ibm02",
+      "seed": 30,
+      "detail_file": "integration/ibm02-seed30/result.json",
+      "reconstructed_hierarchy_matches_saved": true,
+      "arms": {
+        "flow": {
+          "mode_cycle": [
+            "flow"
+          ],
+          "status": "success",
+          "final": {
+            "native_cut": 1296.0,
+            "block_loads": [
+              4720.0,
+              4787.0,
+              5047.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "wall_seconds_with_instrumentation_not_a_timing_comparison": 3.4914382079732604
+        },
+        "fem_ier_flow": {
+          "mode_cycle": [
+            "fem_ier",
+            "flow"
+          ],
+          "status": "success",
+          "final": {
+            "native_cut": 1206.0,
+            "block_loads": [
+              4722.0,
+              4785.0,
+              5047.0,
+              5047.0
+            ],
+            "capacity": 5047.2575,
+            "capacity_tolerance": 1.9601e-06,
+            "feasible": true,
+            "independent_cut_and_loads_verified": true
+          },
+          "wall_seconds_with_instrumentation_not_a_timing_comparison": 9.145231665985193
+        }
+      }
+    }
+  ],
+  "limits": [
+    "Saved states were flow-refined; further-flow controls test residual improvement rather than assuming proven FM local optimality.",
+    "Random selector control is not time matched; additional flow is the only strict time control.",
+    "No_result means no verified full flow call completed by the deadline, not that the initial state was infeasible.",
+    "No KaHyPar comparison, asymptotic OGP conclusion, or general performance guarantee."
+  ],
+  "core_warmup_excluded": {
+    "seed": 20260924,
+    "nodes": 16,
+    "edges": 32,
+    "q": 4,
+    "coarsen_to": 8,
+    "pipeline_order": [
+      "fem",
+      "greedy"
+    ],
+    "included_in_benchmark_results": false,
+    "used_for_restart_budget_or_candidates": false,
+    "single_runs": {
+      "fem": {
+        "status": "success",
+        "pipeline_seconds": 0.33981541701359674,
+        "initial_partition_seconds": 0.33911433402681723,
+        "vcycle_seconds": 0.000701082986779511,
+        "coarse_initial": {
+          "native_cut": 4.0,
+          "block_loads": [
+            4.0,
+            4.0,
+            4.0,
+            4.0
+          ],
+          "capacity": 4.12,
+          "capacity_tolerance": 1.6e-09,
+          "feasible": true,
+          "independent_cut_and_loads_verified": true
+        },
+        "final": {
+          "native_cut": 4.0,
+          "block_loads": [
+            4.0,
+            4.0,
+            4.0,
+            4.0
+          ],
+          "capacity": 4.12,
+          "capacity_tolerance": 1.6e-09,
+          "feasible": true,
+          "independent_cut_and_loads_verified": true
+        }
+      },
+      "greedy": {
+        "status": "success",
+        "pipeline_seconds": 0.0005987079930491745,
+        "initial_partition_seconds": 0.0002562080044299364,
+        "vcycle_seconds": 0.00034249998861923814,
+        "coarse_initial": {
+          "native_cut": 8.0,
+          "block_loads": [
+            4.0,
+            4.0,
+            4.0,
+            4.0
+          ],
+          "capacity": 4.12,
+          "capacity_tolerance": 1.6e-09,
+          "feasible": true,
+          "independent_cut_and_loads_verified": true
+        },
+        "final": {
+          "native_cut": 8.0,
+          "block_loads": [
+            4.0,
+            4.0,
+            4.0,
+            4.0
+          ],
+          "capacity": 4.12,
+          "capacity_tolerance": 1.6e-09,
+          "feasible": true,
+          "independent_cut_and_loads_verified": true
+        }
+      }
+    },
+    "coarsening_seconds": 0.0008510000188834965,
+    "actual_coarse_nodes": 8,
+    "status": "success",
+    "total_wall_seconds_including_verification": 0.35026120801921934
+  }
+}

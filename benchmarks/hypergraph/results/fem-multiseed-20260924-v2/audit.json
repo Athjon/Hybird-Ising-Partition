@@ -1,0 +1,136 @@
+{
+  "audited_utc": "2026-09-24T10:46:01.466732+00:00",
+  "summary_sha256": "6221bd163ecc6886d003b64a96eb27d7ff50c202c2af8e97e4c174078544f2c1",
+  "manifest_sha256": "30f189c6453ec206b2ab422423ba9a3115ae7dbe5a3705e611a29ffe394571c3",
+  "current_source_hash_mismatches": [],
+  "all_source_and_input_hashes_verified": true,
+  "counts": {
+    "single_runs": 40,
+    "restart_attempts": 36,
+    "failed_runs": 0,
+    "validation_failed_runs": 0,
+    "valid_final_assignments": 76,
+    "overshoot_runs": 20,
+    "eligible_restart_runs": 16
+  },
+  "aggregates": [
+    {
+      "instance": "ibm01",
+      "seeds": 10,
+      "single_greedy_mean": 1461.2,
+      "fem_all_seed_mean": 820.1,
+      "fem_vs_single_wins": 10,
+      "fem_vs_single_ties": 0,
+      "fem_vs_single_losses": 0,
+      "restart_paired_count": 10,
+      "restart_mean_on_completed_seeds": 1447.4,
+      "fem_mean_on_restart_completed_seeds": 820.1,
+      "fem_vs_restart_wins": 10,
+      "fem_vs_restart_ties": 0,
+      "fem_vs_restart_losses": 0,
+      "restart_no_result": 0
+    },
+    {
+      "instance": "ibm02",
+      "seeds": 10,
+      "single_greedy_mean": 2874.2,
+      "fem_all_seed_mean": 1317.0,
+      "fem_vs_single_wins": 10,
+      "fem_vs_single_ties": 0,
+      "fem_vs_single_losses": 0,
+      "restart_paired_count": 6,
+      "restart_mean_on_completed_seeds": 2745.1666666666665,
+      "fem_mean_on_restart_completed_seeds": 1117.0,
+      "fem_vs_restart_wins": 6,
+      "fem_vs_restart_ties": 0,
+      "fem_vs_restart_losses": 0,
+      "restart_no_result": 4
+    }
+  ],
+  "no_result_details": [
+    {
+      "instance": "ibm02",
+      "seed": 30,
+      "first_completion_seconds": 5.196428041963372,
+      "budget_seconds": 4.797302957973443,
+      "overshoot_seconds": 0.3991250839899294,
+      "candidate_cut": 1915.0
+    },
+    {
+      "instance": "ibm02",
+      "seed": 32,
+      "first_completion_seconds": 4.64295129198581,
+      "budget_seconds": 4.384570790978614,
+      "overshoot_seconds": 0.25838050100719556,
+      "candidate_cut": 2194.0
+    },
+    {
+      "instance": "ibm02",
+      "seed": 36,
+      "first_completion_seconds": 4.1895232910173945,
+      "budget_seconds": 4.111960333015304,
+      "overshoot_seconds": 0.07756295800209045,
+      "candidate_cut": 3159.0
+    },
+    {
+      "instance": "ibm02",
+      "seed": 38,
+      "first_completion_seconds": 4.308905332989525,
+      "budget_seconds": 4.013878291996662,
+      "overshoot_seconds": 0.2950270409928635,
+      "candidate_cut": 2431.0
+    }
+  ],
+  "all_no_results_are_first_run_overshoots": true,
+  "excluded_better_overshoot_candidates": [
+    {
+      "instance": "ibm01",
+      "seed": 30,
+      "eligible_winner_cut": 926.0,
+      "excluded_overshoot_cut": 715.0
+    },
+    {
+      "instance": "ibm01",
+      "seed": 33,
+      "eligible_winner_cut": 1227.0,
+      "excluded_overshoot_cut": 1141.0
+    },
+    {
+      "instance": "ibm01",
+      "seed": 34,
+      "eligible_winner_cut": 1233.0,
+      "excluded_overshoot_cut": 1186.0
+    },
+    {
+      "instance": "ibm01",
+      "seed": 35,
+      "eligible_winner_cut": 2243.0,
+      "excluded_overshoot_cut": 1205.0
+    },
+    {
+      "instance": "ibm01",
+      "seed": 36,
+      "eligible_winner_cut": 1556.0,
+      "excluded_overshoot_cut": 1552.0
+    },
+    {
+      "instance": "ibm01",
+      "seed": 39,
+      "eligible_winner_cut": 1546.0,
+      "excluded_overshoot_cut": 1239.0
+    },
+    {
+      "instance": "ibm02",
+      "seed": 33,
+      "eligible_winner_cut": 2248.0,
+      "excluded_overshoot_cut": 2206.0
+    },
+    {
+      "instance": "ibm02",
+      "seed": 34,
+      "eligible_winner_cut": 2993.0,
+      "excluded_overshoot_cut": 2877.0
+    }
+  ],
+  "method": "Read every runs.json and NPZ; independently recomputed native cut and block counts using original hgr pins, checked quotient mapping/weights, actual capacities, all candidate deadlines, winner membership, all failures, and source/input hashes. No production or benchmark source was changed."
+}

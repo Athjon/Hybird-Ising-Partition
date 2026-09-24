@@ -1,0 +1,688 @@
+{
+  "input_sha256": {
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/fem-multiseed-20260924-v2/summary.json": "6221bd163ecc6886d003b64a96eb27d7ff50c202c2af8e97e4c174078544f2c1",
+    "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/native-search-20260924/summary.json": "4adbcc9b79d74bf3dafa026c5e0c9fb19c78b5f9eee44e281a8740317fe643e0"
+  },
+  "bootstrap": "20,000 paired resamples of seeds, RNG seed 20260924; conditional on one fixed input and paired successful returns. Not confidence across datasets.",
+  "real_instances": [
+    {
+      "instance": "ibm01",
+      "seeds": [
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "methods": {
+        "greedy": {
+          "statuses": {
+            "success": 10
+          },
+          "mean_cut_successful_only": 1461.2,
+          "median_cut_successful_only": 1393.5,
+          "median_pipeline_seconds": 1.792728750006063
+        },
+        "fem": {
+          "statuses": {
+            "success": 10
+          },
+          "mean_cut_successful_only": 820.1,
+          "median_cut_successful_only": 843.0,
+          "median_pipeline_seconds": 2.484737375023542
+        },
+        "restarts": {
+          "statuses": {
+            "success": 10
+          },
+          "mean_cut_successful_only": 1447.4,
+          "median_cut_successful_only": 1446.0
+        }
+      },
+      "paired_single_greedy": {
+        "pairs": 10,
+        "fem_wins": 10,
+        "ties": 0,
+        "fem_losses": 0,
+        "mean_fem_cut": 820.1,
+        "mean_control_cut": 1461.2,
+        "mean_control_minus_fem": 641.1,
+        "median_control_minus_fem": 669.5,
+        "mean_delta_seed_bootstrap_95_percentile": [
+          444.8,
+          849.6
+        ]
+      },
+      "paired_restarts": {
+        "pairs": 10,
+        "fem_wins": 10,
+        "ties": 0,
+        "fem_losses": 0,
+        "mean_fem_cut": 820.1,
+        "mean_control_cut": 1447.4,
+        "mean_control_minus_fem": 627.3,
+        "median_control_minus_fem": 651.5,
+        "mean_delta_seed_bootstrap_95_percentile": [
+          435.3975,
+          836.6074999999994
+        ]
+      },
+      "restart_counts_in_budget": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "restart_overshoot_seconds": [
+        1.4049787909607403,
+        0.9325218750163913,
+        0.2167222920106724,
+        1.6623908339533955,
+        1.997059250017628,
+        0.50804766692454,
+        1.6948879589908756,
+        1.5932133750175126,
+        0.9961917919572443,
+        0.7959112499374896
+      ]
+    },
+    {
+      "instance": "ibm02",
+      "seeds": [
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "methods": {
+        "greedy": {
+          "statuses": {
+            "success": 10
+          },
+          "mean_cut_successful_only": 2874.2,
+          "median_cut_successful_only": 2512.0,
+          "median_pipeline_seconds": 4.772167853981955
+        },
+        "fem": {
+          "statuses": {
+            "success": 10
+          },
+          "mean_cut_successful_only": 1317.0,
+          "median_cut_successful_only": 1270.5,
+          "median_pipeline_seconds": 4.744811082986416
+        },
+        "restarts": {
+          "statuses": {
+            "no_result": 4,
+            "success": 6
+          },
+          "mean_cut_successful_only": 2745.1666666666665,
+          "median_cut_successful_only": 2682.5
+        }
+      },
+      "paired_single_greedy": {
+        "pairs": 10,
+        "fem_wins": 10,
+        "ties": 0,
+        "fem_losses": 0,
+        "mean_fem_cut": 1317.0,
+        "mean_control_cut": 2874.2,
+        "mean_control_minus_fem": 1557.2,
+        "median_control_minus_fem": 1410.5,
+        "mean_delta_seed_bootstrap_95_percentile": [
+          919.695,
+          2209.6049999999996
+        ]
+      },
+      "paired_restarts": {
+        "pairs": 6,
+        "fem_wins": 6,
+        "ties": 0,
+        "fem_losses": 0,
+        "mean_fem_cut": 1117.0,
+        "mean_control_cut": 2745.1666666666665,
+        "mean_control_minus_fem": 1628.1666666666667,
+        "median_control_minus_fem": 1579.0,
+        "mean_delta_seed_bootstrap_95_percentile": [
+          1298.5,
+          2003.6666666666667
+        ]
+      },
+      "restart_counts_in_budget": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "restart_overshoot_seconds": [
+        0.3991250839899294,
+        4.964086500986014,
+        0.25838050100719556,
+        3.732521291996818,
+        2.3789345410186797,
+        2.750361915968824,
+        0.07756295800209045,
+        3.6478577500092797,
+        0.2950270409928635,
+        2.5577274580136873
+      ]
+    }
+  ],
+  "mechanism_instances": [
+    {
+      "name": "weighted-n08-q2",
+      "family": "weighted",
+      "initial_cost": 21.0,
+      "exact_optimum": 17.5,
+      "local_reachability": {
+        "profile": [
+          {
+            "weight": 1.0,
+            "counts_by_block": [
+              2,
+              2
+            ]
+          },
+          {
+            "weight": 2.0,
+            "counts_by_block": [
+              2,
+              2
+            ]
+          }
+        ],
+        "reachable_labeled_states": 36,
+        "restricted_optimum": 18.0
+      },
+      "aggregate": [
+        {
+          "method": "zero_local",
+          "runs": 10,
+          "optimal_hits": 0,
+          "mean_best_gap": 1.75,
+          "median_seconds": 0.04805906300316565,
+          "visited_other_optimal_class": 0
+        },
+        {
+          "method": "anneal_local",
+          "runs": 10,
+          "optimal_hits": 0,
+          "mean_best_gap": 0.5,
+          "median_seconds": 0.04970141648664139,
+          "visited_other_optimal_class": 0
+        },
+        {
+          "method": "anneal_block",
+          "runs": 10,
+          "optimal_hits": 10,
+          "mean_best_gap": 0.0,
+          "median_seconds": 0.06388408347265795,
+          "visited_other_optimal_class": 0
+        }
+      ],
+      "proposal_rates": {
+        "zero_local": {
+          "accepted": 0.00046666666666666666,
+          "capacity_rejected": 0.28683333333333333,
+          "uphill_accepted": 0.0,
+          "no_op": 0.42573333333333335
+        },
+        "anneal_local": {
+          "accepted": 0.10576666666666666,
+          "capacity_rejected": 0.2835,
+          "uphill_accepted": 0.0482,
+          "no_op": 0.43046666666666666
+        },
+        "anneal_block": {
+          "accepted": 0.08473333333333333,
+          "capacity_rejected": 0.47486666666666666,
+          "uphill_accepted": 0.03966666666666667,
+          "no_op": 0.3323
+        }
+      }
+    },
+    {
+      "name": "weighted-n08-q3",
+      "family": "weighted",
+      "initial_cost": 37.0,
+      "exact_optimum": 37.0,
+      "local_reachability": {
+        "profile": [
+          {
+            "weight": 1.0,
+            "counts_by_block": [
+              2,
+              2,
+              0
+            ]
+          },
+          {
+            "weight": 2.0,
+            "counts_by_block": [
+              1,
+              1,
+              2
+            ]
+          }
+        ],
+        "reachable_labeled_states": 72,
+        "restricted_optimum": 37.0
+      },
+      "aggregate": [
+        {
+          "method": "zero_local",
+          "runs": 10,
+          "optimal_hits": 10,
+          "mean_best_gap": 0.0,
+          "median_seconds": 0.055696125025860965,
+          "visited_other_optimal_class": 0
+        },
+        {
+          "method": "anneal_local",
+          "runs": 10,
+          "optimal_hits": 10,
+          "mean_best_gap": 0.0,
+          "median_seconds": 0.05662004151963629,
+          "visited_other_optimal_class": 0
+        },
+        {
+          "method": "anneal_block",
+          "runs": 10,
+          "optimal_hits": 10,
+          "mean_best_gap": 0.0,
+          "median_seconds": 0.06581033350084908,
+          "visited_other_optimal_class": 0
+        }
+      ],
+      "proposal_rates": {
+        "zero_local": {
+          "accepted": 0.0,
+          "capacity_rejected": 0.4251,
+          "uphill_accepted": 0.0,
+          "no_op": 0.24836666666666668
+        },
+        "anneal_local": {
+          "accepted": 0.1051,
+          "capacity_rejected": 0.4274,
+          "uphill_accepted": 0.04953333333333333,
+          "no_op": 0.24753333333333333
+        },
+        "anneal_block": {
+          "accepted": 0.0947,
+          "capacity_rejected": 0.5269666666666667,
+          "uphill_accepted": 0.043133333333333336,
+          "no_op": 0.19263333333333332
+        }
+      }
+    },
+    {
+      "name": "weighted-n12-q2",
+      "family": "weighted",
+      "initial_cost": 25.5,
+      "exact_optimum": 22.0,
+      "local_reachability": {
+        "profile": [
+          {
+            "weight": 1.0,
+            "counts_by_block": [
+              3,
+              3
+            ]
+          },
+          {
+            "weight": 2.0,
+            "counts_by_block": [
+              3,
+              3
+            ]
+          }
+        ],
+        "reachable_labeled_states": 400,
+        "restricted_optimum": 25.5
+      },
+      "aggregate": [
+        {
+          "method": "zero_local",
+          "runs": 10,
+          "optimal_hits": 0,
+          "mean_best_gap": 3.5,
+          "median_seconds": 0.047912374982843176,
+          "visited_other_optimal_class": 0
+        },
+        {
+          "method": "anneal_local",
+          "runs": 10,
+          "optimal_hits": 0,
+          "mean_best_gap": 3.5,
+          "median_seconds": 0.04864235452259891,
+          "visited_other_optimal_class": 0
+        },
+        {
+          "method": "anneal_block",
+          "runs": 10,
+          "optimal_hits": 10,
+          "mean_best_gap": 0.0,
+          "median_seconds": 0.06370391696691513,
+          "visited_other_optimal_class": 0
+        }
+      ],
+      "proposal_rates": {
+        "zero_local": {
+          "accepted": 0.0,
+          "capacity_rejected": 0.2751,
+          "uphill_accepted": 0.0,
+          "no_op": 0.4523333333333333
+        },
+        "anneal_local": {
+          "accepted": 0.0798,
+          "capacity_rejected": 0.2723333333333333,
+          "uphill_accepted": 0.0377,
+          "no_op": 0.45313333333333333
+        },
+        "anneal_block": {
+          "accepted": 0.061,
+          "capacity_rejected": 0.45613333333333334,
+          "uphill_accepted": 0.028366666666666665,
+          "no_op": 0.3504333333333333
+        }
+      }
+    },
+    {
+      "name": "weighted-n12-q3",
+      "family": "weighted",
+      "initial_cost": 48.5,
+      "exact_optimum": 44.5,
+      "local_reachability": {
+        "profile": [
+          {
+            "weight": 1.0,
+            "counts_by_block": [
+              2,
+              2,
+              2
+            ]
+          },
+          {
+            "weight": 2.0,
+            "counts_by_block": [
+              2,
+              2,
+              2
+            ]
+          }
+        ],
+        "reachable_labeled_states": 8100,
+        "restricted_optimum": 44.5
+      },
+      "aggregate": [
+        {
+          "method": "zero_local",
+          "runs": 10,
+          "optimal_hits": 2,
+          "mean_best_gap": 0.4,
+          "median_seconds": 0.05536377150565386,
+          "visited_other_optimal_class": 0
+        },
+        {
+          "method": "anneal_local",
+          "runs": 10,
+          "optimal_hits": 10,
+          "mean_best_gap": 0.0,
+          "median_seconds": 0.05635745846666396,
+          "visited_other_optimal_class": 0
+        },
+        {
+          "method": "anneal_block",
+          "runs": 10,
+          "optimal_hits": 8,
+          "mean_best_gap": 0.45,
+          "median_seconds": 0.06586870847968385,
+          "visited_other_optimal_class": 0
+        }
+      ],
+      "proposal_rates": {
+        "zero_local": {
+          "accepted": 0.0004333333333333333,
+          "capacity_rejected": 0.3622666666666667,
+          "uphill_accepted": 0.0,
+          "no_op": 0.27586666666666665
+        },
+        "anneal_local": {
+          "accepted": 0.09053333333333333,
+          "capacity_rejected": 0.36146666666666666,
+          "uphill_accepted": 0.04413333333333333,
+          "no_op": 0.27653333333333335
+        },
+        "anneal_block": {
+          "accepted": 0.0746,
+          "capacity_rejected": 0.486,
+          "uphill_accepted": 0.03523333333333333,
+          "no_op": 0.2128
+        }
+      }
+    },
+    {
+      "name": "random-n08-i003",
+      "family": "finite_gap",
+      "initial_cost": 14.0,
+      "exact_optimum": 14.0,
+      "exact_swap_barrier": {
+        "minimum_path_max_energy": 15.0,
+        "barrier_above_optimum": 1.0,
+        "canonical_path_masks": [
+          202,
+          116,
+          212
+        ],
+        "path_energies": [
+          14.0,
+          15.0,
+          14.0
+        ]
+      },
+      "aggregate": [
+        {
+          "method": "zero_local",
+          "runs": 10,
+          "optimal_hits": 10,
+          "mean_best_gap": 0.0,
+          "median_seconds": 0.05334077053703368,
+          "visited_other_optimal_class": 0
+        },
+        {
+          "method": "anneal_local",
+          "runs": 10,
+          "optimal_hits": 10,
+          "mean_best_gap": 0.0,
+          "median_seconds": 0.05820372901507653,
+          "visited_other_optimal_class": 10
+        },
+        {
+          "method": "anneal_block",
+          "runs": 10,
+          "optimal_hits": 10,
+          "mean_best_gap": 0.0,
+          "median_seconds": 0.07252314602374099,
+          "visited_other_optimal_class": 10
+        }
+      ],
+      "proposal_rates": {
+        "zero_local": {
+          "accepted": 0.0,
+          "capacity_rejected": 0.0,
+          "uphill_accepted": 0.0,
+          "no_op": 0.4273666666666667
+        },
+        "anneal_local": {
+          "accepted": 0.36096666666666666,
+          "capacity_rejected": 0.0,
+          "uphill_accepted": 0.08913333333333333,
+          "no_op": 0.4268
+        },
+        "anneal_block": {
+          "accepted": 0.3309,
+          "capacity_rejected": 0.14626666666666666,
+          "uphill_accepted": 0.08273333333333334,
+          "no_op": 0.32143333333333335
+        }
+      }
+    },
+    {
+      "name": "random-n08-i009",
+      "family": "finite_gap",
+      "initial_cost": 14.0,
+      "exact_optimum": 14.0,
+      "exact_swap_barrier": {
+        "minimum_path_max_energy": 15.0,
+        "barrier_above_optimum": 1.0,
+        "canonical_path_masks": [
+          108,
+          120,
+          184
+        ],
+        "path_energies": [
+          14.0,
+          15.0,
+          14.0
+        ]
+      },
+      "aggregate": [
+        {
+          "method": "zero_local",
+          "runs": 10,
+          "optimal_hits": 10,
+          "mean_best_gap": 0.0,
+          "median_seconds": 0.05387043749215081,
+          "visited_other_optimal_class": 0
+        },
+        {
+          "method": "anneal_local",
+          "runs": 10,
+          "optimal_hits": 10,
+          "mean_best_gap": 0.0,
+          "median_seconds": 0.05799695901805535,
+          "visited_other_optimal_class": 10
+        },
+        {
+          "method": "anneal_block",
+          "runs": 10,
+          "optimal_hits": 10,
+          "mean_best_gap": 0.0,
+          "median_seconds": 0.0732318330265116,
+          "visited_other_optimal_class": 10
+        }
+      ],
+      "proposal_rates": {
+        "zero_local": {
+          "accepted": 0.0,
+          "capacity_rejected": 0.0,
+          "uphill_accepted": 0.0,
+          "no_op": 0.43206666666666665
+        },
+        "anneal_local": {
+          "accepted": 0.3571666666666667,
+          "capacity_rejected": 0.0,
+          "uphill_accepted": 0.08796666666666667,
+          "no_op": 0.43046666666666666
+        },
+        "anneal_block": {
+          "accepted": 0.32506666666666667,
+          "capacity_rejected": 0.14533333333333334,
+          "uphill_accepted": 0.08063333333333333,
+          "no_op": 0.3238333333333333
+        }
+      }
+    },
+    {
+      "name": "random-n12-i008",
+      "family": "finite_gap",
+      "initial_cost": 19.0,
+      "exact_optimum": 19.0,
+      "exact_swap_barrier": {
+        "minimum_path_max_energy": 20.0,
+        "barrier_above_optimum": 1.0,
+        "canonical_path_masks": [
+          1490,
+          1238,
+          1244,
+          2268
+        ],
+        "path_energies": [
+          19.0,
+          20.0,
+          20.0,
+          19.0
+        ]
+      },
+      "aggregate": [
+        {
+          "method": "zero_local",
+          "runs": 10,
+          "optimal_hits": 10,
+          "mean_best_gap": 0.0,
+          "median_seconds": 0.0542325209826231,
+          "visited_other_optimal_class": 0
+        },
+        {
+          "method": "anneal_local",
+          "runs": 10,
+          "optimal_hits": 10,
+          "mean_best_gap": 0.0,
+          "median_seconds": 0.0586142704996746,
+          "visited_other_optimal_class": 10
+        },
+        {
+          "method": "anneal_block",
+          "runs": 10,
+          "optimal_hits": 10,
+          "mean_best_gap": 0.0,
+          "median_seconds": 0.07572491699829698,
+          "visited_other_optimal_class": 10
+        }
+      ],
+      "proposal_rates": {
+        "zero_local": {
+          "accepted": 0.0,
+          "capacity_rejected": 0.0,
+          "uphill_accepted": 0.0,
+          "no_op": 0.45063333333333333
+        },
+        "anneal_local": {
+          "accepted": 0.3075,
+          "capacity_rejected": 0.0,
+          "uphill_accepted": 0.0987,
+          "no_op": 0.4517
+        },
+        "anneal_block": {
+          "accepted": 0.2703,
+          "capacity_rejected": 0.1594,
+          "uphill_accepted": 0.08803333333333334,
+          "no_op": 0.34386666666666665
+        }
+      }
+    }
+  ]
+}

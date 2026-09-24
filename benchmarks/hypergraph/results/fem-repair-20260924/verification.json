@@ -1,0 +1,22 @@
+{
+  "root": {
+    "command": "/opt/anaconda3/bin/python -m pytest -q tests/test_hyper_fem_native.py tests/test_hyper_weighted_refine.py tests/test_hyper_quotient.py tests/test_time_budget_hgr.py tests/test_ogp_exact_geometry.py tests/test_ogp_objective_diagnostic.py",
+    "name": "root",
+    "chunk_id": "b1e412",
+    "wall_time_seconds": 0.000016583,
+    "exit_code": 0,
+    "original_token_count": 21,
+    "output": "....................................................... [100%]\n72 passed in 1.46s\n"
+  },
+  "core": {
+    "command": "/opt/anaconda3/bin/python -m pytest -q tests/test_fem_gradients.py tests/test_adaptive_annealing.py",
+    "cwd": "lib/qubo-solver",
+    "name": "core",
+    "chunk_id": "841c48",
+    "wall_time_seconds": 0.000009375,
+    "exit_code": 0,
+    "original_token_count": 25,
+    "output": "....................                                                    [100%]\n21 passed in 1.52s\n"
+  },
+  "diff_check": "passed for parent and submodule"
+}

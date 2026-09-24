@@ -1,0 +1,322 @@
+{
+  "instance": "ibm02",
+  "seed": 34,
+  "detail_file": "ibm02-seed34/runs.json",
+  "single_runs": {
+    "fem": {
+      "method": "fem",
+      "solver_seed": 34,
+      "initial_partition_seconds": 1.6955614580074325,
+      "status": "success",
+      "vcycle_seconds": 3.793708459008485,
+      "solver_details": {
+        "method": "fem",
+        "map_type": "native",
+        "native_cut": 2507.0,
+        "block_loads": [
+          4978.0,
+          4905.0,
+          4931.0,
+          4787.0
+        ],
+        "capacity": 5047.2575,
+        "selected_trial": 6,
+        "candidate_native_cuts": [
+          2915.0,
+          3301.0,
+          2751.0,
+          2595.0,
+          2535.0,
+          2643.0,
+          2507.0,
+          2687.0
+        ],
+        "candidate_trials": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "rounding_failures": []
+      },
+      "started_at": 327546.126379208,
+      "finished_at": 327551.615649125,
+      "pipeline_seconds": 5.489269917015918,
+      "run_id": "single_fem",
+      "coarse_initial": {
+        "native_cut": 2507.0,
+        "block_loads": [
+          4978.0,
+          4905.0,
+          4931.0,
+          4787.0
+        ],
+        "capacity": 5047.2575,
+        "capacity_tolerance": 1.9601e-06,
+        "feasible": true,
+        "independent_cut_and_loads_verified": true
+      },
+      "lifted_initial": {
+        "native_cut": 2507.0,
+        "block_loads": [
+          4978.0,
+          4905.0,
+          4931.0,
+          4787.0
+        ],
+        "capacity": 5047.2575,
+        "capacity_tolerance": 1.9601e-06,
+        "feasible": true,
+        "independent_cut_and_loads_verified": true
+      },
+      "final": {
+        "native_cut": 1245.0,
+        "block_loads": [
+          5047.0,
+          4983.0,
+          5035.0,
+          4536.0
+        ],
+        "capacity": 5047.2575,
+        "capacity_tolerance": 1.9601e-06,
+        "feasible": true,
+        "independent_cut_and_loads_verified": true
+      },
+      "assignment_artifacts": {
+        "coarse_assignment": {
+          "file": "assignments.npz",
+          "key": "single_fem_coarse_assignment"
+        },
+        "final_assignment": {
+          "file": "assignments.npz",
+          "key": "single_fem_final_assignment"
+        }
+      }
+    },
+    "greedy": {
+      "method": "greedy",
+      "solver_seed": 34,
+      "initial_partition_seconds": 0.09434183401754126,
+      "status": "success",
+      "vcycle_seconds": 5.331634083006065,
+      "started_at": 327551.658964541,
+      "finished_at": 327557.084940458,
+      "pipeline_seconds": 5.425975917023607,
+      "run_id": "single_greedy",
+      "coarse_initial": {
+        "native_cut": 9675.0,
+        "block_loads": [
+          5047.0,
+          5043.0,
+          4464.0,
+          5047.0
+        ],
+        "capacity": 5047.2575,
+        "capacity_tolerance": 1.9601e-06,
+        "feasible": true,
+        "independent_cut_and_loads_verified": true
+      },
+      "lifted_initial": {
+        "native_cut": 9675.0,
+        "block_loads": [
+          5047.0,
+          5043.0,
+          4464.0,
+          5047.0
+        ],
+        "capacity": 5047.2575,
+        "capacity_tolerance": 1.9601e-06,
+        "feasible": true,
+        "independent_cut_and_loads_verified": true
+      },
+      "final": {
+        "native_cut": 2032.0,
+        "block_loads": [
+          4918.0,
+          5047.0,
+          5047.0,
+          4589.0
+        ],
+        "capacity": 5047.2575,
+        "capacity_tolerance": 1.9601e-06,
+        "feasible": true,
+        "independent_cut_and_loads_verified": true
+      },
+      "assignment_artifacts": {
+        "coarse_assignment": {
+          "file": "assignments.npz",
+          "key": "single_greedy_coarse_assignment"
+        },
+        "final_assignment": {
+          "file": "assignments.npz",
+          "key": "single_greedy_final_assignment"
+        }
+      }
+    }
+  },
+  "coarsening": {
+    "seconds": 0.7063128330046311,
+    "nodes": 200,
+    "levels": 8
+  },
+  "single_run_order": [
+    "fem",
+    "greedy"
+  ],
+  "greedy_restarts": {
+    "budget_seconds": 5.489269917015918,
+    "records": [
+      {
+        "method": "greedy",
+        "solver_seed": 1340000,
+        "initial_partition_seconds": 0.09380920801777393,
+        "status": "success",
+        "vcycle_seconds": 3.418097207963001,
+        "started_at": 327557.137253,
+        "finished_at": 327560.649159416,
+        "pipeline_seconds": 3.511906415980775,
+        "run_id": "restart_0000",
+        "attempt": 0,
+        "completion_seconds": 3.5119079159921966,
+        "completed_within_budget": true,
+        "coarse_initial": {
+          "native_cut": 8801.0,
+          "block_loads": [
+            4462.0,
+            5047.0,
+            5045.0,
+            5047.0
+          ],
+          "capacity": 5047.2575,
+          "capacity_tolerance": 1.9601e-06,
+          "feasible": true,
+          "independent_cut_and_loads_verified": true
+        },
+        "lifted_initial": {
+          "native_cut": 8801.0,
+          "block_loads": [
+            4462.0,
+            5047.0,
+            5045.0,
+            5047.0
+          ],
+          "capacity": 5047.2575,
+          "capacity_tolerance": 1.9601e-06,
+          "feasible": true,
+          "independent_cut_and_loads_verified": true
+        },
+        "final": {
+          "native_cut": 2993.0,
+          "block_loads": [
+            5047.0,
+            5047.0,
+            5047.0,
+            4460.0
+          ],
+          "capacity": 5047.2575,
+          "capacity_tolerance": 1.9601e-06,
+          "feasible": true,
+          "independent_cut_and_loads_verified": true
+        },
+        "assignment_artifacts": {
+          "coarse_assignment": {
+            "file": "assignments.npz",
+            "key": "restart_0000_coarse_assignment"
+          },
+          "final_assignment": {
+            "file": "assignments.npz",
+            "key": "restart_0000_final_assignment"
+          }
+        }
+      },
+      {
+        "method": "greedy",
+        "solver_seed": 1340001,
+        "initial_partition_seconds": 0.09235412499401718,
+        "status": "success",
+        "vcycle_seconds": 4.263930292043369,
+        "started_at": 327560.649171541,
+        "finished_at": 327565.005455958,
+        "pipeline_seconds": 4.3562844170373864,
+        "run_id": "restart_0001",
+        "attempt": 1,
+        "completion_seconds": 7.868204458034597,
+        "completed_within_budget": false,
+        "coarse_initial": {
+          "native_cut": 8576.0,
+          "block_loads": [
+            5047.0,
+            4463.0,
+            5044.0,
+            5047.0
+          ],
+          "capacity": 5047.2575,
+          "capacity_tolerance": 1.9601e-06,
+          "feasible": true,
+          "independent_cut_and_loads_verified": true
+        },
+        "lifted_initial": {
+          "native_cut": 8576.0,
+          "block_loads": [
+            5047.0,
+            4463.0,
+            5044.0,
+            5047.0
+          ],
+          "capacity": 5047.2575,
+          "capacity_tolerance": 1.9601e-06,
+          "feasible": true,
+          "independent_cut_and_loads_verified": true
+        },
+        "final": {
+          "native_cut": 2877.0,
+          "block_loads": [
+            4460.0,
+            5047.0,
+            5047.0,
+            5047.0
+          ],
+          "capacity": 5047.2575,
+          "capacity_tolerance": 1.9601e-06,
+          "feasible": true,
+          "independent_cut_and_loads_verified": true
+        },
+        "assignment_artifacts": {
+          "coarse_assignment": {
+            "file": "assignments.npz",
+            "key": "restart_0001_coarse_assignment"
+          },
+          "final_assignment": {
+            "file": "assignments.npz",
+            "key": "restart_0001_final_assignment"
+          }
+        }
+      }
+    ],
+    "wall_seconds_including_overshoot": 7.868215166032314,
+    "attempts": 2,
+    "max_attempts_reached": false,
+    "overshoot_seconds": 2.3789345410186797,
+    "timing_definition": "Wall completion time from restart-loop start; verification and artifact writes occur after this loop.",
+    "eligible_completed_runs": 1,
+    "status": "success",
+    "winner_run_id": "restart_0000",
+    "winner": {
+      "native_cut": 2993.0,
+      "block_loads": [
+        5047.0,
+        5047.0,
+        5047.0,
+        4460.0
+      ],
+      "solver_seed": 1340000,
+      "completion_seconds": 3.5119079159921966,
+      "pipeline_seconds": 3.511906415980775
+    }
+  },
+  "status": "completed"
+}

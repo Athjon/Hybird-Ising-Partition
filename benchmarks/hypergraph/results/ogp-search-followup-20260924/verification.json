@@ -1,0 +1,9 @@
+{
+  "command": "python -m pytest -q tests/test_native_mcmc.py tests/test_native_search_probe.py tests/test_fem_multiseed_benchmark.py",
+  "executable": "/opt/anaconda3/bin/python",
+  "output": ".............................                                            [100%]\n29 passed in 0.90s\n",
+  "exit_code": 0,
+  "main_diff_check": 0,
+  "submodule_diff_check": 0,
+  "notes": "29 new tests; previous repair validation separately records 93 passing tests. Native trajectories independently audited: 210 runs, 630210 state records."
+}

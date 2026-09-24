@@ -1,0 +1,381 @@
+{
+  "config": {
+    "instances": 10,
+    "sizes": [
+      12,
+      16
+    ],
+    "seed": 4000,
+    "trials": 32,
+    "steps": 300,
+    "learning_rate": 0.08,
+    "balance_penalty": 5.0,
+    "output": "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition/benchmarks/hypergraph/results/ogp-diagnostic-20260924/objective"
+  },
+  "scope": "Independent autograd mean-field reference on synthetic bisections; not legacy HIP/FEM end-to-end.",
+  "environment": {
+    "python": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 08:22:19) [Clang 14.0.6 ]",
+    "executable": "/opt/anaconda3/bin/python",
+    "platform": "macOS-26.3-arm64-arm-64bit",
+    "numpy": "1.26.4",
+    "torch": "2.9.0",
+    "torch_threads": 1
+  },
+  "git_head": "6008ff62adea4f24492ce0e2d9610a95036d92a0",
+  "source_sha256": {
+    "benchmarks/hypergraph/ogp_objective_diagnostic.py": "8cbdbd15dfa8804ca600516ba33ebfdc889b1044c8ecf079e8dba6681aed3dc3",
+    "src/hyper_solver.py": "831d53415a1ba1ac9e63771de4299a37e1d07ce1cca64eea8ff43cd83419f818",
+    "lib/qubo-solver/src/fem/solver_fem.py": "4a06ec8c1f647fe32e947790c4d66f81c63cb5b8caa2dd68c13541914967f3b8"
+  },
+  "source_unchanged_during_run": true,
+  "formula_audit": {
+    "exact_expectation_checks": [
+      {
+        "k": 2,
+        "value_error": 2.220446049250313e-16,
+        "gradient_max_error": 2.1510571102112408e-16
+      },
+      {
+        "k": 3,
+        "value_error": 8.881784197001252e-16,
+        "gradient_max_error": 1.734723475976807e-16
+      }
+    ],
+    "finite_difference_gradcheck": true,
+    "isolated_argmax_numpy_cut_requires_grad": false,
+    "four_pin_native_costs": [
+      1,
+      1
+    ],
+    "four_pin_normalized_clique_costs": [
+      1,
+      1.3333333333333333
+    ],
+    "three_swaps_true_delta": 1,
+    "three_swaps_quadratic_truncation_delta": 0
+  },
+  "runtime_audit": {
+    "legacy_initial_partition": {
+      "fem": {
+        "exception": "ModuleNotFoundError",
+        "message": "No module named 'src.fem'"
+      },
+      "pubo": {
+        "exception": "ModuleNotFoundError",
+        "message": "No module named 'src.fem'"
+      }
+    },
+    "scope": "Current checkout only; no historical run reconstructed.",
+    "external_manual_grad_false": {
+      "probes": [
+        {
+          "coefficient": 1.0,
+          "configs": [
+            [
+              1,
+              0,
+              1,
+              1,
+              0,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              0,
+              1,
+              1,
+              0,
+              1
+            ]
+          ],
+          "values": [
+            -2.6588821411132812,
+            -2.658881664276123,
+            -2.658883571624756,
+            -2.6588797569274902
+          ],
+          "max_error_vs_repeated_softmax": 0.0
+        },
+        {
+          "coefficient": -7.0,
+          "configs": [
+            [
+              1,
+              0,
+              1,
+              1,
+              0,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              0,
+              1,
+              1,
+              0,
+              1
+            ]
+          ],
+          "values": [
+            -14.658888816833496,
+            -14.658892631530762,
+            -14.658879280090332,
+            -14.658905982971191
+          ],
+          "max_error_vs_repeated_softmax": 0.0
+        }
+      ],
+      "max_probability_difference_between_objectives": 0.0,
+      "matches_objective_independent_repeated_softmax": true,
+      "interpretation": "The probe matches repeated softmax without an objective-dependent update."
+    }
+  },
+  "exact_representation": [
+    {
+      "n": 12,
+      "family": "random",
+      "instances": 10,
+      "all_clique_optima_native_suboptimal_instances": 1,
+      "some_clique_optima_native_suboptimal_instances": 5,
+      "mean_best_native_gap_among_clique_optima": 0.2
+    },
+    {
+      "n": 12,
+      "family": "planted",
+      "instances": 10,
+      "all_clique_optima_native_suboptimal_instances": 0,
+      "some_clique_optima_native_suboptimal_instances": 0,
+      "mean_best_native_gap_among_clique_optima": 0.0
+    },
+    {
+      "n": 16,
+      "family": "random",
+      "instances": 10,
+      "all_clique_optima_native_suboptimal_instances": 3,
+      "some_clique_optima_native_suboptimal_instances": 5,
+      "mean_best_native_gap_among_clique_optima": 0.3
+    },
+    {
+      "n": 16,
+      "family": "planted",
+      "instances": 10,
+      "all_clique_optima_native_suboptimal_instances": 0,
+      "some_clique_optima_native_suboptimal_instances": 0,
+      "mean_best_native_gap_among_clique_optima": 0.0
+    }
+  ],
+  "optimizer_summary": [
+    {
+      "n": 12,
+      "family": "random",
+      "method": "native",
+      "instances": 10,
+      "mean_raw_feasible_fraction": 0.884375,
+      "mean_rounded_best_gap": 0.0,
+      "mean_rounded_mean_gap": 0.0875,
+      "mean_refined_best_gap": 0.0,
+      "mean_refined_mean_gap": 0.0,
+      "mean_random_topk_best_gap": 1.3,
+      "mean_optimize_seconds": 0.0481689251086209,
+      "rounded_exact_hit_instances": 10,
+      "refined_exact_hit_instances": 10
+    },
+    {
+      "n": 12,
+      "family": "random",
+      "method": "clique",
+      "instances": 10,
+      "mean_raw_feasible_fraction": 0.43125,
+      "mean_rounded_best_gap": 0.3,
+      "mean_rounded_mean_gap": 0.4625,
+      "mean_refined_best_gap": 0.0,
+      "mean_refined_mean_gap": 0.015625,
+      "mean_random_topk_best_gap": 1.3,
+      "mean_optimize_seconds": 0.11077347939717583,
+      "rounded_exact_hit_instances": 8,
+      "refined_exact_hit_instances": 10
+    },
+    {
+      "n": 12,
+      "family": "random",
+      "method": "detached_cut",
+      "instances": 10,
+      "mean_raw_feasible_fraction": 0.30625,
+      "mean_rounded_best_gap": 1.3,
+      "mean_rounded_mean_gap": 4.11875,
+      "mean_refined_best_gap": 0.0,
+      "mean_refined_mean_gap": 0.33125,
+      "mean_random_topk_best_gap": 1.3,
+      "mean_optimize_seconds": 0.03765957068535499,
+      "rounded_exact_hit_instances": 1,
+      "refined_exact_hit_instances": 10
+    },
+    {
+      "n": 12,
+      "family": "planted",
+      "method": "native",
+      "instances": 10,
+      "mean_raw_feasible_fraction": 1.0,
+      "mean_rounded_best_gap": 0.0,
+      "mean_rounded_mean_gap": 0.0,
+      "mean_refined_best_gap": 0.0,
+      "mean_refined_mean_gap": 0.0,
+      "mean_random_topk_best_gap": 10.8,
+      "mean_optimize_seconds": 0.048632220592116936,
+      "rounded_exact_hit_instances": 10,
+      "refined_exact_hit_instances": 10
+    },
+    {
+      "n": 12,
+      "family": "planted",
+      "method": "clique",
+      "instances": 10,
+      "mean_raw_feasible_fraction": 1.0,
+      "mean_rounded_best_gap": 0.0,
+      "mean_rounded_mean_gap": 0.0,
+      "mean_refined_best_gap": 0.0,
+      "mean_refined_mean_gap": 0.0,
+      "mean_random_topk_best_gap": 10.8,
+      "mean_optimize_seconds": 0.11149347520549782,
+      "rounded_exact_hit_instances": 10,
+      "refined_exact_hit_instances": 10
+    },
+    {
+      "n": 12,
+      "family": "planted",
+      "method": "detached_cut",
+      "instances": 10,
+      "mean_raw_feasible_fraction": 0.321875,
+      "mean_rounded_best_gap": 10.6,
+      "mean_rounded_mean_gap": 18.353125,
+      "mean_refined_best_gap": 0.0,
+      "mean_refined_mean_gap": 0.0,
+      "mean_random_topk_best_gap": 10.8,
+      "mean_optimize_seconds": 0.03780876260716468,
+      "rounded_exact_hit_instances": 2,
+      "refined_exact_hit_instances": 10
+    },
+    {
+      "n": 16,
+      "family": "random",
+      "method": "native",
+      "instances": 10,
+      "mean_raw_feasible_fraction": 0.528125,
+      "mean_rounded_best_gap": 0.1,
+      "mean_rounded_mean_gap": 0.21875,
+      "mean_refined_best_gap": 0.0,
+      "mean_refined_mean_gap": 0.03125,
+      "mean_random_topk_best_gap": 3.0,
+      "mean_optimize_seconds": 0.05115859570796601,
+      "rounded_exact_hit_instances": 9,
+      "refined_exact_hit_instances": 10
+    },
+    {
+      "n": 16,
+      "family": "random",
+      "method": "clique",
+      "instances": 10,
+      "mean_raw_feasible_fraction": 0.628125,
+      "mean_rounded_best_gap": 0.3,
+      "mean_rounded_mean_gap": 0.61875,
+      "mean_refined_best_gap": 0.0,
+      "mean_refined_mean_gap": 0.103125,
+      "mean_random_topk_best_gap": 3.0,
+      "mean_optimize_seconds": 0.11692470408743247,
+      "rounded_exact_hit_instances": 7,
+      "refined_exact_hit_instances": 10
+    },
+    {
+      "n": 16,
+      "family": "random",
+      "method": "detached_cut",
+      "instances": 10,
+      "mean_raw_feasible_fraction": 0.315625,
+      "mean_rounded_best_gap": 3.1,
+      "mean_rounded_mean_gap": 6.18125,
+      "mean_refined_best_gap": 0.0,
+      "mean_refined_mean_gap": 0.634375,
+      "mean_random_topk_best_gap": 3.0,
+      "mean_optimize_seconds": 0.03918659999617376,
+      "rounded_exact_hit_instances": 1,
+      "refined_exact_hit_instances": 10
+    },
+    {
+      "n": 16,
+      "family": "planted",
+      "method": "native",
+      "instances": 10,
+      "mean_raw_feasible_fraction": 1.0,
+      "mean_rounded_best_gap": 0.0,
+      "mean_rounded_mean_gap": 0.0,
+      "mean_refined_best_gap": 0.0,
+      "mean_refined_mean_gap": 0.0,
+      "mean_random_topk_best_gap": 18.1,
+      "mean_optimize_seconds": 0.050841287500225006,
+      "rounded_exact_hit_instances": 10,
+      "refined_exact_hit_instances": 10
+    },
+    {
+      "n": 16,
+      "family": "planted",
+      "method": "clique",
+      "instances": 10,
+      "mean_raw_feasible_fraction": 1.0,
+      "mean_rounded_best_gap": 0.0,
+      "mean_rounded_mean_gap": 0.0,
+      "mean_refined_best_gap": 0.0,
+      "mean_refined_mean_gap": 0.0,
+      "mean_random_topk_best_gap": 18.1,
+      "mean_optimize_seconds": 0.11808724600123241,
+      "rounded_exact_hit_instances": 10,
+      "refined_exact_hit_instances": 10
+    },
+    {
+      "n": 16,
+      "family": "planted",
+      "method": "detached_cut",
+      "instances": 10,
+      "mean_raw_feasible_fraction": 0.3125,
+      "mean_rounded_best_gap": 17.5,
+      "mean_rounded_mean_gap": 25.553125,
+      "mean_refined_best_gap": 0.0,
+      "mean_refined_mean_gap": 0.0,
+      "mean_random_topk_best_gap": 18.1,
+      "mean_optimize_seconds": 0.03925235829665326,
+      "rounded_exact_hit_instances": 0,
+      "refined_exact_hit_instances": 10
+    }
+  ]
+}

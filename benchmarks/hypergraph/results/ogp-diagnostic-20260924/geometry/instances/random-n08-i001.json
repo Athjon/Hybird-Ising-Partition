@@ -1,0 +1,338 @@
+{
+  "instance_id": "random-n08-i001",
+  "family": "random",
+  "n": 8,
+  "seed": 20268925,
+  "hyperedges": [
+    [
+      0,
+      1,
+      3,
+      7
+    ],
+    [
+      0,
+      1,
+      3,
+      4
+    ],
+    [
+      1,
+      2,
+      4,
+      5
+    ],
+    [
+      1,
+      3,
+      4,
+      5
+    ],
+    [
+      0,
+      3,
+      4,
+      5
+    ],
+    [
+      0,
+      1,
+      2,
+      3
+    ],
+    [
+      0,
+      2,
+      3,
+      7
+    ],
+    [
+      0,
+      1,
+      5,
+      7
+    ],
+    [
+      0,
+      3,
+      4,
+      6
+    ],
+    [
+      2,
+      4,
+      5,
+      7
+    ],
+    [
+      0,
+      2,
+      3,
+      5
+    ],
+    [
+      1,
+      2,
+      3,
+      7
+    ],
+    [
+      3,
+      4,
+      6,
+      7
+    ],
+    [
+      0,
+      1,
+      3,
+      7
+    ],
+    [
+      0,
+      2,
+      3,
+      6
+    ],
+    [
+      0,
+      1,
+      5,
+      7
+    ]
+  ],
+  "hyperedge_weights": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "node_weights": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "balance": "exactly n/2 per block",
+  "exact_optimum": 14,
+  "unique_hyperedges": 14,
+  "energy_histogram": {
+    "14": 2,
+    "15": 12,
+    "16": 21
+  },
+  "feasible_class_masks": [
+    30,
+    46,
+    78,
+    142,
+    54,
+    86,
+    150,
+    102,
+    166,
+    198,
+    58,
+    90,
+    154,
+    106,
+    170,
+    202,
+    114,
+    178,
+    210,
+    226,
+    60,
+    92,
+    156,
+    108,
+    172,
+    204,
+    116,
+    180,
+    212,
+    228,
+    120,
+    184,
+    216,
+    232,
+    240
+  ],
+  "native_energy_by_feasible_mask": [
+    16,
+    16,
+    16,
+    15,
+    15,
+    16,
+    16,
+    16,
+    15,
+    15,
+    15,
+    16,
+    16,
+    16,
+    16,
+    16,
+    15,
+    15,
+    15,
+    16,
+    16,
+    14,
+    16,
+    16,
+    16,
+    16,
+    14,
+    15,
+    16,
+    15,
+    16,
+    16,
+    15,
+    16,
+    15
+  ],
+  "all_assignments_enumerated": true,
+  "all_pairs_enumerated": true,
+  "thresholds": [
+    {
+      "epsilon_absolute": 0,
+      "energy_ceiling": 14,
+      "overlap_denominator": 8,
+      "distinct_pair_histogram": {
+        "4": 1
+      },
+      "distinct_pair_support_numerators": [
+        4
+      ],
+      "distinct_pair_support": [
+        0.5
+      ],
+      "including_self_support_numerators": [
+        4,
+        8
+      ],
+      "including_self_support": [
+        0.5,
+        1.0
+      ],
+      "missing_feasible_distinct_pair_numerators": [
+        0
+      ],
+      "missing_feasible_including_self_numerators": [
+        0
+      ],
+      "interior_gaps_bounded_by_distinct_pair_support": [],
+      "has_interior_gap": false,
+      "has_distinct_bounded_interior_gap": false,
+      "interior_gaps_including_self": [],
+      "has_nontrivial_including_self_interior_gap": false,
+      "has_nontrivial_gap_with_self_upper_boundary": false,
+      "unique_near_optimal_count": 2,
+      "distinct_unordered_pairs_evaluated": 1,
+      "self_pairs_not_in_distinct_histogram": 2,
+      "gap_boundary_pair_witnesses": [],
+      "including_self_gap_boundary_pair_witnesses": []
+    },
+    {
+      "epsilon_absolute": 1,
+      "energy_ceiling": 15,
+      "overlap_denominator": 8,
+      "distinct_pair_histogram": {
+        "0": 48,
+        "4": 43
+      },
+      "distinct_pair_support_numerators": [
+        0,
+        4
+      ],
+      "distinct_pair_support": [
+        0.0,
+        0.5
+      ],
+      "including_self_support_numerators": [
+        0,
+        4,
+        8
+      ],
+      "including_self_support": [
+        0.0,
+        0.5,
+        1.0
+      ],
+      "missing_feasible_distinct_pair_numerators": [],
+      "missing_feasible_including_self_numerators": [],
+      "interior_gaps_bounded_by_distinct_pair_support": [],
+      "has_interior_gap": false,
+      "has_distinct_bounded_interior_gap": false,
+      "interior_gaps_including_self": [],
+      "has_nontrivial_including_self_interior_gap": false,
+      "has_nontrivial_gap_with_self_upper_boundary": false,
+      "unique_near_optimal_count": 14,
+      "distinct_unordered_pairs_evaluated": 91,
+      "self_pairs_not_in_distinct_histogram": 14,
+      "gap_boundary_pair_witnesses": [],
+      "including_self_gap_boundary_pair_witnesses": []
+    },
+    {
+      "epsilon_absolute": 2,
+      "energy_ceiling": 16,
+      "overlap_denominator": 8,
+      "distinct_pair_histogram": {
+        "0": 315,
+        "4": 280
+      },
+      "distinct_pair_support_numerators": [
+        0,
+        4
+      ],
+      "distinct_pair_support": [
+        0.0,
+        0.5
+      ],
+      "including_self_support_numerators": [
+        0,
+        4,
+        8
+      ],
+      "including_self_support": [
+        0.0,
+        0.5,
+        1.0
+      ],
+      "missing_feasible_distinct_pair_numerators": [],
+      "missing_feasible_including_self_numerators": [],
+      "interior_gaps_bounded_by_distinct_pair_support": [],
+      "has_interior_gap": false,
+      "has_distinct_bounded_interior_gap": false,
+      "interior_gaps_including_self": [],
+      "has_nontrivial_including_self_interior_gap": false,
+      "has_nontrivial_gap_with_self_upper_boundary": false,
+      "unique_near_optimal_count": 35,
+      "distinct_unordered_pairs_evaluated": 595,
+      "self_pairs_not_in_distinct_histogram": 35,
+      "gap_boundary_pair_witnesses": [],
+      "including_self_gap_boundary_pair_witnesses": []
+    }
+  ],
+  "elapsed_seconds": 0.0004135000053793192
+}

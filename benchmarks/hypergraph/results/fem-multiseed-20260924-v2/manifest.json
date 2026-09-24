@@ -1,0 +1,182 @@
+{
+  "started_utc": "2026-09-24T10:39:33.194351+00:00",
+  "invocation": "/opt/anaconda3/bin/python benchmarks/hypergraph/compare_fem_multiseed.py --seeds 30 31 32 33 34 35 36 37 38 39 --ibm-directory /private/tmp/ising-hgr.K5jm2Y --output benchmarks/hypergraph/results/fem-multiseed-20260924-v2",
+  "working_directory": "/Users/jonathan/Project/Com_Opt/Hybird-Ising-Partition",
+  "seeds": [
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39
+  ],
+  "source_sha256_before": {
+    "benchmarks/hypergraph/compare_fem_multiseed.py": "3cc6a79b36c4ab73d699c23aa2ac08df2ba0cf7d7c77586d4df4ccdbd55bead4",
+    "src/hyper_solver.py": "e5ee1d93b16ac87c6c8ee051bddf4490ce5d6882407d3a7b851972ac4417ef0b",
+    "src/partition/hyper_objective.py": "0a1569ec9737033eb0970a9bfdc644e60c7ec533abdfe8bfaa7f8ca986b0113b",
+    "src/partition/hyper_utils.py": "6baa367f66d64524f76828f12d1449e66f8da7f803f051bd5f669713a04c05b5",
+    "src/partition/hyper_refine_contract.py": "ac7daef21fd2e2eb5cd48d50f08a6b46e47a2e7bc958dcfa1aefd3f78161b429",
+    "src/partition/hyper_quotient.py": "de13bea84ae998e4656be3290b5f7a89111d2ce6a7f7fe54e301cd82dd5b014c",
+    "benchmarks/hypergraph/time_budget_hgr.py": "601f59e7d1346b8af8bf419f889be152fbe1ab379036250ab082f15dda899198",
+    "lib/qubo-solver/src/fem/__init__.py": "eb1c028b0b5c347ce1fd558e3f77d21948407ffd42bc86a917fd957e6c443da0",
+    "lib/qubo-solver/src/fem/customized_problem/__init__.py": "e102bb39e99bbf1e753df64ae4b6c5e2e285250827d3ae2e8f9b0f4e84461aed",
+    "lib/qubo-solver/src/fem/customized_problem/hyper_bmincut.py": "78273308009a2d339974e7b2f63c1c1e2ff6067281ffaf326e2021141af88df0",
+    "lib/qubo-solver/src/fem/interface.py": "edfb2165c0021c2ecb1ff415084f69285ad3579a2db1007664f9db8d90675f48",
+    "lib/qubo-solver/src/fem/problem.py": "34e9a36d87390c504034296c0fc8ece3c46b7a6e0e7b83f75d8d50f9076b311b",
+    "lib/qubo-solver/src/fem/solver_fem.py": "5919f70d9b261d1550edd0633c95bcd8fdcbee1f5f8add3754e319819b4a03d7",
+    "lib/qubo-solver/src/fem/utils.py": "364833410ff492b72bbad5279455619e924bbb9757057bfaafb87f2e78e8b49d"
+  },
+  "inputs": [
+    {
+      "name": "ibm01",
+      "path": "/private/tmp/ising-hgr.K5jm2Y/ibm01.hgr",
+      "sha256": "40f7f7c4dfd96c06b0570f696e67b9c667ac2cbdf4d0858da5e690f4f4d5ac72",
+      "n": 12752,
+      "edge_count": 14111
+    },
+    {
+      "name": "ibm02",
+      "path": "/private/tmp/ising-hgr.K5jm2Y/ibm02.hgr",
+      "sha256": "ff09f3be9ed84a8c13257f1655555938072cdf01fae40f1548795763981eae05",
+      "n": 19601,
+      "edge_count": 19584
+    }
+  ],
+  "environment": {
+    "python": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 08:22:19) [Clang 14.0.6 ]",
+    "executable": "/opt/anaconda3/bin/python",
+    "numpy": "1.26.4",
+    "torch": "2.9.0",
+    "torch_threads": 1,
+    "platform": "macOS-26.3-arm64-arm-64bit",
+    "thread_environment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1"
+    }
+  },
+  "git_head": "6008ff62adea4f24492ce0e2d9610a95036d92a0",
+  "git_status": "M README.md\n m lib/qubo-solver\n M src/hyper_solver.py\n M src/partition/hyper_utils.py\n?? benchmarks/hypergraph/\n?? kahypar_results.csv\n?? src/partition/hyper_objective.py\n?? src/partition/hyper_quotient.py\n?? src/partition/hyper_refine_contract.py\n?? tests/test_fem_multiseed_benchmark.py\n?? tests/test_hyper_fem_native.py\n?? tests/test_hyper_quotient.py\n?? tests/test_hyper_weighted_refine.py\n?? tests/test_native_mcmc.py\n?? tests/test_native_search_probe.py\n?? tests/test_ogp_exact_geometry.py\n?? tests/test_ogp_objective_diagnostic.py\n?? tests/test_time_budget_hgr.py",
+  "submodule_head": "1f252698aaa3df19527b8dcab7f79d18e73941b9",
+  "submodule_status": "M src/fem/__init__.py\n M src/fem/customized_problem/hyper_bmincut.py\n M src/fem/interface.py\n M src/fem/problem.py\n M src/fem/solver_fem.py\n?? tests/test_fem_gradients.py",
+  "config": {
+    "q": 4,
+    "epsilon_upper_capacity": 0.03,
+    "coarsen_to": 200,
+    "coarsener": "hem",
+    "enforce_balance_cap": true,
+    "flow_passes_per_refinement_call": 2,
+    "fem_method": "fem",
+    "fem_map_type": "native",
+    "fem_trials": 8,
+    "fem_steps": 150,
+    "fem_optimizer": "adam",
+    "fem_anneal": "exp",
+    "fem_betamin": 0.5,
+    "fem_betamax": 50.0,
+    "fem_learning_rate": 0.08,
+    "fem_h_factor": 0.1,
+    "fem_imbalance_weight": 5.0,
+    "fem_dtype": "float64",
+    "fem_device": "cpu",
+    "balance_search_budget": 200000,
+    "order": "greedy,fem when (instance_index+seed_index) is even; fem,greedy otherwise",
+    "restart_seed": "1000000 + 10000 * hierarchy_seed + attempt_index",
+    "max_restart_attempts": 10000
+  },
+  "timing": "One separate deterministic FEM+greedy warmup runs before the measured dataset loop and is excluded from all benchmark budgets and candidates. Downstream timer includes initializer construction, init, refiner construction, and V-cycle; shared coarsening is separate. External validation and serialization are excluded uniformly. Restart completion uses wall time from restart-loop start, with no external checks or writes between runs.",
+  "limits": [
+    "No KaHyPar comparison or universal performance claim.",
+    "A restart that first finishes after its deadline cannot win; no_result is retained.",
+    "Restart overshoots are measured and retained but not charged as usable in-budget solutions.",
+    "CPU timings can depend on thermal state and external workloads; run without other timed workloads.",
+    "Paired means exclude failures and no_result cases; counts and raw failures are retained."
+  ],
+  "warmup": {
+    "seed": 20260924,
+    "nodes": 16,
+    "edges": 32,
+    "q": 4,
+    "coarsen_to": 8,
+    "pipeline_order": [
+      "fem",
+      "greedy"
+    ],
+    "included_in_benchmark_results": false,
+    "used_for_restart_budget_or_candidates": false,
+    "single_runs": {
+      "fem": {
+        "status": "success",
+        "pipeline_seconds": 0.42345987498993054,
+        "initial_partition_seconds": 0.42267883295426145,
+        "vcycle_seconds": 0.0007810420356690884,
+        "coarse_initial": {
+          "native_cut": 4.0,
+          "block_loads": [
+            4.0,
+            4.0,
+            4.0,
+            4.0
+          ],
+          "capacity": 4.12,
+          "capacity_tolerance": 1.6e-09,
+          "feasible": true,
+          "independent_cut_and_loads_verified": true
+        },
+        "final": {
+          "native_cut": 4.0,
+          "block_loads": [
+            4.0,
+            4.0,
+            4.0,
+            4.0
+          ],
+          "capacity": 4.12,
+          "capacity_tolerance": 1.6e-09,
+          "feasible": true,
+          "independent_cut_and_loads_verified": true
+        }
+      },
+      "greedy": {
+        "status": "success",
+        "pipeline_seconds": 0.0005923329736106098,
+        "initial_partition_seconds": 0.0002521249698475003,
+        "vcycle_seconds": 0.00034020800376310945,
+        "coarse_initial": {
+          "native_cut": 8.0,
+          "block_loads": [
+            4.0,
+            4.0,
+            4.0,
+            4.0
+          ],
+          "capacity": 4.12,
+          "capacity_tolerance": 1.6e-09,
+          "feasible": true,
+          "independent_cut_and_loads_verified": true
+        },
+        "final": {
+          "native_cut": 8.0,
+          "block_loads": [
+            4.0,
+            4.0,
+            4.0,
+            4.0
+          ],
+          "capacity": 4.12,
+          "capacity_tolerance": 1.6e-09,
+          "feasible": true,
+          "independent_cut_and_loads_verified": true
+        }
+      }
+    },
+    "coarsening_seconds": 0.0008507500169798732,
+    "actual_coarse_nodes": 8,
+    "status": "success",
+    "total_wall_seconds_including_verification": 0.43356104200938717
+  }
+}

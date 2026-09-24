@@ -1,0 +1,137 @@
+[
+  {
+    "n": 8,
+    "feasible_classes_modulo_global_flip": 35,
+    "feasible_labeled_assignments": 70,
+    "expected_feasible_labeled_assignments": 70,
+    "overlap_denominator": 8,
+    "distinct_pair_histogram": {
+      "0": 315,
+      "4": 280
+    },
+    "distinct_pair_support_numerators": [
+      0,
+      4
+    ],
+    "distinct_pair_support": [
+      0.0,
+      0.5
+    ],
+    "including_self_support_numerators": [
+      0,
+      4,
+      8
+    ],
+    "including_self_support": [
+      0.0,
+      0.5,
+      1.0
+    ],
+    "missing_feasible_distinct_pair_numerators": [],
+    "missing_feasible_including_self_numerators": [],
+    "interior_gaps_bounded_by_distinct_pair_support": [],
+    "has_interior_gap": false,
+    "has_distinct_bounded_interior_gap": false,
+    "interior_gaps_including_self": [],
+    "has_nontrivial_including_self_interior_gap": false,
+    "has_nontrivial_gap_with_self_upper_boundary": false,
+    "unique_near_optimal_count": 35,
+    "distinct_unordered_pairs_evaluated": 595,
+    "self_pairs_not_in_distinct_histogram": 35
+  },
+  {
+    "n": 12,
+    "feasible_classes_modulo_global_flip": 462,
+    "feasible_labeled_assignments": 924,
+    "expected_feasible_labeled_assignments": 924,
+    "overlap_denominator": 12,
+    "distinct_pair_histogram": {
+      "0": 46200,
+      "4": 51975,
+      "8": 8316
+    },
+    "distinct_pair_support_numerators": [
+      0,
+      4,
+      8
+    ],
+    "distinct_pair_support": [
+      0.0,
+      0.3333333333333333,
+      0.6666666666666666
+    ],
+    "including_self_support_numerators": [
+      0,
+      4,
+      8,
+      12
+    ],
+    "including_self_support": [
+      0.0,
+      0.3333333333333333,
+      0.6666666666666666,
+      1.0
+    ],
+    "missing_feasible_distinct_pair_numerators": [],
+    "missing_feasible_including_self_numerators": [],
+    "interior_gaps_bounded_by_distinct_pair_support": [],
+    "has_interior_gap": false,
+    "has_distinct_bounded_interior_gap": false,
+    "interior_gaps_including_self": [],
+    "has_nontrivial_including_self_interior_gap": false,
+    "has_nontrivial_gap_with_self_upper_boundary": false,
+    "unique_near_optimal_count": 462,
+    "distinct_unordered_pairs_evaluated": 106491,
+    "self_pairs_not_in_distinct_histogram": 462
+  },
+  {
+    "n": 16,
+    "feasible_classes_modulo_global_flip": 6435,
+    "feasible_labeled_assignments": 12870,
+    "expected_feasible_labeled_assignments": 12870,
+    "overlap_denominator": 16,
+    "distinct_pair_histogram": {
+      "0": 7882875,
+      "4": 10090080,
+      "8": 2522520,
+      "12": 205920
+    },
+    "distinct_pair_support_numerators": [
+      0,
+      4,
+      8,
+      12
+    ],
+    "distinct_pair_support": [
+      0.0,
+      0.25,
+      0.5,
+      0.75
+    ],
+    "including_self_support_numerators": [
+      0,
+      4,
+      8,
+      12,
+      16
+    ],
+    "including_self_support": [
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "missing_feasible_distinct_pair_numerators": [],
+    "missing_feasible_including_self_numerators": [],
+    "interior_gaps_bounded_by_distinct_pair_support": [],
+    "has_interior_gap": false,
+    "has_distinct_bounded_interior_gap": false,
+    "interior_gaps_including_self": [],
+    "has_nontrivial_including_self_interior_gap": false,
+    "has_nontrivial_gap_with_self_upper_boundary": false,
+    "unique_near_optimal_count": 6435,
+    "distinct_unordered_pairs_evaluated": 20701395,
+    "self_pairs_not_in_distinct_histogram": 6435
+  }
+]

@@ -1,0 +1,170 @@
+{
+  "tiny_native_instance": {
+    "n": 8,
+    "seed": 20260924,
+    "family": "random",
+    "cost_oracle_passed": true,
+    "threshold_pair_queries": [
+      {
+        "epsilon": 0,
+        "count": 1,
+        "pair_count": 0,
+        "passed": true
+      },
+      {
+        "epsilon": 1,
+        "count": 4,
+        "pair_count": 6,
+        "passed": true
+      },
+      {
+        "epsilon": 2,
+        "count": 11,
+        "pair_count": 55,
+        "passed": true
+      }
+    ]
+  },
+  "gapped_set_fixture": {
+    "not_an_ensemble_instance": true,
+    "n": 12,
+    "masks": [
+      126,
+      190,
+      1806
+    ],
+    "description": {
+      "overlap_denominator": 12,
+      "distinct_pair_histogram": {
+        "0": 2,
+        "8": 1
+      },
+      "distinct_pair_support_numerators": [
+        0,
+        8
+      ],
+      "distinct_pair_support": [
+        0.0,
+        0.6666666666666666
+      ],
+      "including_self_support_numerators": [
+        0,
+        8,
+        12
+      ],
+      "including_self_support": [
+        0.0,
+        0.6666666666666666,
+        1.0
+      ],
+      "missing_feasible_distinct_pair_numerators": [
+        4
+      ],
+      "missing_feasible_including_self_numerators": [
+        4
+      ],
+      "interior_gaps_bounded_by_distinct_pair_support": [
+        {
+          "lower_supported_numerator": 0,
+          "upper_supported_numerator": 8,
+          "missing_feasible_numerators": [
+            4
+          ]
+        }
+      ],
+      "has_interior_gap": true,
+      "has_distinct_bounded_interior_gap": true,
+      "interior_gaps_including_self": [
+        {
+          "lower_supported_numerator": 0,
+          "upper_supported_numerator": 8,
+          "missing_feasible_numerators": [
+            4
+          ],
+          "upper_boundary_is_self_overlap": false
+        }
+      ],
+      "has_nontrivial_including_self_interior_gap": true,
+      "has_nontrivial_gap_with_self_upper_boundary": false,
+      "unique_near_optimal_count": 3,
+      "distinct_unordered_pairs_evaluated": 3,
+      "self_pairs_not_in_distinct_histogram": 3
+    },
+    "pair_witness_by_numerator": {
+      "0": [
+        126,
+        1806
+      ],
+      "4": null,
+      "8": [
+        126,
+        190
+      ]
+    },
+    "all_pair_queries_complete": true
+  },
+  "two_class_self_bounded_gap_fixture": {
+    "not_an_ensemble_instance": true,
+    "n": 12,
+    "masks": [
+      126,
+      1806
+    ],
+    "description": {
+      "overlap_denominator": 12,
+      "distinct_pair_histogram": {
+        "0": 1
+      },
+      "distinct_pair_support_numerators": [
+        0
+      ],
+      "distinct_pair_support": [
+        0.0
+      ],
+      "including_self_support_numerators": [
+        0,
+        12
+      ],
+      "including_self_support": [
+        0.0,
+        1.0
+      ],
+      "missing_feasible_distinct_pair_numerators": [
+        4,
+        8
+      ],
+      "missing_feasible_including_self_numerators": [
+        4,
+        8
+      ],
+      "interior_gaps_bounded_by_distinct_pair_support": [],
+      "has_interior_gap": false,
+      "has_distinct_bounded_interior_gap": false,
+      "interior_gaps_including_self": [
+        {
+          "lower_supported_numerator": 0,
+          "upper_supported_numerator": 12,
+          "missing_feasible_numerators": [
+            4,
+            8
+          ],
+          "upper_boundary_is_self_overlap": true
+        }
+      ],
+      "has_nontrivial_including_self_interior_gap": true,
+      "has_nontrivial_gap_with_self_upper_boundary": true,
+      "unique_near_optimal_count": 2,
+      "distinct_unordered_pairs_evaluated": 1,
+      "self_pairs_not_in_distinct_histogram": 2
+    },
+    "low_overlap_distinct_pair": [
+      126,
+      1806
+    ],
+    "high_overlap_self_pair": [
+      126,
+      126
+    ],
+    "all_pair_queries_complete": true
+  }
+}

@@ -36,7 +36,9 @@ from src.partition.hyper_utils import (
     build_clique_expanded_graph,
     evaluate_kahypar_cut_value,
     greedy_initial_hypergraph_partition,
+    greedy_refine_hypergraph_incremental,
 )
+from src.partition.hyper_quotient import balanced_packing_feasible, quotient_hypergraph
 
 
 # ── Helper: build coarse hyperedges from groups ──────────────────────────
@@ -96,9 +98,21 @@ class KahyparLikeSolver(HyperSolverBase):
     def coarsen(self, hyperedges, num_nodes, q, **overrides):
         """Run HEM coarsening rounds until ``coarsen_to`` is reached.
 
+        ``score_mode='hem'`` preserves the existing matching rule.  The
+        experimental ``'boundary'`` mode discounts candidate pairs that
+        pilot partitions place in different blocks.  Optional
+        ``enforce_balance_cap=True`` prevents a coarse vertex from exceeding
+        one block's maximum allowed weight. The opt-in
+        ``enforce_global_feasibility=True`` additionally rejects contractions
+        that would make balanced block packing impossible; this exact check
+        is limited to ``global_feasibility_max_nodes`` original vertices
+        (default 20) and does not support LSH. ``node_weights`` and
+        ``hyperedge_weights`` are accepted through ``overrides``.
+
         Returns a dict with keys:
             coarse_groups, coarse_hyperedges, coarse_node_weights,
-            original_to_coarse, coarse_graph.
+            coarse_hyperedge_weights, original_to_coarse, coarse_graph,
+            hierarchy_stack.
         Does NOT include ``initial_assignment``.
         """
         p = {**self._config, **overrides}
@@ -106,22 +120,131 @@ class KahyparLikeSolver(HyperSolverBase):
 
         target_coarse = max(1, int(p.get('coarsen_to', 50)))
         verbose = p.get('verbose', False)
+        score_mode = p.get('score_mode', 'hem')
+        if score_mode not in ('hem', 'boundary'):
+            raise ValueError("score_mode must be 'hem' or 'boundary'")
+        boundary_weight = float(p.get('boundary_weight', 0.4))
+        if not 0.0 <= boundary_weight <= 1.0:
+            raise ValueError('boundary_weight must be between zero and one')
+        if q <= 0:
+            raise ValueError('q must be positive')
+        global_feasibility = bool(p.get('enforce_global_feasibility', False))
+        global_max_nodes = int(p.get('global_feasibility_max_nodes', 20))
+        if global_feasibility and (global_max_nodes < 1 or num_nodes > global_max_nodes):
+            raise ValueError(
+                'exact global feasibility guard supports at most '
+                'global_feasibility_max_nodes original vertices'
+            )
+
+        original_node_weights = np.asarray(
+            p.get('node_weights', np.ones(num_nodes)), dtype=np.float64,
+        )
+        original_edge_weights = np.asarray(
+            p.get('hyperedge_weights', np.ones(len(hyperedges))), dtype=np.float64,
+        )
+        original_edges, _, original_edge_weights = quotient_hypergraph(
+            hyperedges, np.arange(num_nodes), original_node_weights,
+            original_edge_weights,
+        )
+
+        enforce_cap = bool(p.get('enforce_balance_cap', score_mode == 'boundary')) or global_feasibility
+        max_cluster_weight = p.get('max_cluster_weight', None)
+        if max_cluster_weight is None and enforce_cap:
+            max_cluster_weight = (1.0 + float(p.get('epsilon', 0.03))) * original_node_weights.sum() / q
+        if max_cluster_weight is not None:
+            max_cluster_weight = float(max_cluster_weight)
+            if max_cluster_weight < 0 or np.any(original_node_weights > max_cluster_weight + 1e-12):
+                raise ValueError('max_cluster_weight must accommodate every original vertex')
+        if global_feasibility and not balanced_packing_feasible(
+            original_node_weights, q, max_cluster_weight,
+        ):
+            raise ValueError('the original vertices have no feasible balanced partition')
+
+        pilots = None
+        if score_mode == 'boundary' and num_nodes:
+            pilots = p.get('pilot_assignments', None)
+            if pilots is None:
+                num_pilots = max(1, int(p.get('num_pilots', 4)))
+                pilot_refine_passes = int(p.get('pilot_refine_passes', 0))
+                if pilot_refine_passes < 0:
+                    raise ValueError('pilot_refine_passes must be nonnegative')
+                pilot_seed = p.get('seed', None)
+                pilots = []
+                for i in range(num_pilots):
+                    pilot = greedy_initial_hypergraph_partition(
+                        original_edges, original_node_weights, q,
+                        hyperedge_weights=original_edge_weights,
+                        epsilon=float(p.get('epsilon', 0.03)),
+                        seed=None if pilot_seed is None else int(pilot_seed) + i,
+                    )
+                    if pilot_refine_passes:
+                        pilot = greedy_refine_hypergraph_incremental(
+                            pilot, original_edges, original_edge_weights, q,
+                            max_passes=pilot_refine_passes,
+                            max_imbalance=float(p.get('epsilon', 0.03)),
+                            node_weights=original_node_weights,
+                        )
+                    pilots.append(pilot)
+            pilots = np.asarray(pilots, dtype=np.int64)
+            if pilots.ndim == 1:
+                pilots = pilots[None, :]
+            if pilots.ndim != 2 or pilots.shape[1] != num_nodes or pilots.shape[0] == 0:
+                raise ValueError('pilot_assignments must have shape (num_pilots, num_nodes)')
+            if np.any(pilots < 0) or np.any(pilots >= q):
+                raise ValueError('pilot labels must be in [0, q)')
+
+        hierarchy_stack: list[dict] = []
 
         # ── Optionally pre-coarsen with LSH ───────────────────────────────
         use_lsh = p.get('use_lsh', False)
+        if use_lsh and global_feasibility:
+            raise ValueError('exact global feasibility guard requires use_lsh=False')
+        if use_lsh and score_mode == 'boundary':
+            raise ValueError('boundary scoring requires use_lsh=False; LSH groups form before pair scoring')
         if use_lsh:
             lsh_map, lsh_groups = _lsh_bucketize_vertices(
-                hyperedges, num_nodes,
+                original_edges, num_nodes,
                 target_buckets=max(1, target_coarse * 4),
                 seed=p.get('seed', None),
                 verbose=verbose,
             )
+            if max_cluster_weight is not None:
+                capped_groups = []
+                for group in lsh_groups:
+                    chunk = []
+                    chunk_weight = 0.0
+                    for vertex in group:
+                        weight = float(original_node_weights[vertex])
+                        if chunk and chunk_weight + weight > max_cluster_weight + 1e-12:
+                            capped_groups.append(chunk)
+                            chunk = []
+                            chunk_weight = 0.0
+                        chunk.append(vertex)
+                        chunk_weight += weight
+                    if chunk:
+                        capped_groups.append(chunk)
+                lsh_groups = capped_groups
+                for index, group in enumerate(lsh_groups):
+                    lsh_map[group] = index
             if verbose:
                 print(f"[kahypar_like] LSH pre-coarsen: {num_nodes} -> {len(lsh_groups)} buckets")
-            current_hyperedges = _rebuild_hyperedges_from_groups(hyperedges, lsh_map, len(lsh_groups))
+            current_hyperedges, current_node_weights, current_edge_weights = quotient_hypergraph(
+                original_edges, lsh_map, original_node_weights, original_edge_weights,
+            )
             current_groups = [list(g) for g in lsh_groups]
+            if num_nodes != len(current_groups):
+                hierarchy_stack.append({
+                    'hyperedges': [list(edge) for edge in original_edges],
+                    'hyperedge_weights': original_edge_weights.copy(),
+                    'node_weights': original_node_weights.copy(),
+                    'groups': [[i] for i in range(num_nodes)],
+                    'remap': lsh_map.copy(),
+                    'num_nodes': num_nodes,
+                })
         else:
-            current_hyperedges = [list(dict.fromkeys(he)) for he in hyperedges if len(set(he)) > 1]
+            current_hyperedges = original_edges
+            current_edge_weights = original_edge_weights.copy()
+            current_node_weights = original_node_weights.copy()
             current_groups = [[i] for i in range(num_nodes)]
 
         current_n = len(current_groups)
@@ -136,13 +259,15 @@ class KahyparLikeSolver(HyperSolverBase):
                 'coarse_groups': [],
                 'original_to_coarse': np.empty((0,), dtype=np.int64),
                 'coarse_hyperedges': [],
+                'coarse_hyperedge_weights': np.empty((0,), dtype=np.float64),
+                'hierarchy_stack': hierarchy_stack,
             }
 
         # ── HEM matching rounds ──────────────────────────────────────────
-        hierarchy_stack: list[dict] = []
-
         # Build incidence ONCE — updated statefully through the loop
-        vertex_to_edges, edge_vertices, edge_weights = _build_incidence(current_hyperedges, current_n)
+        vertex_to_edges, edge_vertices, edge_weights = _build_incidence(
+            current_hyperedges, current_n, current_edge_weights,
+        )
 
         round_id = 0
         while current_n > target_coarse:
@@ -150,11 +275,21 @@ class KahyparLikeSolver(HyperSolverBase):
             alive = np.ones(current_n, dtype=bool)
             matched = np.zeros(current_n, dtype=bool)
             partner = np.full(current_n, -1, dtype=np.int64)
+            pilot_hist = None
+            if pilots is not None:
+                pilot_hist = np.zeros((current_n, pilots.shape[0], q), dtype=np.float64)
+                for group_id, members in enumerate(current_groups):
+                    for trial, labels in enumerate(pilots):
+                        pilot_hist[group_id, trial] = np.bincount(
+                            labels[members], minlength=q,
+                        ) / len(members)
 
             # vertex_to_edges / edge_vertices are already up-to-date from
             # the previous round's stateful merge — no rebuild needed.
             order = rng.permutation(current_n)
             pair_count = 0
+            packing_weights = current_node_weights.copy() if global_feasibility else None
+            packing_active = np.ones(current_n, dtype=bool) if global_feasibility else None
 
             for u in order:
                 if not alive[u] or matched[u]:
@@ -166,18 +301,51 @@ class KahyparLikeSolver(HyperSolverBase):
                         continue
                     contrib = float(edge_weights[eid]) / float(len(verts) - 1)
                     for v in verts:
-                        if v != u and alive[v] and not matched[v]:
+                        if (v != u and alive[v] and not matched[v]
+                                and (max_cluster_weight is None or
+                                     current_node_weights[u] + current_node_weights[v]
+                                     <= max_cluster_weight + 1e-12)):
                             ratings[v] = ratings.get(v, 0.0) + contrib
                 if not ratings:
                     continue
-                v = max(ratings.items(), key=lambda item: (item[1], -item[0]))[0]
-                if ratings[v] <= 0.0 or matched[v] or not alive[v]:
+                if pilot_hist is not None:
+                    scored = {}
+                    for v, rating in ratings.items():
+                        same_probability = np.mean(np.sum(
+                            pilot_hist[u] * pilot_hist[v], axis=1,
+                        ))
+                        disagreement = 1.0 - same_probability
+                        scored[v] = rating * (1.0 - boundary_weight * disagreement)
+                else:
+                    scored = ratings
+                v = None
+                for candidate in sorted(scored, key=lambda item: (scored[item], -item), reverse=True):
+                    if scored[candidate] <= 0.0:
+                        break
+                    if global_feasibility:
+                        remaining = packing_weights[
+                            packing_active & (np.arange(current_n) != u) &
+                            (np.arange(current_n) != candidate)
+                        ]
+                        proposed = np.append(
+                            remaining, packing_weights[u] + packing_weights[candidate],
+                        )
+                        if not balanced_packing_feasible(proposed, q, max_cluster_weight):
+                            continue
+                    v = candidate
+                    break
+                if v is None:
                     continue
                 matched[u] = True
                 matched[v] = True
                 partner[u] = v
                 partner[v] = u
+                if global_feasibility:
+                    packing_weights[u] += packing_weights[v]
+                    packing_active[v] = False
                 pair_count += 1
+                if pair_count >= current_n - target_coarse:
+                    break
 
             if pair_count == 0:
                 break
@@ -206,9 +374,10 @@ class KahyparLikeSolver(HyperSolverBase):
             #     AND simultaneously build updated vertex_to_edges so that
             #     we never need _build_incidence again inside the loop.
             new_hyperedges = []
+            new_edge_weights = []
             new_vertex_to_edges = [set() for _ in range(new_id)]
 
-            for he in current_hyperedges:
+            for he, weight in zip(current_hyperedges, current_edge_weights):
                 mapped = []
                 seen = set()
                 for v in he:
@@ -220,6 +389,7 @@ class KahyparLikeSolver(HyperSolverBase):
                 if len(mapped) > 1:
                     eid = len(new_hyperedges)
                     new_hyperedges.append(mapped)
+                    new_edge_weights.append(float(weight))
                     for mv in mapped:
                         new_vertex_to_edges[mv].add(eid)
 
@@ -229,6 +399,8 @@ class KahyparLikeSolver(HyperSolverBase):
             # ── Save hierarchy entry before transitioning ──
             hierarchy_stack.append({
                 'hyperedges': [list(he) for he in current_hyperedges],
+                'hyperedge_weights': current_edge_weights.copy(),
+                'node_weights': current_node_weights.copy(),
                 'groups': [list(g) for g in current_groups],
                 'remap': remap.copy(),
                 'num_nodes': current_n,
@@ -240,9 +412,13 @@ class KahyparLikeSolver(HyperSolverBase):
             # new_hyperedges list directly.
             edge_vertices = new_hyperedges
             vertex_to_edges = new_vertex_to_edges
-            # edge_weights stays at all-1.0 — unchanged by contraction
+            edge_weights = new_edge_weights
 
             current_hyperedges = new_hyperedges
+            current_edge_weights = np.asarray(new_edge_weights, dtype=np.float64)
+            current_node_weights = np.bincount(
+                remap[:current_n], weights=current_node_weights, minlength=new_id,
+            )
             current_groups = new_groups
             current_n = new_id
 
@@ -253,11 +429,15 @@ class KahyparLikeSolver(HyperSolverBase):
                 if member < num_nodes:
                     original_to_coarse[member] = idx
 
-        coarse_hyperedges_out = _build_coarse_hyperedges(hyperedges, original_to_coarse, num_nodes)
+        coarse_hyperedges_out, coarse_weights, coarse_edge_weights = quotient_hypergraph(
+            original_edges, original_to_coarse, original_node_weights,
+            original_edge_weights,
+        )
         coarse_graph = build_clique_expanded_graph(
             coarse_hyperedges_out, num_nodes=len(current_groups), normalize_weight=True,
+            hyperedge_weights=coarse_edge_weights,
         )
-        coarse_node_weights = torch.tensor([len(g) for g in current_groups], dtype=torch.float32)
+        coarse_node_weights = torch.tensor(coarse_weights, dtype=torch.float32)
 
         return {
             'coarse_groups': current_groups,
@@ -265,6 +445,7 @@ class KahyparLikeSolver(HyperSolverBase):
             'coarse_node_weights': coarse_node_weights,
             'original_to_coarse': original_to_coarse,
             'coarse_graph': coarse_graph,
+            'coarse_hyperedge_weights': coarse_edge_weights,
             'hierarchy_stack': hierarchy_stack,
         }
 
@@ -275,7 +456,7 @@ class KahyparLikeSolver(HyperSolverBase):
             coarse_hyperedges,
             coarse_node_weights.cpu().numpy() if torch.is_tensor(coarse_node_weights) else coarse_node_weights,
             q,
-            hyperedge_weights=[1.0] * len(coarse_hyperedges),
+            hyperedge_weights=p.get('hyperedge_weights', [1.0] * len(coarse_hyperedges)),
             epsilon=p.get('epsilon', 0.03),
             seed=p.get('seed', None),
         )
@@ -285,125 +466,125 @@ class KahyparLikeSolver(HyperSolverBase):
 
 
 class FemCoarsenSolver(HyperSolverBase):
-    """FEM-based (or PUBO-based) initial partition on a coarsened hypergraph.
+    """Optimize native weighted km1, then return a capacity-feasible partition.
 
-    This solver does NOT do coarsening.  It takes the coarse hypergraph
-    (hyperedges + node weights) produced by ``KahyparLikeSolver`` and
-    runs an optimization to obtain a weighted-balanced partition.
+    ``method='fem'`` and the legacy ``method='pubo'`` both use the native
+    differentiable categorical expectation by default. Explicit ``map_type``
+    values ``'clique'``/``'star'`` select surrogate experiments for FEM only;
+    all returned candidates are ranked by the native weighted objective.
 
-    Parameters (via ``update_params`` or ``**overrides``):
-        method       — ``'fem'`` (default) or ``'pubo'``.
-        map_type     — ``'clique'`` (default) or ``'star'`` expansion.
-        num_trials, num_steps, dev, anneal — FEM solver settings.
+    ``epsilon`` specifies the upper load cap (1+epsilon)*total/q. Weighted
+    rounding may raise BalanceSearchError when its bounded packing search
+    fails, or BalanceInfeasibleError only when infeasibility is proved.
     """
 
     def initial_partition(self, coarse_hyperedges, coarse_node_weights, q, **overrides):
-        from src.fem import FEM as _FEM
-        from src.fem.utils import hyperedge_list_to_coupling
-        from src.partition.utils import make_q4_pubo_object
-
-        p = {**self._config, **overrides}
-        num_coarse = len(coarse_node_weights)
-        num_trials = int(p.get('num_trials', 1))
-        num_steps = int(p.get('num_steps', 10))
-        dev = p.get('dev', 'cpu')
-        anneal = p.get('anneal', 'lin')
-        method = p.get('method', 'fem')
-        map_type = p.get('map_type', 'clique')
-
-        # --- Build coupling matrix from coarse hyperedges ---
-        coarse_coupling = hyperedge_list_to_coupling(
-            coarse_hyperedges, num_coarse, map_type=map_type,
+        from fem import FEM
+        from src.partition.hyper_objective import (
+            HypergraphObjective, BalanceSearchError, capacity_limits,
+            round_balanced_probabilities,
         )
-        if map_type == 'star':
-            # Star expansion adds extra auxiliary nodes — we need to handle
-            # the extended coupling matrix and extend node_weights.
-            num_coarse = coarse_coupling.shape[0]
-            extra = num_coarse - len(coarse_node_weights)
-            cw = coarse_node_weights
-            if torch.is_tensor(cw):
-                cw = cw.cpu().numpy()
-            cw = np.concatenate([cw, np.ones(extra, dtype=np.float32)])
-            coarse_node_weights = torch.tensor(cw, dtype=torch.float32)
+        from src.partition.hyper_quotient import connectivity_cost
 
-        if coarse_coupling.is_sparse:
-            num_coupling = coarse_coupling._nnz() // 2
-        else:
-            num_coupling = int(torch.count_nonzero(coarse_coupling).item() // 2)
+        options = {**self._config, **overrides}
+        method = options.get('method', 'fem')
+        if method not in ('fem', 'pubo'):
+            raise ValueError("method must be 'fem' or 'pubo'")
+        objective = HypergraphObjective(
+            coarse_hyperedges, coarse_node_weights, q,
+            hyperedge_weights=options.get('hyperedge_weights'),
+            imbalance_weight=options.get('imbalance_weight', 5.0),
+            map_type='native' if method == 'pubo' else options.get('map_type', 'native'),
+        )
+        q = objective.q
+        epsilon = float(options.get('epsilon', options.get('max_imbalance', 0.03)))
+        capacity, tolerance = capacity_limits(objective.node_weights, q, epsilon)
+        rounding_options = dict(
+            exact_max_nodes=int(options.get('exact_balance_max_nodes', 20)),
+            search_budget=int(options.get('balance_search_budget', 200000)),
+        )
+        self.last_result = None
+        if objective.num_nodes == 0:
+            return np.empty(0, dtype=np.int64)
+        # Obvious capacity impossibilities are diagnosed before optimization.
+        if np.any(objective.node_weights > capacity + tolerance):
+            from src.partition.hyper_objective import BalanceInfeasibleError
+            raise BalanceInfeasibleError('a coarse node exceeds the maximum block capacity')
 
-        # --- FEM path ---
-        if method == 'fem':
-            fem = _FEM.from_couplings(
-                'bmincut_weighted', num_coarse, num_coupling,
-                coarse_coupling, node_weights=coarse_node_weights,
+        # A customize problem does not use its coupling tensor. Avoid a dense
+        # N-by-N dummy allocation for a native sparse hypergraph objective.
+        case = FEM.from_couplings(
+            'customize', objective.num_variables, len(objective.hyperedges), torch.empty(0),
+            customize_expected_func=objective.expectation,
+            customize_infer_func=objective.inference,
+        )
+        case.set_up_solver(
+            int(options.get('num_trials', 16)), int(options.get('num_steps', 300)),
+            dev=options.get('dev', 'cpu'), q=q, manual_grad=False,
+            anneal=options.get('anneal', 'exp'),
+            betamin=float(options.get('betamin', 0.5)),
+            betamax=float(options.get('betamax', 50.0)),
+            learning_rate=float(options.get('learning_rate', 0.08)),
+            optimizer=options.get('optimizer', 'adam'),
+            dtype=options.get('dtype', torch.float64),
+            seed=int(options.get('seed', 1)), h_factor=float(options.get('h_factor', 0.1)),
+            use_adaptive_annealing=bool(options.get('use_adaptive_annealing', False)),
+            adaptive_A=float(options.get('adaptive_A', 0.5)),
+            use_compile=bool(options.get('use_compile', False)),
+        )
+        case.solve()
+        probabilities = case.solver.probabilities.detach().cpu().numpy()[:, :objective.num_nodes]
+        candidates, candidate_costs, candidate_trials, failures = [], [], [], []
+        for trial, probability in enumerate(probabilities):
+            try:
+                assignment = round_balanced_probabilities(
+                    probability, objective.node_weights, q, epsilon, **rounding_options,
+                )
+            except BalanceSearchError as exc:
+                failures.append({'trial': trial, 'message': str(exc)})
+                continue
+            cost = connectivity_cost(assignment, objective.hyperedges, objective.hyperedge_weights)
+            candidates.append(assignment)
+            candidate_costs.append(cost)
+            candidate_trials.append(trial)
+        if not candidates:
+            raise BalanceSearchError(
+                'no trial produced a capacity-feasible partition; increase the packing budget '
+                'or use a less restrictive coarse hierarchy (feasibility is unknown)'
             )
-            fem.set_up_solver(
-                num_trials, num_steps, dev=dev,
-                q=max(2, int(q)), anneal=anneal,
-            )
-            configs, results = fem.solve()
-            best_idx = int(torch.argmin(results).item())
-            assignment = configs[best_idx].argmax(dim=1).cpu().numpy().astype(np.int64)
-            # If star expansion, strip auxiliary node assignments
-            if map_type == 'star':
-                assignment = assignment[:len(coarse_node_weights) - extra]
-            return assignment
-
-        # --- PUBO path ---
-        elif method == 'pubo':
-            pubo_obj = _Q4PUBOWrapper(
-                coarse_hyperedges, coarse_node_weights, q,
-                num_coarse, imbalance_weight=5.0,
-            )
-            dummy = torch.zeros((num_coarse, num_coarse))
-            case = _FEM()
-            case.set_up_problem(
-                num_coarse, 0, 'customize', dummy,
-                q=q, customize_expected_func=pubo_obj.expectation,
-                customize_infer_func=pubo_obj.inference,
-            )
-            case.set_up_solver(
-                num_trials, num_steps, dev=dev,
-                q=q, manual_grad=False, anneal=anneal,
-            )
-            configs, results = case.solve()
-            best = configs[0].argmax(dim=1).cpu().numpy().astype(np.int64)
-            return best
-
-        else:
-            raise ValueError(f"Unknown method '{method}' — use 'fem' or 'pubo'")
+        best = int(np.argmin(candidate_costs))
+        assignment = candidates[best]
+        loads = np.bincount(assignment, weights=objective.node_weights, minlength=q)
+        if loads.max() > capacity + tolerance:
+            raise AssertionError('FEM returned a partition above the load capacity')
+        self.last_result = {
+            'method': method, 'map_type': objective.map_type,
+            'native_cut': float(candidate_costs[best]), 'block_loads': loads.copy(),
+            'capacity': capacity, 'selected_trial': candidate_trials[best],
+            'candidate_native_cuts': np.asarray(candidate_costs),
+            'candidate_trials': candidate_trials, 'rounding_failures': failures,
+        }
+        return assignment.copy()
 
 
 class _Q4PUBOWrapper:
-    """Minimal PUBO wrapper for coarse hypergraph (q=4 cut-net)."""
-    def __init__(self, hyperedges, node_weights, q, num_nodes, imbalance_weight=5.0):
-        self.hyperedges = hyperedges
-        self.node_weights = node_weights
-        self.q = q
-        self.num_nodes = num_nodes
-        self.imbalance_weight = imbalance_weight
+    """Backward-compatible wrapper using native km1 for arbitrary q >= 2."""
+
+    def __init__(self, hyperedges, node_weights, q, num_nodes, imbalance_weight=5.0,
+                 hyperedge_weights=None):
+        from src.partition.hyper_objective import HypergraphObjective
+        if len(node_weights) != num_nodes:
+            raise ValueError('num_nodes and node_weights disagree')
+        self._objective = HypergraphObjective(
+            hyperedges, node_weights, q, hyperedge_weights=hyperedge_weights,
+            imbalance_weight=imbalance_weight,
+        )
 
     def expectation(self, _, p):
-        from src.fem.problem import weighted_imbalance_penalty
-        from src.partition.hyper_utils import evaluate_kahypar_cut_value
-        batch = p.shape[0]
-        total = 0.0
-        for b in range(batch):
-            assign = p[b].argmax(dim=1).cpu().numpy()
-            cut, _ = evaluate_kahypar_cut_value(
-                assign, self.hyperedges,
-                hyperedge_weights=[1.0] * len(self.hyperedges),
-            )
-            total = total + cut
-        total = total / batch
-        imb = self.imbalance_weight * weighted_imbalance_penalty(
-            p, self.node_weights)
-        return total + imb
+        return self._objective.expectation(_, p)
 
     def inference(self, _, p):
-        config = torch.zeros_like(p)
-        config.scatter_(2, p.argmax(dim=2, keepdim=True), 1)
-        return config, torch.zeros(config.shape[0], device=p.device)
+        return self._objective.inference(_, p)
 
 
 # ── Refinement solver ────────────────────────────────────────────────────
@@ -413,8 +594,9 @@ class HyperRefineSolver(HyperSolverBase):
     """Local refinement on the original hypergraph.
 
     When ``mode_cycle=('flow',)`` (default), runs simple FM (greedy
-    incremental refinement).  For other cycles (e.g. ``('mcts', 'flow')``)
-    runs the full hybrid pipeline (MCTS / evolution / flow).
+    incremental refinement). ``('fem_ier',)`` selects balanced move atoms
+    with native hypergraph FEM; it can be composed with ``'flow'`` in either
+    order. Other cycles (e.g. ``('mcts', 'flow')``) use the legacy hybrid path.
 
     Parameters (via ``update_params`` or ``**overrides``):
         mode_cycle      — tuple of modes: ('flow',) for FM, or hybrid
@@ -426,16 +608,64 @@ class HyperRefineSolver(HyperSolverBase):
                           Hybrid mode always repairs; this flag controls
                           the simple FM path.
         node_weights    — per-vertex weights for weighted balance (default None)
+        hyperedge_weights — per-hyperedge objective weights (flow and fem_ier
+                            support nonunit weights; default None means unit)
+        ier_*           — opt-in joint-move FEM configuration: rounds,
+                          max_moves, boundary_pool, num_trials, num_steps,
+                          pool_strategy, backend, allow_triples; see hyper_ier.py
     """
 
     def __init__(self, config_dir: Optional[Path] = None):
         super().__init__(config_dir)
         self._config['mode_cycle'] = ('flow',)
 
-    def refine(self, assignment, hyperedges, q, node_weights=None, **overrides):
+    def refine(self, assignment, hyperedges, q, node_weights=None,
+               hyperedge_weights=None, **overrides):
         p = {**self._config, **overrides}
         mode_cycle = p.get('mode_cycle', ('flow',))
         repair = p.get('repair_balance', True)
+        if node_weights is None:
+            node_weights = p.get('node_weights')
+        if hyperedge_weights is None:
+            hyperedge_weights = p.get('hyperedge_weights')
+
+        # Native FEM-IER is opt-in. Each binary variable controls an entire
+        # balanced move atom; all selector combinations preserve capacity.
+        if 'fem_ier' in mode_cycle:
+            if any(mode not in ('fem_ier', 'flow') for mode in mode_cycle):
+                raise ValueError("fem_ier can currently be combined only with 'flow'")
+            from src.partition.hyper_ier import refine_fem_ier
+            from src.partition.hyper_quotient import connectivity_cost
+            result = np.asarray(assignment).copy()
+            stages = []
+            for stage_index, mode in enumerate(mode_cycle):
+                if mode == 'flow':
+                    result = _refine_flow(
+                        result, hyperedges, q, max_passes=p.get('flow_passes', 5),
+                        max_imbalance=p.get('max_imbalance', 0.05), repair_balance=repair,
+                        verbose=p.get('verbose', False), node_weights=node_weights,
+                        hyperedge_weights=hyperedge_weights)
+                    stages.append({'method': 'flow', 'final_native_cut': float(
+                        connectivity_cost(result, hyperedges, hyperedge_weights))})
+                else:
+                    result, diagnostics = refine_fem_ier(
+                        result, hyperedges, q, node_weights=node_weights,
+                        hyperedge_weights=hyperedge_weights, epsilon=p.get('max_imbalance', .05),
+                        rounds=p.get('ier_rounds', 2), max_moves=p.get('ier_max_moves', 24),
+                        boundary_pool=p.get('ier_boundary_pool', 96),
+                        num_trials=p.get('ier_num_trials', 8), num_steps=p.get('ier_num_steps', 100),
+                        seed=p.get('seed', 1) + stage_index,
+                        backend=p.get('ier_backend', 'fem'), random_samples=p.get('ier_random_samples'),
+                        allow_triples=p.get('ier_allow_triples', True),
+                        pool_strategy=p.get('ier_pool_strategy', 'local'),
+                        learning_rate=p.get('ier_learning_rate', .08),
+                        betamin=p.get('ier_betamin', .5), betamax=p.get('ier_betamax', 50.),
+                        dev=p.get('ier_device', 'cpu'), exact_max_moves=p.get('ier_exact_max_moves', 16))
+                    stages.append(diagnostics)
+            self.last_result = {'method': 'fem_ier_cycle', 'mode_cycle': list(mode_cycle),
+                                'stages': stages, 'final_native_cut': float(
+                                    connectivity_cost(result, hyperedges, hyperedge_weights))}
+            return result
 
         # Simple FM mode
         if mode_cycle == ('flow',):
@@ -446,10 +676,24 @@ class HyperRefineSolver(HyperSolverBase):
                 repair_balance=repair,
                 verbose=p.get('verbose', False),
                 node_weights=node_weights,
+                hyperedge_weights=hyperedge_weights,
             )
 
         # Hybrid mode (MCTS / evolution / flow)
-        return _refine_hybrid(
+        from src.partition.hyper_refine_contract import (
+            capacity_state, normalized_hyperedges, validated_weights,
+        )
+        assignment, node_weights, _, _, _ = capacity_state(
+            assignment, q, node_weights, p.get('max_imbalance', 0.05),
+        )
+        hyperedges = normalized_hyperedges(hyperedges, len(assignment))
+        edge_weights = validated_weights(hyperedge_weights, len(hyperedges), 'hyperedge_weights')
+        if np.any(edge_weights != 1.0):
+            raise NotImplementedError(
+                'hybrid refinement does not yet support nonunit hyperedge_weights; '
+                "use mode_cycle=('flow',) for weighted hypergraphs"
+            )
+        result = _refine_hybrid(
             assignment, hyperedges, q,
             mode_cycle=mode_cycle,
             rounds=p.get('rounds', 3),
@@ -464,6 +708,15 @@ class HyperRefineSolver(HyperSolverBase):
             verbose=p.get('verbose', False),
             node_weights=node_weights,
         )
+        _, _, loads, capacity, tolerance = capacity_state(
+            result, q, node_weights, p.get('max_imbalance', 0.05),
+        )
+        if np.any(loads > capacity + tolerance):
+            raise RuntimeError(
+                'hybrid refinement failed to return a capacity-feasible partition; '
+                'this search failure does not prove the instance infeasible'
+            )
+        return result
 
 
 # ═════════════════════════════════════════════════════════════════════════
@@ -472,42 +725,63 @@ class HyperRefineSolver(HyperSolverBase):
 
 
 def _refine_flow(assignment, hyperedges, q, max_passes=5, max_imbalance=0.05,
-                 repair_balance=True, verbose=False, node_weights=None):
+                 repair_balance=True, verbose=False, node_weights=None,
+                 hyperedge_weights=None):
     """Simple FM (greedy incremental) refinement.
 
     Parameters
     ----------
     repair_balance : bool
         If True, actively repair balance via ``_repair_balance_fast``
-        after FM refinement finishes.  This mirrors the behaviour of the
-        hybrid pipeline and ensures the result satisfies ``max_imbalance``.
+        after FM refinement finishes. A checked capacitated projection is
+        attempted if the legacy repair does not produce a feasible result.
     node_weights : np.ndarray or None
         Per-vertex weights for weighted balance computation.
 
-    Note
-    ----
-    The underlying ``greedy_refine_hypergraph_incremental`` (C-extension)
-    may not support ``node_weights`` yet.  If so, the Python-side balance
-    repair logic (below) strictly uses the weights, but the greedy moves
-    inside the extension still treat every vertex as weight-1.
+    hyperedge_weights : np.ndarray or None
+        Per-hyperedge objective weights, including at coarse levels.
+
+    A failed search/repair raises rather than returning an infeasible
+    assignment. Failure is not an infeasibility certificate. A feasible input
+    uses native weighted improving moves that preserve the upper capacity.
     """
     from src.partition.hyper_utils import greedy_refine_hypergraph_incremental
+    from src.partition.hyper_refine_contract import (
+        capacity_state, normalized_hyperedges, validated_weights,
+    )
+    assignment, node_weights, _, _, _ = capacity_state(
+        assignment, q, node_weights, max_imbalance,
+    )
+    hyperedges = normalized_hyperedges(hyperedges, len(assignment))
+    edge_weights = validated_weights(hyperedge_weights, len(hyperedges), 'hyperedge_weights')
     if verbose:
         print(f"[refine:flow] start max_passes={max_passes} max_imbalance={max_imbalance}")
     result = greedy_refine_hypergraph_incremental(
         assignment, hyperedges,
-        hyperedge_weights=[1.0] * len(hyperedges),
+        hyperedge_weights=edge_weights,
         q=q, max_passes=max_passes, max_imbalance=max_imbalance, node_weights=node_weights,
     )
-    _, _, current_imb = _partition_summary(result, q=q, node_weights=node_weights)
-    if repair_balance and current_imb > max_imbalance:
+    _, _, loads, capacity, tolerance = capacity_state(result, q, node_weights, max_imbalance)
+    if repair_balance and np.any(loads > capacity + tolerance):
         result = _repair_balance_fast(
             result, hyperedges, max_imbalance=max_imbalance, q=q,
             node_weights=node_weights,
         )
+        _, _, loads, capacity, tolerance = capacity_state(result, q, node_weights, max_imbalance)
+        if np.any(loads > capacity + tolerance):
+            from src.partition.hyper_objective import round_balanced_probabilities
+            result = round_balanced_probabilities(
+                np.eye(q, dtype=np.float64)[result], node_weights, q,
+                epsilon=max_imbalance,
+            )
+            _, _, loads, capacity, tolerance = capacity_state(result, q, node_weights, max_imbalance)
         if verbose:
-            _, _, imb = _partition_summary(result, q=q, node_weights=node_weights)
-            print(f"[refine:flow] balance repair applied, imb={imb:.4f}")
+            print(f"[refine:flow] balance repair applied, loads={loads.tolist()}, cap={capacity:.6g}")
+    if np.any(loads > capacity + tolerance):
+        raise RuntimeError(
+            'flow refinement failed to return a capacity-feasible partition; '
+            'this search/repair failure does not prove the instance infeasible'
+        )
     return result
 
 
@@ -1018,11 +1292,13 @@ def _refine_hybrid(
 # ═════════════════════════════════════════════════════════════════════════
 
 
-def _build_incidence(hyperedge_list, vertex_count):
+def _build_incidence(hyperedge_list, vertex_count, hyperedge_weights=None):
     vertex_to_edges = [set() for _ in range(vertex_count)]
     edge_vertices = []
     edge_weights = []
-    for eid, he in enumerate(hyperedge_list):
+    if hyperedge_weights is None:
+        hyperedge_weights = [1.0] * len(hyperedge_list)
+    for he, weight in zip(hyperedge_list, hyperedge_weights):
         verts = []
         seen = set()
         for v in he:
@@ -1031,7 +1307,7 @@ def _build_incidence(hyperedge_list, vertex_count):
                 seen.add(int(v))
         if len(verts) > 1:
             edge_vertices.append(verts)
-            edge_weights.append(1.0)
+            edge_weights.append(float(weight))
             for v in verts:
                 vertex_to_edges[v].add(len(edge_vertices) - 1)
     return vertex_to_edges, edge_vertices, edge_weights
@@ -1105,6 +1381,9 @@ def vcycle_uncoarsen(
     q,
     refine_solver: HyperRefineSolver,
     verbose: bool = True,
+    *,
+    node_weights=None,
+    hyperedge_weights=None,
 ) -> np.ndarray:
     """Multilevel V-Cycle: iteratively project and refine through the hierarchy.
 
@@ -1136,19 +1415,67 @@ def vcycle_uncoarsen(
         Refinement solver (FM / hybrid) to apply at each level.
     verbose : bool
         If True, print cut / imbalance after each level.
+    node_weights, hyperedge_weights : array-like or None
+        Weights on the original hypergraph. Supply these explicitly for an
+        empty hierarchy. Otherwise stored level weights are used when they
+        can be aligned safely; inconsistent metadata raises. Edge weights
+        remain attached to individual hyperedges, including parallel nets.
 
     Returns
     -------
     np.ndarray
         Final assignment on the original hypergraph.
     """
+    from src.partition.hyper_quotient import connectivity_cost
+    from src.partition.hyper_refine_contract import (
+        normalized_hyperedges, validated_weights,
+    )
     assignment = np.asarray(coarse_assignment, dtype=np.int64).copy()
     n_levels = len(hierarchy_stack)
 
-    # Number of vertices in the original hypergraph (for final unit-weight pass)
-    num_original_nodes = max(
-        (max(he) for he in original_hyperedges if he), default=-1,
-    ) + 1
+    # The incidence list need not mention isolated vertices.
+    num_original_nodes = hierarchy_stack[0]['num_nodes'] if hierarchy_stack else len(assignment)
+
+    original_hyperedges = normalized_hyperedges(original_hyperedges, num_original_nodes)
+
+    def aligned_edge_weights(target_edges, source_edges, source_weights):
+        # Coarsening can discard singleton nets; their cut contribution is
+        # identically zero. Preserve the order/multiplicity of all other nets.
+        target = [(index, tuple(sorted(edge))) for index, edge in enumerate(target_edges)
+                  if len(edge) > 1]
+        source = [(tuple(sorted(set(edge))), float(weight))
+                  for edge, weight in zip(source_edges, source_weights) if len(set(edge)) > 1]
+        if len(target) != len(source) or any(a[1] != b[0] for a, b in zip(target, source)):
+            raise ValueError(
+                'cannot safely align stored hyperedge_weights with original hyperedges; '
+                'pass original hyperedge_weights explicitly'
+            )
+        result = np.ones(len(target_edges), dtype=np.float64)
+        for (index, _), (_, weight) in zip(target, source):
+            result[index] = weight
+        return result
+
+    first_level = hierarchy_stack[0] if hierarchy_stack else None
+    if node_weights is None and first_level is not None:
+        node_weights = first_level.get('node_weights', [len(g) for g in first_level['groups']])
+    orig_weights = validated_weights(node_weights, num_original_nodes, 'original node_weights')
+    if first_level is not None and 'node_weights' in first_level:
+        stored_nodes = validated_weights(first_level['node_weights'], num_original_nodes,
+                                         'first-level node_weights')
+        if not np.allclose(orig_weights, stored_nodes, rtol=1e-12, atol=1e-12):
+            raise ValueError('original node_weights disagree with first hierarchy level')
+    if hyperedge_weights is None and first_level is not None and 'hyperedge_weights' in first_level:
+        stored_edges = validated_weights(first_level['hyperedge_weights'],
+                                         len(first_level['hyperedges']),
+                                         'first-level hyperedge_weights')
+        hyperedge_weights = aligned_edge_weights(original_hyperedges,
+                                                 first_level['hyperedges'], stored_edges)
+    elif hyperedge_weights is None and any(
+            'hyperedge_weights' in level and np.any(np.asarray(level['hyperedge_weights']) != 1.0)
+            for level in hierarchy_stack):
+        raise ValueError('nonunit hierarchy weights require original hyperedge_weights or first-level metadata')
+    orig_edge_weights = validated_weights(hyperedge_weights, len(original_hyperedges),
+                                         'original hyperedge_weights')
 
     # Walk back up: coarsest → finest
     for level_idx, level in enumerate(reversed(hierarchy_stack)):
@@ -1157,49 +1484,55 @@ def vcycle_uncoarsen(
         fine_n = level['num_nodes']
 
         # ── Extract node weights for this level (cluster sizes) ──
-        fine_weights = np.array([len(g) for g in level['groups']], dtype=np.float32)
+        fine_weights = validated_weights(
+            level.get('node_weights', [len(g) for g in level['groups']]), fine_n,
+            'hierarchy node_weights',
+        )
+        fine_hyperedges = normalized_hyperedges(fine_hyperedges, fine_n)
+        if 'hyperedge_weights' in level:
+            fine_edge_weights = validated_weights(level['hyperedge_weights'], len(fine_hyperedges),
+                                                  'hierarchy hyperedge_weights')
+        elif np.any(orig_edge_weights != 1.0):
+            if fine_n != num_original_nodes:
+                raise ValueError('weighted V-cycle requires hyperedge_weights at each hierarchy level')
+            fine_edge_weights = aligned_edge_weights(fine_hyperedges, original_hyperedges,
+                                                      orig_edge_weights)
+        else:
+            fine_edge_weights = np.ones(len(fine_hyperedges), dtype=np.float64)
 
         # ── Project: fine_assignment[v] = coarse_assignment[remap[v]] ──
         projected = np.array([assignment[remap[v]] for v in range(fine_n)], dtype=np.int64)
 
         if verbose:
-            cut, imb = evaluate_kahypar_cut_value(
-                projected, fine_hyperedges,
-                hyperedge_weights=[1.0] * len(fine_hyperedges),
-            )
+            cut = connectivity_cost(projected, fine_hyperedges, fine_edge_weights)
+            loads = np.bincount(projected, weights=fine_weights, minlength=q)
             lvl_label = n_levels - level_idx
-            print(f'  [V-cycle] level {lvl_label}/{n_levels}: projected  cut={cut}, imb={imb:.4f}')
+            print(f'  [V-cycle] level {lvl_label}/{n_levels}: projected  cut={cut}, loads={loads.tolist()}')
 
         # ── Refine at this level (with weighted balance) ──
         assignment = refine_solver.refine(projected, fine_hyperedges, q,
-                                          node_weights=fine_weights)
+                                          node_weights=fine_weights,
+                                          hyperedge_weights=fine_edge_weights)
 
         if verbose:
-            cut, imb = evaluate_kahypar_cut_value(
-                assignment, fine_hyperedges,
-                hyperedge_weights=[1.0] * len(fine_hyperedges),
-            )
+            cut = connectivity_cost(assignment, fine_hyperedges, fine_edge_weights)
+            loads = np.bincount(assignment, weights=fine_weights, minlength=q)
             lvl_label = n_levels - level_idx
-            print(f'  [V-cycle] level {lvl_label}/{n_levels}: refined   cut={cut}, imb={imb:.4f}')
+            print(f'  [V-cycle] level {lvl_label}/{n_levels}: refined   cut={cut}, loads={loads.tolist()}')
 
-    # ── Final refinement on the original hypergraph (unit weights) ──
-    orig_weights = np.ones(num_original_nodes, dtype=np.float32)
-
+    # ── Final refinement on the original hypergraph ──
     if verbose:
-        cut, imb = evaluate_kahypar_cut_value(
-            assignment, original_hyperedges,
-            hyperedge_weights=[1.0] * len(original_hyperedges),
-        )
-        print(f'  [V-cycle] original (pre-refine): cut={cut}, imb={imb:.4f}')
+        cut = connectivity_cost(assignment, original_hyperedges, orig_edge_weights)
+        loads = np.bincount(assignment, weights=orig_weights, minlength=q)
+        print(f'  [V-cycle] original (pre-refine): cut={cut}, loads={loads.tolist()}')
 
     assignment = refine_solver.refine(assignment, original_hyperedges, q,
-                                      node_weights=orig_weights)
+                                      node_weights=orig_weights,
+                                      hyperedge_weights=orig_edge_weights)
 
     if verbose:
-        cut, imb = evaluate_kahypar_cut_value(
-            assignment, original_hyperedges,
-            hyperedge_weights=[1.0] * len(original_hyperedges),
-        )
-        print(f'  [V-cycle] original (post-refine): cut={cut}, imb={imb:.4f}')
+        cut = connectivity_cost(assignment, original_hyperedges, orig_edge_weights)
+        loads = np.bincount(assignment, weights=orig_weights, minlength=q)
+        print(f'  [V-cycle] original (post-refine): cut={cut}, loads={loads.tolist()}')
 
     return assignment

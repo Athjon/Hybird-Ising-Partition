@@ -44,18 +44,23 @@ def evaluate_kahypar_cut_value(assignment: np.ndarray, hyperedges: list, hypered
     return total_cut_value, max_imbalance
 
 
-def build_clique_expanded_graph(hyperedges: list, num_nodes: int = None, normalize_weight: bool = True):
+def build_clique_expanded_graph(hyperedges: list, num_nodes: int = None,
+                                normalize_weight: bool = True, hyperedge_weights=None):
     if num_nodes is None:
         num_nodes = max((max(hyperedge) for hyperedge in hyperedges if hyperedge), default=-1) + 1
+    if hyperedge_weights is None:
+        hyperedge_weights = [1.0] * len(hyperedges)
+    if len(hyperedge_weights) != len(hyperedges):
+        raise ValueError("one weight is required per hyperedge")
 
     rows = []
     cols = []
     values = []
 
-    for hyperedge in hyperedges:
+    for hyperedge, weight in zip(hyperedges, hyperedge_weights):
         if len(hyperedge) < 2:
             continue
-        edge_weight = 1.0 / (len(hyperedge) - 1) if normalize_weight else 1.0
+        edge_weight = float(weight) / (len(hyperedge) - 1) if normalize_weight else float(weight)
         for u, v in combinations(hyperedge, 2):
             rows.extend([u, v])
             cols.extend([v, u])

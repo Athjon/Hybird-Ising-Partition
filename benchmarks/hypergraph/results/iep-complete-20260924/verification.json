@@ -1,0 +1,15 @@
+{
+  "main_repository": {
+    "command": "/opt/anaconda3/bin/python -m pytest -q tests/test_hyper_fem_native.py tests/test_hyper_weighted_refine.py tests/test_hyper_quotient.py tests/test_time_budget_hgr.py tests/test_ogp_exact_geometry.py tests/test_ogp_objective_diagnostic.py tests/test_fem_multiseed_benchmark.py",
+    "result": "80 passed in 1.62s"
+  },
+  "fem_submodule": {
+    "working_directory": "lib/qubo-solver",
+    "command": "/opt/anaconda3/bin/python -m pytest -q tests/test_fem_gradients.py tests/test_adaptive_annealing.py",
+    "result": "21 passed in 1.42s"
+  },
+  "case_suite": {
+    "command": "/opt/anaconda3/bin/python benchmarks/hypergraph/validate_iep_cases.py --output benchmarks/hypergraph/results/iep-complete-20260924",
+    "result": "complete: objective=40, weighted=4, ibm=20, bad_for_ec=10"
+  }
+}
